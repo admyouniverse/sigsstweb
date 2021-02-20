@@ -294,7 +294,7 @@ class PPRAController extends Controller
     {
         \Log::debug($request->contrato['idEmpresaContrato']);
 
-        \Log::debug($request->tipo == 'EMISSÃO' ? 1 : $request->tipo == 'REVISÃO_PARCIAL' ? 2 : 3);
+        \Log::debug(($request->tipo == 'EMISSÃO' ? 1 : $request->tipo == 'REVISÃO_PARCIAL') ? 2 : 3);
         $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/ppras/retornaVersaoPpra/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -303,7 +303,7 @@ class PPRAController extends Controller
             'idEmpresa: ' . Session::get('empresa')->idEmpresa,
             'empresaContrato: ' . $request->contrato['idEmpresaContrato'],
             'dataPpra: ' . $request->data,
-            'tipoPpra: ' . ($request->tipo == 'EMISSÃO' ? 1 : $request->tipo == 'REVISÃO_PARCIAL' ? 2 : 3),
+            'tipoPpra: ' . (($request->tipo == 'EMISSÃO' ? 1 : $request->tipo == 'REVISÃO_PARCIAL') ? 2 : 3),
         ));
 
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
