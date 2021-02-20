@@ -61,7 +61,7 @@ class PessoasController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma. 
         $json .= '}';
         
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pessoas");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/pessoas");
         
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -152,7 +152,7 @@ class PessoasController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma. 
         $json .= '}';
         
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pessoas");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/pessoas");
         
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

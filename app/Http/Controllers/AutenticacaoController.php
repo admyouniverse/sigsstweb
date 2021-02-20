@@ -17,7 +17,7 @@ class AutenticacaoController extends Controller
         \Log::debug($request->all());
         
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/usuarios/autenticarLogin/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/usuarios/autenticarLogin/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 

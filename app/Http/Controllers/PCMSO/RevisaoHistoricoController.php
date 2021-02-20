@@ -11,7 +11,7 @@ class RevisaoHistoricoController extends Controller
     public function medicos(Request $request) {
         \Log::debug($request->all());
         
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/empresa-profissionais/listaMedicoCoordenadorPcmso");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/empresa-profissionais/listaMedicoCoordenadorPcmso");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -57,7 +57,7 @@ class RevisaoHistoricoController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmso-historico-revisoes/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/pcmso-historico-revisoes/");
 
         \Log::debug($json);
 

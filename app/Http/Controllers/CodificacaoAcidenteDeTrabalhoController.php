@@ -54,7 +54,7 @@ class CodificacaoAcidenteDeTrabalhoController extends Controller
         $json .= '}';
 
    //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/codificacaoAcidentes");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/codificacaoAcidentes");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -122,7 +122,7 @@ class CodificacaoAcidenteDeTrabalhoController extends Controller
      $json .= '}';
 
    //   return $json;
-     $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/codificacaoAcidentes");
+     $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/codificacaoAcidentes");
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -159,7 +159,7 @@ class CodificacaoAcidenteDeTrabalhoController extends Controller
     public function destroy($id)
     {
 
-     $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/codificacaoAcidentes/" . $id);
+     $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/codificacaoAcidentes/" . $id);
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

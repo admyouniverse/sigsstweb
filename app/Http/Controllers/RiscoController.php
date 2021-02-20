@@ -81,7 +81,7 @@ class RiscoController extends Controller
         $json .= '}';
 
    //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/riscos");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/riscos");
 
         \Log::debug($request->all());
         \Log::debug($json);
@@ -157,7 +157,7 @@ class RiscoController extends Controller
 
                 \Log::debug($json);
 
-                $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/riscos-exames");
+                $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/riscos-exames");
 
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
 
@@ -193,7 +193,7 @@ class RiscoController extends Controller
 
                 \Log::debug($json);
 
-                $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/riscos-unidades-medida");
+                $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/riscos-unidades-medida");
 
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
 
@@ -257,7 +257,7 @@ class RiscoController extends Controller
 
         \Log::debug($json);
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/riscos");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/riscos");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -310,7 +310,7 @@ class RiscoController extends Controller
     public function destroy($id)
     {
 
-       $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/riscos/" . $id);
+       $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/riscos/" . $id);
 
 
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -335,7 +335,7 @@ class RiscoController extends Controller
 public function destroyExame($id)
     {
 
-       $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/riscos-exames/" . $id);
+       $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/riscos-exames/" . $id);
 
 
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -359,7 +359,7 @@ public function destroyExame($id)
 public function destroyUnidade($id)
     {
 
-       $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/riscos-unidades-medida/" . $id);
+       $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/riscos-unidades-medida/" . $id);
 
 
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

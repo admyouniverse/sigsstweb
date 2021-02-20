@@ -55,7 +55,7 @@ class CidadeController extends Controller
         $json .= '}';
 
    //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/cidades");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/cidades");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -133,7 +133,7 @@ class CidadeController extends Controller
      $json .= '}';
 
    //   return $json;
-     $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/cidades");
+     $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/cidades");
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -168,7 +168,7 @@ class CidadeController extends Controller
     public function destroy($id)
     {
 
-     $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/cidades/" . $id);
+     $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/cidades/" . $id);
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

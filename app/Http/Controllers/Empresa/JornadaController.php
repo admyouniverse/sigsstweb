@@ -48,7 +48,7 @@ class JornadaController extends Controller
 
         \Log::debug($json);
    //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/jornadasTrabalho");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/jornadasTrabalho");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -115,7 +115,7 @@ class JornadaController extends Controller
 
         \Log::debug($json);
    //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/jornadasTrabalho");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/jornadasTrabalho");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -153,7 +153,7 @@ class JornadaController extends Controller
     public function destroy($id)
     {
 
-     $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/jornadasTrabalho/" . $id);
+     $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/jornadasTrabalho/" . $id);
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

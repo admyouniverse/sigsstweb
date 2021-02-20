@@ -87,7 +87,7 @@ class AsoController extends Controller
         // do {
         //     try {
 
-        //         // $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmsos/pegaUltimoPcmsoPorEmpresaEmpresaContrato/");
+        //         // $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/pcmsos/pegaUltimoPcmsoPorEmpresaEmpresaContrato/");
 
         //         // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -111,7 +111,7 @@ class AsoController extends Controller
 
         //         // \Log::debug('INICIOU AMBIENTE');
 
-        //         // $ah = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/buscaPorIdOrigem/");
+        //         // $ah = curl_init(env('APP_API') . "ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/buscaPorIdOrigem/");
 
         //         // curl_setopt($ah, CURLOPT_RETURNTRANSFER, true);
 
@@ -139,7 +139,7 @@ class AsoController extends Controller
 
         //         // \Log::debug($aso);
 
-        //         // $eh = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/empresa-profissionais/listaMedicoExaminador");
+        //         // $eh = curl_init(env('APP_API') . "ServicoSIGSSO/rest/empresa-profissionais/listaMedicoExaminador");
 
         //         // curl_setopt($eh, CURLOPT_RETURNTRANSFER, true);
 
@@ -226,7 +226,7 @@ class AsoController extends Controller
 
         \Log::debug($array);
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/solicitacoes/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/solicitacoes/");
 
         \Log::debug($json);
 
@@ -291,7 +291,7 @@ class AsoController extends Controller
 
         $sexo = $solicitacao['empresaFuncionario']['pessoa']['sexo'];
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/solicitacoes-exames/listaPcmsoAmbienteExame/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/solicitacoes-exames/listaPcmsoAmbienteExame/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -353,7 +353,7 @@ class AsoController extends Controller
 
         $solicitacao = \json_decode($solicitacao, true);
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmsos/pegaUltimoPcmsoPorEmpresaEmpresaContrato/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/pcmsos/pegaUltimoPcmsoPorEmpresaEmpresaContrato/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -369,7 +369,7 @@ class AsoController extends Controller
 
         $solicitacao['pcmso'] = json_decode($pcmso, true);
 
-        $ah = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/buscaPorIdOrigem/");
+        $ah = curl_init(env('APP_API') . "ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/buscaPorIdOrigem/");
 
         curl_setopt($ah, CURLOPT_RETURNTRANSFER, true);
 
@@ -513,7 +513,7 @@ class AsoController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/solicitacoes/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/solicitacoes/");
 
         \Log::debug($json);
 

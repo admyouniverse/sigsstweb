@@ -34,7 +34,7 @@ class GruposDeControleController extends Controller
         $json .= '}';
 
    //   return $json;
-     $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/grupos-controle");
+     $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/grupos-controle");
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -74,7 +74,7 @@ class GruposDeControleController extends Controller
 
         \Log::debug($json);
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/grupos-controle");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/grupos-controle");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -142,7 +142,7 @@ class GruposDeControleController extends Controller
     public function destroy($id)
     {
 
-       $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/grupos-controle/" . $id);
+       $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/grupos-controle/" . $id);
 
 
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

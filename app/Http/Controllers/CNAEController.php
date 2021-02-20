@@ -59,7 +59,7 @@ class CNAEController extends Controller
 
 
    //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/cnaes");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/cnaes");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -130,7 +130,7 @@ class CNAEController extends Controller
      $json .= '}';
 
    //   return $json;
-     $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/cnaes");
+     $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/cnaes");
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -165,7 +165,7 @@ class CNAEController extends Controller
     public function destroy($id)
     {
 
-     $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/cnaes/" . $id);
+     $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/cnaes/" . $id);
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
