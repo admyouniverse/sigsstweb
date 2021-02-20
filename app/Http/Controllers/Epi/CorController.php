@@ -52,7 +52,7 @@ class CorController extends Controller
         curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
         $result = curl_exec($ch);
 
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cores/');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cores/');
 
         return $json;
     }
@@ -124,7 +124,7 @@ class CorController extends Controller
         $result = json_decode($result, true);
    
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cores');
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cores');
             return $json;
         } else {
            return 'erro';

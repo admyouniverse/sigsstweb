@@ -52,7 +52,7 @@ class TamanhoController extends Controller
         curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
         $result = curl_exec($ch);
 
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/tamanhos/');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/tamanhos/');
 
         return $json;
     }
@@ -124,7 +124,7 @@ class TamanhoController extends Controller
         $result = json_decode($result, true);
    
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/tamanhos');
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/tamanhos');
             return $json;
         } else {
            return 'erro';

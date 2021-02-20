@@ -23,7 +23,7 @@ class AgenteCausadorDeDoencaProfissionalController extends Controller
      */
     public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/agentesCausadoresDoencaProf');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/agentesCausadoresDoencaProf');
         return $json;
     }
 
@@ -36,7 +36,7 @@ class AgenteCausadorDeDoencaProfissionalController extends Controller
     public function store(Request $request)
     {
 
-        // $verifica = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/agentesCausadoresDoencaProf/listaPorCodigo/'.$request->codigo);
+        // $verifica = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/agentesCausadoresDoencaProf/listaPorCodigo/'.$request->codigo);
 
 
         // if($verifica != '[]') {
@@ -74,7 +74,7 @@ class AgenteCausadorDeDoencaProfissionalController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-         $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/agentesCausadoresDoencaProf');
+         $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/agentesCausadoresDoencaProf');
          return $json;
      } else {
         return 'erro';
@@ -142,7 +142,7 @@ class AgenteCausadorDeDoencaProfissionalController extends Controller
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-         $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/agentesCausadoresDoencaProf');
+         $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/agentesCausadoresDoencaProf');
          return $json;
      } else {
         \Log::debug($result);
@@ -175,7 +175,7 @@ class AgenteCausadorDeDoencaProfissionalController extends Controller
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-         $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/agentesCausadoresDoencaProf');
+         $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/agentesCausadoresDoencaProf');
          return $json;
      } else {
         return 'erro';
@@ -185,10 +185,10 @@ class AgenteCausadorDeDoencaProfissionalController extends Controller
 public function buscar($selecionado, $termo) {
 
     if($selecionado == 'codigo') {
-     $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/agentesCausadoresDoencaProf/listaPorCodigo/' . $termo);
+     $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/agentesCausadoresDoencaProf/listaPorCodigo/' . $termo);
      return $json;
  } else {
-   $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/agentesCausadoresDoencaProf/listaPorAnyDescricao/' . urlencode($termo));
+   $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/agentesCausadoresDoencaProf/listaPorAnyDescricao/' . urlencode($termo));
    return $json;
 }
 

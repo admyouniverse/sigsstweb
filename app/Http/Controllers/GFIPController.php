@@ -23,7 +23,7 @@ class GFIPController extends Controller
      */
     public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/gfips');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/gfips');
         return $json;
     }
 
@@ -36,7 +36,7 @@ class GFIPController extends Controller
     public function store(Request $request)
     {
 
-        $verifica = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/gfips/listaPorCodigo/'.$request->codigo);
+        $verifica = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/gfips/listaPorCodigo/'.$request->codigo);
 
 
         if($verifica != '[]') {
@@ -74,7 +74,7 @@ class GFIPController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/gfips');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/gfips');
            return $json;
        } else {
         return 'erro';
@@ -141,7 +141,7 @@ class GFIPController extends Controller
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-       $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/gfips');
+       $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/gfips');
        return $json;
    } else {
     return 'erro';
@@ -173,7 +173,7 @@ class GFIPController extends Controller
            $result = json_decode($result, true);
 
            if ($result['status'] == 'true') {
-               $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/gfips');
+               $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/gfips');
                return $json;
            } else {
             return 'erro';
@@ -183,10 +183,10 @@ class GFIPController extends Controller
     public function buscar($selecionado, $termo) {
 
         if($selecionado == 'codigo') {
-               $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/gfips/listaPorCodigo/' . $termo);
+               $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/gfips/listaPorCodigo/' . $termo);
                 return $json;
         } else {
-             $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/gfips/listaPorAnyDescricao/' . urlencode($termo));
+             $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/gfips/listaPorAnyDescricao/' . urlencode($termo));
                 return $json;
         }
 

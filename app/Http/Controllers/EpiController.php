@@ -23,7 +23,7 @@ class EpiController extends Controller
      */
     public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/epis');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/epis');
         
         return $json;
     }
@@ -37,7 +37,7 @@ class EpiController extends Controller
     public function store(Request $request)
     {
 
-        // $verifica = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/epis/listaPorCodigo/'.$request->codigo);
+        // $verifica = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/epis/listaPorCodigo/'.$request->codigo);
 
 
         // if($verifica != '[]') {
@@ -79,7 +79,7 @@ class EpiController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/epis');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/epis');
            return $json;
        } else {
         return 'erro';
@@ -94,7 +94,7 @@ class EpiController extends Controller
      */
     public function categoriasList()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/categorias-epi');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/categorias-epi');
         return $json;
     }
 
@@ -132,7 +132,7 @@ class EpiController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/categorias-epi');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/categorias-epi');
            return $json;
        } else {
         return 'erro';
@@ -172,7 +172,7 @@ public function categoriasUpdate(Request $request, $id)
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/categorias-epi');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/categorias-epi');
            return $json;
        } else {
         return 'erro';
@@ -196,7 +196,7 @@ public function categoriasDestroy($id)
        $result = json_decode($result, true);
 
        if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/categorias-epi');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/categorias-epi');
            return $json;
        } else {
         return 'erro';
@@ -224,7 +224,7 @@ public function categoriasDestroy($id)
 
     public function gruposList()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/grupos-epi');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/grupos-epi');
         return $json;
     }
 
@@ -261,7 +261,7 @@ public function categoriasDestroy($id)
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/grupos-epi');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/grupos-epi');
            return $json;
        } else {
         return 'erro';
@@ -300,7 +300,7 @@ public function gruposUpdate(Request $request, $id)
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/grupos-epi');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/grupos-epi');
            return $json;
        } else {
         return 'erro';
@@ -324,7 +324,7 @@ public function gruposDestroy($id)
        $result = json_decode($result, true);
 
        if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/grupos-epi');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/grupos-epi');
            return $json;
        } else {
         return 'erro';
@@ -376,7 +376,7 @@ public function gruposDestroy($id)
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-       $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/epis');
+       $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/epis');
        return $json;
    } else {
     return 'erro';
@@ -408,7 +408,7 @@ public function gruposDestroy($id)
        $result = json_decode($result, true);
 
        if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/epis');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/epis');
            return $json;
        } else {
         return 'erro';
@@ -418,10 +418,10 @@ public function gruposDestroy($id)
 public function buscar($selecionado, $termo) {
 
     if($selecionado == 'id') {
-       $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/epis/listaPorId/' . $termo);
+       $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/epis/listaPorId/' . $termo);
        return $json;
    } else {
-     $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/epis/listaPorAnyDescricao/' . urlencode($termo));
+     $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/epis/listaPorAnyDescricao/' . urlencode($termo));
      return json_decode($json);
  }
 
@@ -430,10 +430,10 @@ public function buscar($selecionado, $termo) {
 public function buscarCategorias($selecionado, $termo) {
 
     if($selecionado == 'codigo') {
-       $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/categorias-epi/listaPorId/' . $termo);
+       $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/categorias-epi/listaPorId/' . $termo);
        return $json;
    } else {
-     $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/categorias-epi/listaPorAnyDescricao/' . urlencode($termo));
+     $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/categorias-epi/listaPorAnyDescricao/' . urlencode($termo));
      return $json;
  }
 

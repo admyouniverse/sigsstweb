@@ -14,14 +14,14 @@ class AmbienteController extends Controller
      */
     public function index($id)
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppra-ambiente-trabalhos/listaPorIdPpra/' . $id);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppra-ambiente-trabalhos/listaPorIdPpra/' . $id);
 
         return $json;
     }
 
     public function ambiente($ppra, $id)
     {
-        $ppra = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppras/' . $ppra);
+        $ppra = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppras/' . $ppra);
 
         $ppra = json_decode($ppra, true);
 
@@ -29,7 +29,7 @@ class AmbienteController extends Controller
 
         $ppra->pcmsos = [];
 
-        $pcmsos = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmsos/listaPorIdEmpresa/'. $ppra->empresasContrato[0]['empresa']['idEmpresa']);
+        $pcmsos = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmsos/listaPorIdEmpresa/'. $ppra->empresasContrato[0]['empresa']['idEmpresa']);
 
         $pcmsos = json_decode($pcmsos, true);
 
@@ -39,13 +39,13 @@ class AmbienteController extends Controller
             }
         }
         
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppra-ambiente-trabalhos/' . $id);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppra-ambiente-trabalhos/' . $id);
 
         $ambientePpra = json_decode($json, true);
 
         $ambientePpra = (object) $ambientePpra;
 
-        $ambiente = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ambientesTrabalho/buscaPorIdOrigem/' . $ambientePpra->idOrigem);
+        $ambiente = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ambientesTrabalho/buscaPorIdOrigem/' . $ambientePpra->idOrigem);
 
         $ambiente = json_decode($ambiente, true);
 
@@ -56,14 +56,14 @@ class AmbienteController extends Controller
 
     public function listAmbientes($id)
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppra-ambiente-trabalhos/listaPorIdPpra/' . $id);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppra-ambiente-trabalhos/listaPorIdPpra/' . $id);
 
         $array = json_decode($json);
 
         $final = array();
 
         foreach ($array as $arr) {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ambientesTrabalho/buscaPorIdOrigem/' . $arr->idOrigem);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ambientesTrabalho/buscaPorIdOrigem/' . $arr->idOrigem);
             $decode = json_decode($json);
             $decode->idPpraAmbienteTrabalho = $arr->idPpraAmbienteTrabalho;
             array_push($final, $decode);
@@ -75,14 +75,14 @@ class AmbienteController extends Controller
     public function listFuncoes($ambiente)
     {
 
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppra-funcoes/listaPorIdAmbiente/' . $ambiente);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppra-funcoes/listaPorIdAmbiente/' . $ambiente);
 
         $array = json_decode($json);
 
         $final = array();
 
         foreach ($array as $arr) {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/funcoes/buscaPorIdRH/' . $arr->idRH);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/funcoes/buscaPorIdRH/' . $arr->idRH);
             $decode = json_decode($json);
             // $decode->idPpraAmbienteTrabalho = $arr->idPpraAmbienteTrabalho;
             array_push($final, $decode);
@@ -147,7 +147,7 @@ class AmbienteController extends Controller
         \Log::debug($result);
 
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppra-ambiente-trabalhos/listaPorIdPpra/' . $request->ppra['idPpra']);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppra-ambiente-trabalhos/listaPorIdPpra/' . $request->ppra['idPpra']);
 
             return $json;
         } else {
@@ -207,7 +207,7 @@ class AmbienteController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppra-ambiente-trabalhos/listaPorIdPpra/' . $id);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppra-ambiente-trabalhos/listaPorIdPpra/' . $id);
             \Log::debug($json);
             return $json;
         } else {
@@ -219,7 +219,7 @@ class AmbienteController extends Controller
     public function funcoes($ambiente)
     {
 
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppra-funcoes/listaPorIdAmbiente/' . $ambiente);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppra-funcoes/listaPorIdAmbiente/' . $ambiente);
 
         return $json;
 
@@ -228,7 +228,7 @@ class AmbienteController extends Controller
     public function funcoesAso($funcao)
     {
 
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppraAsos/listaPorIdPpraFuncao/' . $funcao);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppraAsos/listaPorIdPpraFuncao/' . $funcao);
 
         return $json;
 

@@ -23,7 +23,7 @@ class CodificacaoAcidenteDeTrabalhoController extends Controller
      */
     public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/codificacaoAcidentes');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/codificacaoAcidentes');
         return $json;
     }
 
@@ -36,7 +36,7 @@ class CodificacaoAcidenteDeTrabalhoController extends Controller
     public function store(Request $request)
     {
 
-        // $verifica = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/codificacaoAcidentes/listaPorCodigo/'.$request->codigo);
+        // $verifica = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/codificacaoAcidentes/listaPorCodigo/'.$request->codigo);
 
 
         // if($verifica != '[]') {
@@ -73,7 +73,7 @@ class CodificacaoAcidenteDeTrabalhoController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-         $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/codificacaoAcidentes');
+         $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/codificacaoAcidentes');
          return $json;
      } else {
         return 'erro';
@@ -140,7 +140,7 @@ class CodificacaoAcidenteDeTrabalhoController extends Controller
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-         $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/codificacaoAcidentes');
+         $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/codificacaoAcidentes');
          return $json;
      } else {
         \Log::debug($result);
@@ -173,7 +173,7 @@ class CodificacaoAcidenteDeTrabalhoController extends Controller
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-         $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/codificacaoAcidentes');
+         $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/codificacaoAcidentes');
          return $json;
      } else {
         return 'erro';
@@ -183,10 +183,10 @@ class CodificacaoAcidenteDeTrabalhoController extends Controller
 public function buscar($selecionado, $termo) {
 
     if($selecionado == 'codigo') {
-     $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/codificacaoAcidentes/listaPorCodigo/' . $termo);
+     $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/codificacaoAcidentes/listaPorCodigo/' . $termo);
      return $json;
  } else {
-   $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/codificacaoAcidentes/listaPorAnyDescricao/' . urlencode($termo));
+   $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/codificacaoAcidentes/listaPorAnyDescricao/' . urlencode($termo));
    return $json;
 }
 

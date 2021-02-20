@@ -20,7 +20,7 @@ class AmbienteTrabalhoController extends Controller
 
 
     public function origem($id) {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ambientesTrabalho/buscaPorIdOrigem/' . $id);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ambientesTrabalho/buscaPorIdOrigem/' . $id);
         
         return $json;
     }
@@ -31,7 +31,7 @@ class AmbienteTrabalhoController extends Controller
      * @return \Illuminate\Http\Response
      */
     function list() {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ambientesTrabalho');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ambientesTrabalho');
 
         return $json;
     }
@@ -45,7 +45,7 @@ class AmbienteTrabalhoController extends Controller
     public function store(Request $request)
     {
 
-        // $verifica = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ambientesTrabalho/listaPorCodigo/'.$request->origem);
+        // $verifica = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ambientesTrabalho/listaPorCodigo/'.$request->origem);
 
         // if($verifica != '[]') {
         //     \Log::debug($verifica);
@@ -85,7 +85,7 @@ class AmbienteTrabalhoController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ambientesTrabalho');
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ambientesTrabalho');
             return $json;
         } else {
             return 'erro';
@@ -156,7 +156,7 @@ class AmbienteTrabalhoController extends Controller
         $result = json_decode($result, true);
         \Log::debug($result);
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ambientesTrabalho');
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ambientesTrabalho');
             return $json;
         } else {
             \Log::debug($result);
@@ -187,7 +187,7 @@ class AmbienteTrabalhoController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ambientesTrabalho');
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ambientesTrabalho');
             return $json;
         } else {
             return 'erro';
@@ -210,7 +210,7 @@ class AmbienteTrabalhoController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ambientesTrabalho');
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ambientesTrabalho');
             return $json;
         } else {
             return 'erro';
@@ -221,10 +221,10 @@ class AmbienteTrabalhoController extends Controller
     {
 
         if ($selecionado == 'codigo') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ambientesTrabalho/listaPorId/' . $termo);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ambientesTrabalho/listaPorId/' . $termo);
             return $json;
         } else {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ambientesTrabalho/listaPorAnyNome/' . urlencode($termo));
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ambientesTrabalho/listaPorAnyNome/' . urlencode($termo));
             return $json;
         }
 
@@ -233,7 +233,7 @@ class AmbienteTrabalhoController extends Controller
     public function subcodigo($cnpj)
     {
 
-        $ambientes = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ambientesTrabalho/listaPorSubCodigo/' . $cnpj );
+        $ambientes = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ambientesTrabalho/listaPorSubCodigo/' . $cnpj );
 
         $ambientes = json_decode($ambientes, true);
 
@@ -275,7 +275,7 @@ class AmbienteTrabalhoController extends Controller
     public function epis($id)
     {
 
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ambiente-cadastro-epis/listaPorIdAmbienteTrabalho/' . $id);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ambiente-cadastro-epis/listaPorIdAmbienteTrabalho/' . $id);
 
         return $json;
 
@@ -313,7 +313,7 @@ class AmbienteTrabalhoController extends Controller
         $result = json_decode($result, true);
         \Log::debug($result);
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ambiente-cadastro-epis/listaPorIdAmbienteTrabalho/' . $request->epi['ambienteTrabalho']['idAmbienteTrabalho']);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ambiente-cadastro-epis/listaPorIdAmbienteTrabalho/' . $request->epi['ambienteTrabalho']['idAmbienteTrabalho']);
             return $json;
         } else {
             \Log::debug($result);
@@ -353,7 +353,7 @@ class AmbienteTrabalhoController extends Controller
         $result = json_decode($result, true);
         \Log::debug($result);
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ambiente-empresa-capacitacoes/listaPorIdAmbienteTrabalho/' . $request->capacitacao['ambienteTrabalho']['idAmbienteTrabalho']);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ambiente-empresa-capacitacoes/listaPorIdAmbienteTrabalho/' . $request->capacitacao['ambienteTrabalho']['idAmbienteTrabalho']);
             return $json;
         } else {
             \Log::debug($result);
@@ -365,7 +365,7 @@ class AmbienteTrabalhoController extends Controller
     public function capacitacoes($id)
     {
 
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ambiente-empresa-capacitacoes/listaPorIdAmbienteTrabalho/' . $id);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ambiente-empresa-capacitacoes/listaPorIdAmbienteTrabalho/' . $id);
 
         return $json;
 

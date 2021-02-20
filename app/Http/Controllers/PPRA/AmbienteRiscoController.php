@@ -9,14 +9,14 @@ class AmbienteRiscoController extends Controller
 {
 
     function list($ambiente) {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppra-ambiente-riscos/buscaPpraAmbienteRiscoPorIdAmbienteTrabalho/' . $ambiente);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppra-ambiente-riscos/buscaPpraAmbienteRiscoPorIdAmbienteTrabalho/' . $ambiente);
 
         $decode = json_decode($json, true);
         $riscos = [];
 
         foreach ($decode as $risco) {
 
-            $medida = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppra-ambiente-risco-medidas/PpraAmbienteRisco/' . $risco['idPpraAmbienteRisco']);
+            $medida = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppra-ambiente-risco-medidas/PpraAmbienteRisco/' . $risco['idPpraAmbienteRisco']);
 
             $medida = json_decode($medida, true);
             // dd($risco);
@@ -30,7 +30,7 @@ class AmbienteRiscoController extends Controller
             }
 
             if ($risco['risco']['enquadramento'] == 'QUANTITATIVO') {
-                $unidades = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/riscos-unidades-medida/listaPorIdRisco/' . $risco['risco']['idRisco']);
+                $unidades = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/riscos-unidades-medida/listaPorIdRisco/' . $risco['risco']['idRisco']);
                 $unidades = json_decode($unidades, true);
                 if($unidades) {
                     $risco['unidade'] = $unidades[0];
@@ -40,13 +40,13 @@ class AmbienteRiscoController extends Controller
             }
 
             if(isset($risco['pesoX']['peso']) && isset($risco['pesoY']['peso'])) {
-                $nivel = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/matriz-risco-nivel/buscaPorValor/' . $risco['pesoX']['peso'] * $risco['pesoY']['peso'] . '?idMatrizRisco=' . $risco['ppraAmbienteTrabalho']['ppra']['matrizRisco']['idMatrizRisco']);
+                $nivel = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/matriz-risco-nivel/buscaPorValor/' . $risco['pesoX']['peso'] * $risco['pesoY']['peso'] . '?idMatrizRisco=' . $risco['ppraAmbienteTrabalho']['ppra']['matrizRisco']['idMatrizRisco']);
 
                 $risco['nivel'] = json_decode($nivel, true);
             }
 
             if(isset($risco['pesoXAtenuado']['peso']) && isset($risco['pesoYAtenuado']['peso'])) {
-                $nivel = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/matriz-risco-nivel/buscaPorValor/' . $risco['pesoXAtenuado']['peso'] * $risco['pesoYAtenuado']['peso'] . '?idMatrizRisco=' . $risco['ppraAmbienteTrabalho']['ppra']['matrizRisco']['idMatrizRisco']);
+                $nivel = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/matriz-risco-nivel/buscaPorValor/' . $risco['pesoXAtenuado']['peso'] * $risco['pesoYAtenuado']['peso'] . '?idMatrizRisco=' . $risco['ppraAmbienteTrabalho']['ppra']['matrizRisco']['idMatrizRisco']);
 
                 $risco['nivelAtenuado'] = json_decode($nivel, true);
             }

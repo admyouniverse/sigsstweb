@@ -15,7 +15,7 @@ class EmpregadoController extends Controller
      */
 
     public function demitidos($id) {
-        $empresa = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaPorIdEmpresaTempoServicoInativo/' . $id);
+        $empresa = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresaFuncionarios/listaPorIdEmpresaTempoServicoInativo/' . $id);
         return $empresa;
     }
 
@@ -60,7 +60,7 @@ class EmpregadoController extends Controller
         
         if ($result['status'] == 'true') {
             \Log::debug($result);
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaPorIdEmpresa/' . $request->empresa['idEmpresa']);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresaFuncionarios/listaPorIdEmpresa/' . $request->empresa['idEmpresa']);
             return $json;
         } else {
             \Log::debug($result);
@@ -76,7 +76,7 @@ class EmpregadoController extends Controller
     public function historico($idPessoa, $empresa)
     {
 
-        $ch = curl_init('http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaHistoricoFuncao/');
+        $ch = curl_init(env('APP_API') . 'ServicoSIGSSO/rest/empresaFuncionarios/listaHistoricoFuncao/');
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -147,7 +147,7 @@ class EmpregadoController extends Controller
         
         if ($result['status'] == 'true') {
             \Log::debug($result);
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaPorIdEmpresa/' . $request->empresa['idEmpresa']);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresaFuncionarios/listaPorIdEmpresa/' . $request->empresa['idEmpresa']);
             return $json;
         } else {
             \Log::debug($result);
@@ -199,7 +199,7 @@ class EmpregadoController extends Controller
         
         if ($result['status'] == 'true') {
             \Log::debug($result);
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaPorIdEmpresa/' . $request->empresa['idEmpresa']);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresaFuncionarios/listaPorIdEmpresa/' . $request->empresa['idEmpresa']);
             return $json;
         } else {
             return $result;

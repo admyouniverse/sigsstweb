@@ -23,7 +23,7 @@ class MotivoAfastamentoController extends Controller
      */
     public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/motivosAfastamento');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/motivosAfastamento');
         return $json;
     }
 
@@ -36,7 +36,7 @@ class MotivoAfastamentoController extends Controller
     public function store(Request $request)
     {
 
-        // $verifica = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/motivosAfastamento/listaPorCodigo/'.$request->codigo);
+        // $verifica = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/motivosAfastamento/listaPorCodigo/'.$request->codigo);
 
 
         // if($verifica != '[]') {
@@ -74,7 +74,7 @@ class MotivoAfastamentoController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-         $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/motivosAfastamento');
+         $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/motivosAfastamento');
          return $json;
      } else {
         return 'erro';
@@ -143,7 +143,7 @@ class MotivoAfastamentoController extends Controller
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-         $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/motivosAfastamento');
+         $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/motivosAfastamento');
          return $json;
      } else {
         \Log::debug($result);
@@ -176,7 +176,7 @@ class MotivoAfastamentoController extends Controller
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-         $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/motivosAfastamento');
+         $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/motivosAfastamento');
          return $json;
      } else {
         return 'erro';
@@ -186,10 +186,10 @@ class MotivoAfastamentoController extends Controller
 public function buscar($selecionado, $termo) {
 
     if($selecionado == 'codigo') {
-     $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/motivosAfastamento/listaPorCodigo/' . $termo);
+     $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/motivosAfastamento/listaPorCodigo/' . $termo);
      return $json;
  } else {
-   $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/motivosAfastamento/listaPorAnyDescricao/' . urlencode($termo));
+   $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/motivosAfastamento/listaPorAnyDescricao/' . urlencode($termo));
    return $json;
 }
 

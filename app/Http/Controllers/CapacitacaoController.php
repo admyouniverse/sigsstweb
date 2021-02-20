@@ -23,7 +23,7 @@ class CapacitacaoController extends Controller
      */
     public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/capacitacoes');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/capacitacoes');
         return $json;
     }
 
@@ -36,7 +36,7 @@ class CapacitacaoController extends Controller
     public function store(Request $request)
     {
 
-        // $verifica = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/capacitacoes/listaPorCodigo/'.$request->codigo);
+        // $verifica = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/capacitacoes/listaPorCodigo/'.$request->codigo);
 
 
         // if($verifica != '[]') {
@@ -85,7 +85,7 @@ class CapacitacaoController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/capacitacoes');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/capacitacoes');
            return $json;
        } else {
         \Log::debug($result);
@@ -164,7 +164,7 @@ class CapacitacaoController extends Controller
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-       $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/capacitacoes');
+       $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/capacitacoes');
        return $json;
    } else {
     return 'erro';
@@ -197,7 +197,7 @@ class CapacitacaoController extends Controller
            $result = json_decode($result, true);
 
            if ($result['status'] == 'true') {
-               $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/capacitacoes');
+               $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/capacitacoes');
                return $json;
            } else {
             return 'erro';
@@ -207,10 +207,10 @@ class CapacitacaoController extends Controller
     public function buscar($selecionado, $termo) {
 
         if($selecionado == 'id') {
-               $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/capacitacoes/listaPorId/' . $termo);
+               $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/capacitacoes/listaPorId/' . $termo);
                 return $json;
         } else {
-             $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/capacitacoes/listaPorAnyDescricao/' . urlencode($termo));
+             $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/capacitacoes/listaPorAnyDescricao/' . urlencode($termo));
                 return $json;
         }
 

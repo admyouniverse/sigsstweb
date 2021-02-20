@@ -14,26 +14,26 @@ class AmbienteController extends Controller
      */
     public function index(Request $request,$id)
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/listaPorIdPcmso/' . $id);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/listaPorIdPcmso/' . $id);
 
         return $json;
     }
 
     public function ambiente($pcmso, $id)
     {
-        $pcmso = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmsos/' . $pcmso);
+        $pcmso = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmsos/' . $pcmso);
 
         $pcmso = json_decode($pcmso, true);
 
         $pcmso = (object) $pcmso;
 
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/' . $id);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/' . $id);
 
         $ambientePcmso = json_decode($json, true);
 
         $ambientePcmso = (object) $ambientePcmso;
 
-        $ambiente = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ambientesTrabalho/buscaPorIdOrigem/' . $ambientePcmso->idOrigem);
+        $ambiente = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ambientesTrabalho/buscaPorIdOrigem/' . $ambientePcmso->idOrigem);
 
         $ambiente = json_decode($ambiente, true);
 
@@ -43,7 +43,7 @@ class AmbienteController extends Controller
     }
     public function listAmbientes($id)
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/listaPorIdPcmso/' . $id);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/listaPorIdPcmso/' . $id);
 
         
         $array = json_decode($json);
@@ -51,7 +51,7 @@ class AmbienteController extends Controller
         $final = array();
 
         foreach ($array as $arr) {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ambientesTrabalho/buscaPorIdOrigem/' . $arr->idOrigem);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ambientesTrabalho/buscaPorIdOrigem/' . $arr->idOrigem);
             $decode = json_decode($json);
             $decode->idPcmsoAmbienteTrabalho = $arr->idPcmsoAmbienteTrabalho;
             array_push($final, $decode);
@@ -63,7 +63,7 @@ class AmbienteController extends Controller
     public function listFuncoes($ambiente)
     {
 
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmso-funcoes/listaPorIdAmbiente/' . $ambiente);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmso-funcoes/listaPorIdAmbiente/' . $ambiente);
 
         $array = json_decode($json);
         
@@ -71,7 +71,7 @@ class AmbienteController extends Controller
         $final = array();
 
         foreach ($array as $arr) {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/funcoes/buscaPorIdRH/' . $arr->idRH);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/funcoes/buscaPorIdRH/' . $arr->idRH);
             $decode = json_decode($json);
             $decode->idPcmsoFuncao = $arr->idPcmsoFuncao;
             array_push($final, $decode);
@@ -136,7 +136,7 @@ class AmbienteController extends Controller
         \Log::debug($result);
 
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/listaPorIdPcmso/' . $request->pcmso['idPcmso']);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/listaPorIdPcmso/' . $request->pcmso['idPcmso']);
 
             return $json;
         } else {
@@ -185,7 +185,7 @@ class AmbienteController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/listaPorIdPcmso/' . $id);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/listaPorIdPcmso/' . $id);
             \Log::debug($json);
             return $json;
         } else {
@@ -207,7 +207,7 @@ class AmbienteController extends Controller
             }   
         }
 
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppra-funcoes/listaPorIdAmbiente/' . $ambiente['idPpraAmbienteTrabalho']);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppra-funcoes/listaPorIdAmbiente/' . $ambiente['idPpraAmbienteTrabalho']);
 
 
         return $json;
@@ -216,7 +216,7 @@ class AmbienteController extends Controller
     public function funcoesAso($funcao)
     {
 
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmsoAsos/listaPorIdPcmsoFuncao/' . $funcao);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmsoAsos/listaPorIdPcmsoFuncao/' . $funcao);
 
         return $json;
 
@@ -373,14 +373,14 @@ class AmbienteController extends Controller
             }   
         }
 
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppra-ambiente-riscos/buscaPpraAmbienteRiscoPorIdAmbienteTrabalho/' . $ambiente['idPpraAmbienteTrabalho']);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppra-ambiente-riscos/buscaPpraAmbienteRiscoPorIdAmbienteTrabalho/' . $ambiente['idPpraAmbienteTrabalho']);
 
         $decode = json_decode($json, true);
         $riscos = [];
 
         foreach ($decode as $risco) {
 
-            $medida = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppra-ambiente-risco-medidas/PpraAmbienteRisco/' . $risco['idPpraAmbienteRisco']);
+            $medida = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppra-ambiente-risco-medidas/PpraAmbienteRisco/' . $risco['idPpraAmbienteRisco']);
 
             $medida = json_decode($medida, true);
 
@@ -393,14 +393,14 @@ class AmbienteController extends Controller
             }
 
             if ($risco['risco']['enquadramento'] == 'QUANTITATIVO') {
-                $unidades = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/riscos-unidades-medida/listaPorIdRisco/' . $risco['risco']['idRisco']);
+                $unidades = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/riscos-unidades-medida/listaPorIdRisco/' . $risco['risco']['idRisco']);
                 $unidades = json_decode($unidades, true);
                 $risco['unidade'] = $unidades[0];
             } else {
                 $risco['unidade'] = [];
             }
 
-            $nivel = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/matriz-risco-nivel/buscaPorValor/' . $risco['pesoX']['peso'] * $risco['pesoY']['peso'] . '?idMatrizRisco=' . $risco['ppraAmbienteTrabalho']['ppra']['matrizRisco']['idMatrizRisco']);
+            $nivel = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/matriz-risco-nivel/buscaPorValor/' . $risco['pesoX']['peso'] * $risco['pesoY']['peso'] . '?idMatrizRisco=' . $risco['ppraAmbienteTrabalho']['ppra']['matrizRisco']['idMatrizRisco']);
 
             $risco['nivel'] = json_decode($nivel, true);
 

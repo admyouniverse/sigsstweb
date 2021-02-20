@@ -23,7 +23,7 @@ class RiscoController extends Controller
      */
     public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/riscos');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/riscos');
         // $json = json_decode($json, true);
         // $last = end($json);
 
@@ -41,7 +41,7 @@ class RiscoController extends Controller
     public function store(Request $request)
     {
 
-        // $verifica = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/riscos/listaPorCodigo/'.$request->codigo);
+        // $verifica = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/riscos/listaPorCodigo/'.$request->codigo);
 
 
         // if($verifica != '[]') {
@@ -106,7 +106,7 @@ class RiscoController extends Controller
         if ($result['status'] == 'true') {
             \Log::debug($result);
 
-            $riscos = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/riscos');
+            $riscos = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/riscos');
 
             $this->insereExames($request->exames, $result['msg']);
 
@@ -274,9 +274,9 @@ class RiscoController extends Controller
 
         if ($result['status'] == 'true') {
 
-            $exames = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/riscos-exames/listaPorIdRisco/' . $id);
+            $exames = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/riscos-exames/listaPorIdRisco/' . $id);
 
-            $unidades = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/riscos-unidades-medida/listaPorIdRisco/' . $id);
+            $unidades = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/riscos-unidades-medida/listaPorIdRisco/' . $id);
 
             foreach(json_decode($unidades, true) as $unidade) {
                 $this->destroyUnidade($unidade['idRiscoUnidadeMedida']);  
@@ -290,7 +290,7 @@ class RiscoController extends Controller
             $this->insereExames($request->exames, $id); 
             $this->insereUnidades($request->unidades, $id); 
            
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/riscos');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/riscos');
            return $json;
 
         } else {
@@ -324,7 +324,7 @@ class RiscoController extends Controller
        $result = json_decode($result, true);
 
        if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/riscos');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/riscos');
            return $json;
        } else {
         return 'erro';
@@ -349,7 +349,7 @@ public function destroyExame($id)
        $result = json_decode($result, true);
 
     //    if ($result['status'] == 'true') {
-    //        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest-exames/riscos');
+    //        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest-exames/riscos');
     //        return $json;
     //    } else {
     //     return 'erro';
@@ -373,7 +373,7 @@ public function destroyUnidade($id)
        $result = json_decode($result, true);
 
     //    if ($result['status'] == 'true') {
-    //        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest-exames/riscos');
+    //        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest-exames/riscos');
     //        return $json;
     //    } else {
     //     return 'erro';
@@ -383,10 +383,10 @@ public function destroyUnidade($id)
 public function buscar($selecionado, $termo) {
 
     if($selecionado == 'codigo') {
-       $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/riscos/listaPorId/' . $termo);
+       $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/riscos/listaPorId/' . $termo);
        return $json;
    } else {
-     $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/riscos/listaPorAnyNome/' . urlencode($termo));
+     $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/riscos/listaPorAnyNome/' . urlencode($termo));
      return $json;
  }
 
@@ -394,12 +394,12 @@ public function buscar($selecionado, $termo) {
 
 
 public function exames($id) {
- $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/riscos-exames/listaPorIdRisco/' . $id);
+ $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/riscos-exames/listaPorIdRisco/' . $id);
  return $json;
 }
 
 public function unidades($id) {
- $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/riscos-unidades-medida/listaPorIdRisco/' . $id);
+ $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/riscos-unidades-medida/listaPorIdRisco/' . $id);
  return $json;
 }
 }

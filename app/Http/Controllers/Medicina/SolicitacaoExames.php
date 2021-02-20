@@ -173,7 +173,7 @@ class SolicitacaoExames extends Controller
 
         foreach ($exames as $key => $exame) {
 
-            $detalhes = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/exames/' . $exame['exame']);
+            $detalhes = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/exames/' . $exame['exame']);
 
             $detalhes = \json_decode($detalhes, true);
 
@@ -197,7 +197,7 @@ class SolicitacaoExames extends Controller
 
     public function solicitacao($id, $pcmso = null)
     {
-        $solicitacao = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/solicitacoes/' . $id);
+        $solicitacao = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/solicitacoes/' . $id);
 
         $solicitacao = \json_decode($solicitacao, true);
 
@@ -233,7 +233,7 @@ class SolicitacaoExames extends Controller
 
         $solicitacao['empresaFuncionario']['ambienteTrabalho']['idPcmsoAmbienteTrabalho'] = $ambiente['idPcmsoAmbienteTrabalho'];
 
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmso-funcoes/listaPorIdAmbiente/' . $ambiente['idPcmsoAmbienteTrabalho']);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmso-funcoes/listaPorIdAmbiente/' . $ambiente['idPcmsoAmbienteTrabalho']);
 
         $decode = json_decode($json, true);
         
@@ -244,12 +244,12 @@ class SolicitacaoExames extends Controller
             }
         }
 
-         $exames = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/solicitacoes-exames/listaPorIdSolicitacao/' . $id);
+         $exames = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/solicitacoes-exames/listaPorIdSolicitacao/' . $id);
 
          $exames = \json_decode($exames, true);
         $solicitacao['asoSolicitacaoExames'] = $exames;
         
-        $avulsos = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/solicitacoes-exames/listaExameAvulsoPorIdSolicitacao/' . $id);
+        $avulsos = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/solicitacoes-exames/listaExameAvulsoPorIdSolicitacao/' . $id);
         $avulsos = \json_decode($avulsos, true);
             $solicitacao['asoSolicitacaoExameAvulso'] = $avulsos;
         
@@ -276,7 +276,7 @@ class SolicitacaoExames extends Controller
      */
     public function relatorio($id)
     {
-        $solicitacao = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/solicitacoes/reportPorIdSolicitacao/' . $id);
+        $solicitacao = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/solicitacoes/reportPorIdSolicitacao/' . $id);
 
         $ch = curl_init("http://200.98.201.236:8082/report-generate");
 

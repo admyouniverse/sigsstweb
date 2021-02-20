@@ -23,7 +23,7 @@ class FonteGeradoraController extends Controller
      */
     public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/fontesGeradoras');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/fontesGeradoras');
         return $json;
     }
 
@@ -36,7 +36,7 @@ class FonteGeradoraController extends Controller
     public function store(Request $request)
     {
 
-        // $verifica = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/fontesGeradoras/listaPorCodigo/'.$request->codigo);
+        // $verifica = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/fontesGeradoras/listaPorCodigo/'.$request->codigo);
 
 
         // if($verifica != '[]') {
@@ -73,7 +73,7 @@ class FonteGeradoraController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/fontesGeradoras');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/fontesGeradoras');
            return $json;
        } else {
         return 'erro';
@@ -139,7 +139,7 @@ class FonteGeradoraController extends Controller
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-       $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/fontesGeradoras');
+       $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/fontesGeradoras');
        return $json;
    } else {
     return 'erro';
@@ -172,7 +172,7 @@ class FonteGeradoraController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/fontesGeradoras');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/fontesGeradoras');
            return $json;
        } else {
         return 'erro';
@@ -182,10 +182,10 @@ class FonteGeradoraController extends Controller
 public function buscar($selecionado, $termo) {
 
     if($selecionado == 'id') {
-       $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/fontesGeradoras/listaPorId/' . $termo);
+       $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/fontesGeradoras/listaPorId/' . $termo);
        return $json;
    } else {
-     $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/fontesGeradoras/listaPorAnyDescricao/' . urlencode($termo));
+     $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/fontesGeradoras/listaPorAnyDescricao/' . urlencode($termo));
      return $json;
  }
 

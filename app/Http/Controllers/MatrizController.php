@@ -13,7 +13,7 @@ class MatrizController extends Controller
      */
     public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/matriz-risco');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/matriz-risco');
 
         return $json;
     }
@@ -85,14 +85,14 @@ class MatrizController extends Controller
 
 
     public function show($matriz) {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/matriz-risco/' . $matriz);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/matriz-risco/' . $matriz);
         
         return view('matriz.show', compact('json'));
     }
 
 
     public function niveis() {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/matriz-risco-nivel');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/matriz-risco-nivel');
 
         return $json;
     }
@@ -135,7 +135,7 @@ class MatrizController extends Controller
     }
 
     public function getNivel($peso, $matriz) {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/matriz-risco-nivel/buscaPorValor/' . $peso . '?idMatrizRisco=' . $matriz );
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/matriz-risco-nivel/buscaPorValor/' . $peso . '?idMatrizRisco=' . $matriz );
 
         return $json;
     }

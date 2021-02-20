@@ -19,7 +19,7 @@ class PesosController extends Controller
     
     public function listPesoX()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pesos-x');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pesos-x');
 
         return $json;
     }
@@ -100,7 +100,7 @@ class PesosController extends Controller
     
     public function listPesoY()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pesos-y');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pesos-y');
 
         return $json;
     }

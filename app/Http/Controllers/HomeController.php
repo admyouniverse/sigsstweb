@@ -39,10 +39,10 @@ class HomeController extends Controller
 
     public function sessao($id, $rota = null) {
 
-        $empresa = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresas/' . $id);
+        $empresa = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresas/' . $id);
         $empresa = json_decode($empresa, true);
 
-        $postos = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/posto-entrega/listaPorIdEmpresa/' . $id);
+        $postos = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/posto-entrega/listaPorIdEmpresa/' . $id);
 
         $postos = json_decode($postos, true);
 

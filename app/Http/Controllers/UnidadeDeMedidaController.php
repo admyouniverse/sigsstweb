@@ -23,7 +23,7 @@ class UnidadeDeMedidaController extends Controller
      */
     public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/unidades-medida');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/unidades-medida');
         return $json;
     }
 
@@ -36,7 +36,7 @@ class UnidadeDeMedidaController extends Controller
     public function store(Request $request)
     {
 
-        // $verifica = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/fontesGeradoras/listaPorCodigo/'.$request->codigo);
+        // $verifica = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/fontesGeradoras/listaPorCodigo/'.$request->codigo);
 
 
         // if($verifica != '[]') {
@@ -76,7 +76,7 @@ class UnidadeDeMedidaController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/unidades-medida');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/unidades-medida');
            return $json;
        } else {
         return 'erro';
@@ -145,7 +145,7 @@ class UnidadeDeMedidaController extends Controller
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-       $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/unidades-medida');
+       $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/unidades-medida');
        return $json;
    } else {
 
@@ -179,7 +179,7 @@ class UnidadeDeMedidaController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/unidades-medida');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/unidades-medida');
            return $json;
        } else {
         return 'erro';
@@ -189,10 +189,10 @@ class UnidadeDeMedidaController extends Controller
 public function buscar($selecionado, $termo) {
 
     if($selecionado == 'id') {
-       $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/unidades-medida/listaPorId/' . $termo);
+       $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/unidades-medida/listaPorId/' . $termo);
        return $json;
    } else {
-     $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/unidades-medida/listaPorAnyDescricao/' . urlencode($termo));
+     $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/unidades-medida/listaPorAnyDescricao/' . urlencode($termo));
      return $json;
  }
 

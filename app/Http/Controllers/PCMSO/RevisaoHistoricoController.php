@@ -27,7 +27,7 @@ class RevisaoHistoricoController extends Controller
     }
 
     public function list($pcmso) {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmso-historico-revisoes/listaPorIdPcmso/' . $pcmso);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmso-historico-revisoes/listaPorIdPcmso/' . $pcmso);
 
         return $json;
     }
@@ -85,7 +85,7 @@ class RevisaoHistoricoController extends Controller
 
         if ($result['status'] == 'true') {
 
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmso-historico-revisoes/listaPorIdPcmso/' . $pcmso);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmso-historico-revisoes/listaPorIdPcmso/' . $pcmso);
 
             return $json;
         } else {

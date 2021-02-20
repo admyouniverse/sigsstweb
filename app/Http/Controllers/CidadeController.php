@@ -23,7 +23,7 @@ class CidadeController extends Controller
      */
     public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cidades');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cidades');
         return $json;
     }
 
@@ -36,7 +36,7 @@ class CidadeController extends Controller
     public function store(Request $request)
     {
 
-        $verifica = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cidades/listaPorCodigo/'.$request->ibge);
+        $verifica = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cidades/listaPorCodigo/'.$request->ibge);
 
 
         if($verifica != '[]') {
@@ -74,7 +74,7 @@ class CidadeController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-         $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cidades');
+         $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cidades');
          return $json;
      } else {
         return 'erro';
@@ -113,7 +113,7 @@ class CidadeController extends Controller
     public function update(Request $request, $id)
     {
 
-       $verifica = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cidades/listaPorCodigo/'.$request->ibge);
+       $verifica = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cidades/listaPorCodigo/'.$request->ibge);
  // && $verifica['idCidade'] != $id
 
 
@@ -150,7 +150,7 @@ class CidadeController extends Controller
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-         $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cidades');
+         $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cidades');
          return $json;
      } else {
         return 'erro';
@@ -182,7 +182,7 @@ class CidadeController extends Controller
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-         $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cidades');
+         $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cidades');
          return $json;
      } else {
         return 'erro';
@@ -192,13 +192,13 @@ class CidadeController extends Controller
 public function buscar($selecionado, $termo) {
 
     if($selecionado == 'codigo') {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cidades/listaPorCodigo/' . $termo);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cidades/listaPorCodigo/' . $termo);
      return $json;
  } else if ($selecionado == 'nome') {
-   $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cidades/listaPorAnyNome/' . urlencode($termo));
+   $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cidades/listaPorAnyNome/' . urlencode($termo));
    return json_decode($json);
 } else if ($selecionado == 'estado') {
-    $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cidades/listaPorUF/' . urlencode($termo));
+    $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cidades/listaPorUF/' . urlencode($termo));
    return $json;
 }
 

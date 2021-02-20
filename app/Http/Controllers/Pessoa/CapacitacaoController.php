@@ -14,7 +14,7 @@ class CapacitacaoController extends Controller
      */
     public function list($id)
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pessoasCapacitacoes/listaPorIdPessoa/' . $id);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pessoasCapacitacoes/listaPorIdPessoa/' . $id);
         
         return $json;
     }
@@ -69,7 +69,7 @@ class CapacitacaoController extends Controller
         \Log::debug($result);
 
         if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pessoasCapacitacoes/listaPorIdPessoa/' . $id);
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pessoasCapacitacoes/listaPorIdPessoa/' . $id);
            return $json;
        } else {
         return 'erro';
@@ -104,7 +104,7 @@ class CapacitacaoController extends Controller
 
         if ($result['status'] == 'true') {
             
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pessoasCapacitacoes/listaPorIdPessoa/' . $pessoa);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pessoasCapacitacoes/listaPorIdPessoa/' . $pessoa);
             return $json;
 
         } else {

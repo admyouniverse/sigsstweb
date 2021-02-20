@@ -37,7 +37,7 @@ class AsoController extends Controller
                     'idEmpresa' => $request->empresa,
                     'empresaContrato' => $request->contrato,
                     'dataPcmso' => $request->data,
-                ])->get('http://200.98.201.236/ServicoSIGSSO/rest/pcmsos/pegaUltimoPcmsoPorEmpresaEmpresaContrato/');
+                ])->get(env('APP_API') . 'ServicoSIGSSO/rest/pcmsos/pegaUltimoPcmsoPorEmpresaEmpresaContrato/');
 
                 $pcmso = json_decode($pcmso, true);
 
@@ -46,7 +46,7 @@ class AsoController extends Controller
                 $ambiente = Http::withHeaders([
                     'idPcmso' => $pcmso['idPcmso'],
                     'idOrigem' => $request->idOrigem,
-                ])->get('http://200.98.201.236/ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/buscaPorIdOrigem/');
+                ])->get(env('APP_API') . 'ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/buscaPorIdOrigem/');
 
                 // \Log::debug($ambiente);
 
@@ -54,13 +54,13 @@ class AsoController extends Controller
 
                 \Log::debug('INICIOU ASO');
 
-                $aso = Http::get('http://200.98.201.236/ServicoSIGSSO/rest/pcmso-asos/listaPorIdPcmsoAmbienteTrabalho/' . $ambiente['idPcmsoAmbienteTrabalho']);
+                $aso = Http::get(env('APP_API') . 'ServicoSIGSSO/rest/pcmso-asos/listaPorIdPcmsoAmbienteTrabalho/' . $ambiente['idPcmsoAmbienteTrabalho']);
                 \Log::debug('INICIOU EXAMINADORES');
 
                 $examinadores = Http::withHeaders([
                     'idEmpresa' => $request->empresa,
                     'dataPrograma' => $request->data,
-                ])->get('http://200.98.201.236/ServicoSIGSSO/rest/empresa-profissionais/listaMedicoExaminador');
+                ])->get(env('APP_API') . 'ServicoSIGSSO/rest/empresa-profissionais/listaMedicoExaminador');
 
                 // \Log::debug($examinadores);
 
@@ -131,7 +131,7 @@ class AsoController extends Controller
 
         //         // \Log::debug('INICIOU ASO PCMSO');
 
-        //         // $aso = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmso-asos/listaPorIdPcmsoAmbienteTrabalho/' . $ambiente['idPcmsoAmbienteTrabalho']);
+        //         // $aso = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmso-asos/listaPorIdPcmsoAmbienteTrabalho/' . $ambiente['idPcmsoAmbienteTrabalho']);
 
         //         // $pcmso['pcmsoAmbienteTrabalho'] = $ambiente;
 
@@ -325,7 +325,7 @@ class AsoController extends Controller
 
         foreach ($exames as $key => $exame) {
 
-            $detalhes = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/exames/' . $exame['exame']);
+            $detalhes = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/exames/' . $exame['exame']);
 
             $detalhes = \json_decode($detalhes, true);
 
@@ -349,7 +349,7 @@ class AsoController extends Controller
 
     public function solicitacao($id, $pcmso = null)
     {
-        $solicitacao = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/solicitacoes/' . $id);
+        $solicitacao = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/solicitacoes/' . $id);
 
         $solicitacao = \json_decode($solicitacao, true);
 
@@ -384,7 +384,7 @@ class AsoController extends Controller
 
         $solicitacao['empresaFuncionario']['ambienteTrabalho']['idPcmsoAmbienteTrabalho'] = $ambiente['idPcmsoAmbienteTrabalho'];
 
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmso-funcoes/listaPorIdAmbiente/' . $ambiente['idPcmsoAmbienteTrabalho']);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmso-funcoes/listaPorIdAmbiente/' . $ambiente['idPcmsoAmbienteTrabalho']);
 
         $decode = json_decode($json, true);
 
@@ -395,12 +395,12 @@ class AsoController extends Controller
             }
         }
 
-        $exames = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/solicitacoes-exames/listaPorIdSolicitacao/' . $id);
+        $exames = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/solicitacoes-exames/listaPorIdSolicitacao/' . $id);
 
         $exames = \json_decode($exames, true);
         $solicitacao['asoSolicitacaoExames'] = $exames;
 
-        $avulsos = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/solicitacoes-exames/listaExameAvulsoPorIdSolicitacao/' . $id);
+        $avulsos = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/solicitacoes-exames/listaExameAvulsoPorIdSolicitacao/' . $id);
         $avulsos = \json_decode($avulsos, true);
         $solicitacao['asoSolicitacaoExameAvulso'] = $avulsos;
 
@@ -426,7 +426,7 @@ class AsoController extends Controller
      */
     public function relatorio($id)
     {
-        $solicitacao = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/solicitacoes/reportPorIdSolicitacao/' . $id);
+        $solicitacao = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/solicitacoes/reportPorIdSolicitacao/' . $id);
 
         $ch = curl_init("http://200.98.201.236:8082/report-generate");
 

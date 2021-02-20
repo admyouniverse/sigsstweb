@@ -24,7 +24,7 @@ class ProfissionaisController extends Controller
      */
     public function list($id)
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresa-profissionais/listaPorIdEmpresa/' . $id);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresa-profissionais/listaPorIdEmpresa/' . $id);
         
         return $json;
     }
@@ -73,7 +73,7 @@ class ProfissionaisController extends Controller
         \Log::debug($result);
 
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresa-profissionais/listaPorIdEmpresa/' . $id);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresa-profissionais/listaPorIdEmpresa/' . $id);
         
             return $json;
          

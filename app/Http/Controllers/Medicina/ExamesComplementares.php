@@ -70,7 +70,7 @@ class ExamesComplementares extends Controller
     
     public function pessoas()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pessoas/comVinculoEmpregaticioPorIdEmpresa/' . Session::get('empresa')->idEmpresa);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pessoas/comVinculoEmpregaticioPorIdEmpresa/' . Session::get('empresa')->idEmpresa);
         
         return $json;
         
@@ -87,7 +87,7 @@ class ExamesComplementares extends Controller
     {
         \Log::debug($request->complementar);
         
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/exames-complementares/listaPorIdEmpresaFuncionario/' . $request->funcionario['idEmpresaFuncionario']);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/exames-complementares/listaPorIdEmpresaFuncionario/' . $request->funcionario['idEmpresaFuncionario']);
         
         $json = json_decode($json, true);
         
@@ -121,7 +121,7 @@ class ExamesComplementares extends Controller
             
             \Log::debug($result);
             
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/exames-complementares/listaPorIdEmpresaFuncionario/' . $request->funcionario['idEmpresaFuncionario']);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/exames-complementares/listaPorIdEmpresaFuncionario/' . $request->funcionario['idEmpresaFuncionario']);
             
             $json = json_decode($json, true);
         }
@@ -143,7 +143,7 @@ class ExamesComplementares extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
         
-        $ch = curl_init('http://200.98.201.236/ServicoSIGSSO/rest/exames-complementares-exames/');
+        $ch = curl_init(env('APP_API') . 'ServicoSIGSSO/rest/exames-complementares-exames/');
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         

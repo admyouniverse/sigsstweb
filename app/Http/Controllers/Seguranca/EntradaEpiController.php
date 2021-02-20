@@ -14,11 +14,11 @@ class EntradaEpiController extends Controller
      */
     public function index($idposto, $id)
     {
-        $posto = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/posto-entrega/' . $idposto);
+        $posto = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/posto-entrega/' . $idposto);
         $posto = json_decode($posto, true);
         $posto = (object) $posto;
 
-        $item = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/estoques/' . $id);
+        $item = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/estoques/' . $id);
         $item = json_decode($item, true);
         $item = (object) $item;
 

@@ -10,7 +10,7 @@ class JornadaController extends Controller
 
  public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/jornadasTrabalho');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/jornadasTrabalho');
 
         return $json;
     }
@@ -67,7 +67,7 @@ class JornadaController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/jornadasTrabalho');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/jornadasTrabalho');
            return $json;
        } else {
         return 'erro';
@@ -137,7 +137,7 @@ class JornadaController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/jornadasTrabalho');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/jornadasTrabalho');
            return $json;
        } else {
         return 'erro';
@@ -167,7 +167,7 @@ class JornadaController extends Controller
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-         $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/jornadasTrabalho');
+         $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/jornadasTrabalho');
          return $json;
      } else {
         return 'erro';
@@ -177,10 +177,10 @@ class JornadaController extends Controller
 public function buscar($selecionado, $termo) {
 
     if($selecionado == 'codigo') {
-     $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/jornadasTrabalho/listaPorId/' . $termo);
+     $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/jornadasTrabalho/listaPorId/' . $termo);
      return $json;
  } else {
-    $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/jornadasTrabalho/listaPorAnyDescricao/' . urlencode($termo));
+    $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/jornadasTrabalho/listaPorAnyDescricao/' . urlencode($termo));
    return $json;
 }
 

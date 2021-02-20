@@ -32,7 +32,7 @@ class AutenticacaoController extends Controller
         $result = json_decode($result, true);
 
         if($result['msg'] == 'true') {
-            $usuario = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/usuarios/login/' . $request->usuario);
+            $usuario = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/usuarios/login/' . $request->usuario);
             Session::put('usuario', $usuario);
         }
 

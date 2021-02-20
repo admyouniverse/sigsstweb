@@ -29,7 +29,7 @@ class EmpresasController extends Controller
      * @return \Illuminate\Http\Response
      */
     function list() {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresas');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresas');
         return $json;
     }
 
@@ -125,7 +125,7 @@ class EmpresasController extends Controller
 
         if ($result['status'] == 'true') {
             \Log::debug($result);
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresasContratos/listaPorIdEmpresa/' . $id);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresasContratos/listaPorIdEmpresa/' . $id);
             return $json;
         } else {
             \Log::debug($result);
@@ -166,7 +166,7 @@ class EmpresasController extends Controller
 
         if ($result['status'] == 'true') {
             \Log::debug($result);
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresasContratos/listaPorIdEmpresa/' . $id);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresasContratos/listaPorIdEmpresa/' . $id);
             return $json;
         } else {
             \Log::debug($result);
@@ -190,7 +190,7 @@ class EmpresasController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresasContratos/listaPorIdEmpresa/' . $id);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresasContratos/listaPorIdEmpresa/' . $id);
             return $json;
         } else {
             return 'erro';
@@ -205,7 +205,7 @@ class EmpresasController extends Controller
      */
     public function show($id)
     {
-        $empresa = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresas/' . $id);
+        $empresa = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresas/' . $id);
         $empresa = json_decode($empresa, true);
 
         $empresa = (object) $empresa;
@@ -217,33 +217,33 @@ class EmpresasController extends Controller
 
     public function historico($id)
     {
-        $empresa = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresasHistoricos/listaPorIdEmpresa/' . $id);
+        $empresa = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresasHistoricos/listaPorIdEmpresa/' . $id);
 
         return $empresa;
     }
     public function funcionarios($id)
     {
-        $empresa = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaPorIdEmpresaTempoServicoAtivo/' . $id);
+        $empresa = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresaFuncionarios/listaPorIdEmpresaTempoServicoAtivo/' . $id);
         return $empresa;
     }
 
     public function contratos($id)
     {
-        $empresa = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresasContratos/listaPorIdEmpresa/' . $id);
+        $empresa = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresasContratos/listaPorIdEmpresa/' . $id);
         return $empresa;
     }
 
 
     public function contratados($id)
     { 
-        $empresa = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresasContratos/listaPorIdEmpresaContratante/' . $id);
+        $empresa = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresasContratos/listaPorIdEmpresaContratante/' . $id);
         return $empresa;
     }
 
 
     public function epis($id)
     {
-        $empresa = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresasEpis/listaPorIdEmpresa/' . $id);
+        $empresa = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresasEpis/listaPorIdEmpresa/' . $id);
         return $empresa;
     }
 
@@ -356,7 +356,7 @@ class EmpresasController extends Controller
         curl_close($ch);
 
         if ($result['status'] == 'true') {
-            $historico = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresasHistoricos/listaPorIdEmpresa/' . $request->empresa['idEmpresa']);
+            $historico = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresasHistoricos/listaPorIdEmpresa/' . $request->empresa['idEmpresa']);
           
             if($request->tipo == 'desativar') {
                 $arr = json_decode($historico);
@@ -394,7 +394,7 @@ class EmpresasController extends Controller
 
                 $result = json_decode($result, true);
                 if ($result['status'] == 'true') {
-                    $historico = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresasHistoricos/listaPorIdEmpresa/' . $request->empresa['idEmpresa']);
+                    $historico = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresasHistoricos/listaPorIdEmpresa/' . $request->empresa['idEmpresa']);
                     return $historico;
                 }
 
@@ -464,7 +464,7 @@ class EmpresasController extends Controller
 
     public function filiais($cnpj)
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresas/listaFilial/' . $cnpj);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresas/listaFilial/' . $cnpj);
         return $json;
     }
 }

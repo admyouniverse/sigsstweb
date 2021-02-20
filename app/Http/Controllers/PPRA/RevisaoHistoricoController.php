@@ -16,7 +16,7 @@ class RevisaoHistoricoController extends Controller
     }
 
     public function list($ppra) {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppra-historico-revisoes/listaPorIdPpra/' . $ppra);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppra-historico-revisoes/listaPorIdPpra/' . $ppra);
 
         return $json;
     }
@@ -71,7 +71,7 @@ class RevisaoHistoricoController extends Controller
 
         if ($result['status'] == 'true') {
 
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppra-historico-revisoes/listaPorIdPpra/' . $ppra);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppra-historico-revisoes/listaPorIdPpra/' . $ppra);
 
             return $json;
         } else {

@@ -24,7 +24,7 @@ class AtividadePericulosaController extends Controller
     */
     public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/atividades-periculosas');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/atividades-periculosas');
         
         return $json;
     }
@@ -38,7 +38,7 @@ class AtividadePericulosaController extends Controller
     public function store(Request $request)
     {
         
-        // $verifica = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/funcoes/listaPorCodigo/'.$request->origem);
+        // $verifica = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/funcoes/listaPorCodigo/'.$request->origem);
             
             
             // if($verifica != '[]') {
@@ -77,7 +77,7 @@ class AtividadePericulosaController extends Controller
                 $result = json_decode($result, true);
                 
                 if ($result['status'] == 'true') {
-                    $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/atividades-periculosas');
+                    $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/atividades-periculosas');
                     return $json;
                 } else {
                     return 'erro';
@@ -144,7 +144,7 @@ class AtividadePericulosaController extends Controller
                 $result = json_decode($result, true);
                 
                 if ($result['status'] == 'true') {
-                    $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/atividades-periculosas');
+                    $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/atividades-periculosas');
                     return $json;
                 } else {
                     \Log::debug($result);
@@ -177,7 +177,7 @@ class AtividadePericulosaController extends Controller
                 $result = json_decode($result, true);
                 
                 if ($result['status'] == 'true') {
-                    $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/atividades-periculosas');
+                    $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/atividades-periculosas');
                     return $json;
                 } else {
                     return 'erro';
@@ -187,10 +187,10 @@ class AtividadePericulosaController extends Controller
             public function buscar($selecionado, $termo) {
                 
                 if($selecionado == 'codigo') {
-                    $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/atividades-periculosas/listaPorCodigo/' . $termo);
+                    $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/atividades-periculosas/listaPorCodigo/' . $termo);
                     return $json;
                 } else {
-                    $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/atividades-periculosas/listaPorAnyDescricao/' . urlencode($termo));
+                    $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/atividades-periculosas/listaPorAnyDescricao/' . urlencode($termo));
                     return $json;
                 }
                 

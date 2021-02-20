@@ -23,7 +23,7 @@ class MembrosController extends Controller
      */
     public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/membros');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/membros');
         return $json;
     }
 
@@ -38,7 +38,7 @@ class MembrosController extends Controller
 
         \Log::debug($request->all());
 
-        // $verifica = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/membros/listaPorCodigo/'.$request->codigo);
+        // $verifica = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/membros/listaPorCodigo/'.$request->codigo);
 
 
         // if($verifica != '[]') {
@@ -76,7 +76,7 @@ class MembrosController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/membros');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/membros');
            return $json;
        } else {
         return 'erro';
@@ -144,7 +144,7 @@ class MembrosController extends Controller
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-       $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/membros');
+       $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/membros');
        return $json;
    } else {
     \Log::debug($result);
@@ -177,7 +177,7 @@ class MembrosController extends Controller
        $result = json_decode($result, true);
 
        if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/membros');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/membros');
            return $json;
        } else {
         return 'erro';
@@ -187,10 +187,10 @@ class MembrosController extends Controller
 public function buscar($selecionado, $termo) {
 
     if($selecionado == 'codigo') {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/membros/listaPorCodigo/' . $termo);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/membros/listaPorCodigo/' . $termo);
        return $json;
    } else {
-     $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/membros/listaPorAnyDescricao/' . urlencode($termo));
+     $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/membros/listaPorAnyDescricao/' . urlencode($termo));
      return $json;
  }
 

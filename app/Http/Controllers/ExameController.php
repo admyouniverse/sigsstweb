@@ -22,7 +22,7 @@ class ExameController extends Controller
      * @return \Illuminate\Http\Response
      */
     function list() {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/exames');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/exames');
         return $json;
     }
 
@@ -35,7 +35,7 @@ class ExameController extends Controller
     public function store(Request $request)
     {
 
-        // $verifica = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/exames/listaPorCodigo/'.$request->codigo);
+        // $verifica = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/exames/listaPorCodigo/'.$request->codigo);
 
         // if($verifica != '[]') {
         //     \Log::debug($verifica);
@@ -81,7 +81,7 @@ class ExameController extends Controller
         $result = json_decode($result, true);
         \Log::debug($json);
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/exames');
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/exames');
             return $json;
         } else {
             \Log::debug($result);
@@ -157,7 +157,7 @@ class ExameController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/exames');
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/exames');
             return $json;
         } else {
             return 'erro';
@@ -187,7 +187,7 @@ class ExameController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/exames');
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/exames');
             return $json;
         } else {
             return 'erro';
@@ -198,10 +198,10 @@ class ExameController extends Controller
     {
 
         if ($selecionado == 'id') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/exames/listaPorId/' . $termo);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/exames/listaPorId/' . $termo);
             return $json;
         } else {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/exames/listaPorAnyNome/' . urlencode($termo));
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/exames/listaPorAnyNome/' . urlencode($termo));
             return $json;
         }
 

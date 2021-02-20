@@ -83,7 +83,7 @@ class PostoEntregaController extends Controller
      */
     public function show($id)
     {
-        $posto = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/posto-entrega/' . $id);
+        $posto = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/posto-entrega/' . $id);
         $posto = json_decode($posto, true);
         $posto = (object) $posto;
         return view('seguranca.posto.show', compact('posto'));

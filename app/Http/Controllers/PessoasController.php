@@ -23,7 +23,7 @@ class PessoasController extends Controller
     */
     public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pessoas');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pessoas');
         return $json;
     }
     
@@ -98,7 +98,7 @@ class PessoasController extends Controller
     */
     public function show($id)
     {
-        $pessoa = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pessoas/' . $id);
+        $pessoa = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pessoas/' . $id);
         $pessoa = json_decode($pessoa, true);
         
         $pessoa = (object) $pessoa;
@@ -193,27 +193,27 @@ class PessoasController extends Controller
     
     
     public function cpf($cpf) {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pessoas/buscaPorCpf/' . preg_replace("/[^0-9]/", "" , $cpf));
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pessoas/buscaPorCpf/' . preg_replace("/[^0-9]/", "" , $cpf));
         return $json;
     }
     
     
     public function listAutonomo($id) {
         
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pessoas/semVinculoEmpregaticioPorIdEmpresa/' . $id);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pessoas/semVinculoEmpregaticioPorIdEmpresa/' . $id);
         \Log::debug($json);
         return $json;
     }
     
     public function listEmpregado($id) {
         
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pessoas/comVinculoEmpregaticioPorIdEmpresa/' . $id);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pessoas/comVinculoEmpregaticioPorIdEmpresa/' . $id);
         \Log::debug($json);
         return $json;
     }
 
     public function funcoes($id) {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaHistoricoFuncaoPorIdPessoa/' . $id);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresaFuncionarios/listaHistoricoFuncaoPorIdPessoa/' . $id);
         
         return $json;
     }

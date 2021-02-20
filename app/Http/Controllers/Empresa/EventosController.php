@@ -25,7 +25,7 @@ class EventosController extends Controller
     */
     public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/eventos');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/eventos');
         
         return $json;
     }
@@ -37,7 +37,7 @@ class EventosController extends Controller
     */
     public function listEmpresa($id)
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresasEventos/listaPorIdEmpresa/' . $id);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresasEventos/listaPorIdEmpresa/' . $id);
         
         return $json;
     }
@@ -52,7 +52,7 @@ class EventosController extends Controller
     public function store(Request $request)
     {
         
-        // $verifica = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/funcoes/listaPorCodigo/'.$request->origem);
+        // $verifica = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/funcoes/listaPorCodigo/'.$request->origem);
             
             
             // if($verifica != '[]') {
@@ -90,7 +90,7 @@ class EventosController extends Controller
                 $result = json_decode($result, true);
                 
                 if ($result['status'] == 'true') {
-                    $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/eventos');
+                    $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/eventos');
                     return $json;
                 } else {
                     return 'erro';
@@ -132,7 +132,7 @@ class EventosController extends Controller
                 
                 \Log::debug($result);
                 if ($result['status'] == 'true') {
-                    $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresasEventos/listaPorIdEmpresa/' . $request->evento['empresa']['idEmpresa']);
+                    $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresasEventos/listaPorIdEmpresa/' . $request->evento['empresa']['idEmpresa']);
                     
                     return $json;
                 } else {
@@ -199,7 +199,7 @@ class EventosController extends Controller
                 $result = json_decode($result, true);
                 
                 if ($result['status'] == 'true') {
-                    $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/eventos');
+                    $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/eventos');
                     return $json;
                 } else {
                     \Log::debug($result);
@@ -232,7 +232,7 @@ class EventosController extends Controller
                 $result = json_decode($result, true);
                 
                 if ($result['status'] == 'true') {
-                    $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/eventos');
+                    $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/eventos');
                     return $json;
                 } else {
                     return 'erro';
@@ -256,7 +256,7 @@ class EventosController extends Controller
                 $result = json_decode($result, true);
                 
                 if ($result['status'] == 'true') {
-                    $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresasEventos');
+                    $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresasEventos');
                     return $json;
                 } else {
                     return 'erro';
@@ -266,10 +266,10 @@ class EventosController extends Controller
             public function buscar($selecionado, $termo) {
                 
                 if($selecionado == 'codigo') {
-                    $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/eventos/listaPorId/' . $termo);
+                    $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/eventos/listaPorId/' . $termo);
                     return $json;
                 } else {
-                    $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/eventos/listaPorAnyDescricao/' . urlencode($termo));
+                    $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/eventos/listaPorAnyDescricao/' . urlencode($termo));
                     return $json;
                 }
                 

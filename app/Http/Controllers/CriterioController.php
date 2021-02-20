@@ -13,7 +13,7 @@ class CriterioController extends Controller
      */
     public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/criterios');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/criterios');
         return $json;
     }
 

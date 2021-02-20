@@ -18,7 +18,7 @@ class EntregaEpiController extends Controller
     {
         if (\Session::has('empresa')) {
 
-            $postos = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/posto-entrega/listaPorIdEmpresa/' . \Session::get('empresa')->idEmpresa);
+            $postos = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/posto-entrega/listaPorIdEmpresa/' . \Session::get('empresa')->idEmpresa);
 
             $postos = json_decode($postos, true);
             if (count($postos) == 1) {

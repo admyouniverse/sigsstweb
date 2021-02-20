@@ -18,7 +18,7 @@ class ClinicaController extends Controller
      */
     public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/clinicas');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/clinicas');
         return $json;
     }
 
@@ -31,7 +31,7 @@ class ClinicaController extends Controller
     public function store(Request $request)
     {
 
-        // $verifica = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/clinicas/listaPorCodigo/'.$request->codigo);
+        // $verifica = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/clinicas/listaPorCodigo/'.$request->codigo);
 
 
         // if($verifica != '[]') {
@@ -72,7 +72,7 @@ class ClinicaController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-         $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/clinicas');
+         $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/clinicas');
          return $json;
      } else {
         return 'erro';
@@ -143,7 +143,7 @@ class ClinicaController extends Controller
      \Log::debug($result);
 
      if ($result['status'] == 'true') {
-         $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/clinicas');
+         $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/clinicas');
          return $json;
      } else {
         \Log::debug($result);
@@ -176,7 +176,7 @@ class ClinicaController extends Controller
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-         $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/clinicas');
+         $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/clinicas');
          return $json;
      } else {
         return 'erro';
@@ -186,10 +186,10 @@ class ClinicaController extends Controller
 public function buscar($selecionado, $termo) {
 
     if($selecionado == 'codigo') {
-     $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/clinicas/listaPorCodigo/' . $termo);
+     $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/clinicas/listaPorCodigo/' . $termo);
      return $json;
  } else {
-   $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/clinicas/listaPorAnyDescricao/' . urlencode($termo));
+   $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/clinicas/listaPorAnyDescricao/' . urlencode($termo));
    return $json;
 }
 

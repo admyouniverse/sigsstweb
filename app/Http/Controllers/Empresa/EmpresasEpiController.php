@@ -14,7 +14,7 @@ class EmpresasEpiController extends Controller
     */
     public function index($id)
     {
-        $epis = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cadastro-epis');
+        $epis = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cadastro-epis');
         return $epis;
     }
     
@@ -57,7 +57,7 @@ class EmpresasEpiController extends Controller
         
         if ($result['status'] == 'true') {
             \Log::debug($result);
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cadastro-epis');
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cadastro-epis');
             return $json;
         } else {
             \Log::debug($result);
@@ -134,7 +134,7 @@ class EmpresasEpiController extends Controller
         
         if ($result['status'] == 'true') {
             \Log::debug($result);
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cadastro-epis');
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cadastro-epis');
             return $json;
         } else {
             \Log::debug($result);
@@ -164,7 +164,7 @@ class EmpresasEpiController extends Controller
         $result = json_decode($result, true);
         
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cadastro-epis/');
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cadastro-epis/');
             return $json;
         } else {
             return 'erro';
@@ -172,7 +172,7 @@ class EmpresasEpiController extends Controller
     }
 
     public function ca($id) {
-        $cas = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cadastro-epi-cas/listaPorIdEmpresaEpi/' . $id);
+        $cas = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cadastro-epi-cas/listaPorIdEmpresaEpi/' . $id);
         return $cas;
     }
 
@@ -208,7 +208,7 @@ class EmpresasEpiController extends Controller
         
         if ($result['status'] == 'true') {
             \Log::debug($result);
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cadastro-epi-cas/listaCadastroEpiCaPorIdCadastroEpi/' . $id);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cadastro-epi-cas/listaCadastroEpiCaPorIdCadastroEpi/' . $id);
             return $json;
         } else {
             \Log::debug($result);
@@ -246,7 +246,7 @@ class EmpresasEpiController extends Controller
         
         if ($result['status'] == 'true') {
             \Log::debug($result);
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cadastro-epi-cas/listaCadastroEpiCaPorIdCadastroEpi/' . intVal($request->cadastroEpi));
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cadastro-epi-cas/listaCadastroEpiCaPorIdCadastroEpi/' . intVal($request->cadastroEpi));
             return $json;
         } else {
             \Log::debug($result);
@@ -271,7 +271,7 @@ class EmpresasEpiController extends Controller
         $result = json_decode($result, true);
         
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cadastro-epi-cas/listaCadastroEpiCaPorIdCadastroEpi/' . $id);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cadastro-epi-cas/listaCadastroEpiCaPorIdCadastroEpi/' . $id);
             return $json;
         } else {
             return 'erro';

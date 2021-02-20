@@ -31,14 +31,14 @@ class PPRAController extends Controller
      * @return \Illuminate\Http\Response
      */
     function list() {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppras/listaPorIdEmpresa/' . Session::get('empresa')->idEmpresa);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppras/listaPorIdEmpresa/' . Session::get('empresa')->idEmpresa);
 
         return $json;
     }
 
     public function listContrato($idContrato)
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppras/listaPorIdEmpresa/' . Session::get('empresa')->idEmpresa);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppras/listaPorIdEmpresa/' . Session::get('empresa')->idEmpresa);
 
         $array = json_decode($json, true);
 
@@ -132,7 +132,7 @@ class PPRAController extends Controller
      */
     public function edit($id)
     {
-        $ppra = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppras/' . $id);
+        $ppra = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppras/' . $id);
 
         $ppra = json_decode($ppra, true);
 
@@ -140,7 +140,7 @@ class PPRAController extends Controller
         
         $ppra->pcmsos = [];
 
-        $pcmsos = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmsos/listaPorIdEmpresa/'. $ppra->empresasContrato[0]['empresa']['idEmpresa']);
+        $pcmsos = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmsos/listaPorIdEmpresa/'. $ppra->empresasContrato[0]['empresa']['idEmpresa']);
 
         $pcmsos = json_decode($pcmsos, true);
 
@@ -163,7 +163,7 @@ class PPRAController extends Controller
      */
     public function planoAcao($ppra)
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppra-plano-acoes/listaPorIdPpra/' . $ppra);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppra-plano-acoes/listaPorIdPpra/' . $ppra);
 
         return $json;
     }
@@ -222,7 +222,7 @@ class PPRAController extends Controller
 
         if ($result['status'] == 'true') {
 
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppra-plano-acoes/listaPorIdPpra/' . $ppra);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppra-plano-acoes/listaPorIdPpra/' . $ppra);
 
             return $json;
         } else {
@@ -245,7 +245,7 @@ class PPRAController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppra-plano-acoes/listaPorIdPpra/' . $ppra);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppra-plano-acoes/listaPorIdPpra/' . $ppra);
 
             return $json;
         } else {
@@ -274,7 +274,7 @@ class PPRAController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/ppras');
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppras');
             return $json;
         } else {
             return $result;
@@ -284,7 +284,7 @@ class PPRAController extends Controller
     public function contratos($id)
     {
 
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresasContratos/listaPorIdEmpresa/' . $id);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresasContratos/listaPorIdEmpresa/' . $id);
 
         return $json;
 

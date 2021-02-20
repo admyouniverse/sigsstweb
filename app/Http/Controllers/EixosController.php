@@ -19,7 +19,7 @@ class EixosController extends Controller
     
     public function listEixoX()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/eixos-x');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/eixos-x');
 
         return $json;
     }
@@ -99,7 +99,7 @@ class EixosController extends Controller
     
     public function listEixoY()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/eixos-y');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/eixos-y');
 
         return $json;
     }

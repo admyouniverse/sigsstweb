@@ -23,7 +23,7 @@ class CNAEController extends Controller
      */
     public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cnaes');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cnaes');
         return $json;
     }
 
@@ -36,7 +36,7 @@ class CNAEController extends Controller
     public function store(Request $request)
     {
 
-        // $verifica = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cnaes/listaPorCodigo/'.$request->codigo);
+        // $verifica = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cnaes/listaPorCodigo/'.$request->codigo);
 
 
         // if($verifica != '[]') {
@@ -78,7 +78,7 @@ class CNAEController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-         $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cnaes');
+         $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cnaes');
          return $json;
      } else {
 
@@ -147,7 +147,7 @@ class CNAEController extends Controller
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-         $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cnaes');
+         $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cnaes');
          return $json;
      } else {
         return 'erro';
@@ -179,7 +179,7 @@ class CNAEController extends Controller
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-         $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cnaes');
+         $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cnaes');
          return $json;
      } else {
         return 'erro';
@@ -189,10 +189,10 @@ class CNAEController extends Controller
 public function buscar($selecionado, $termo) {
 
     if($selecionado == 'codigo') {
-     $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cnaes/listaPorCodigo/' . $termo);
+     $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cnaes/listaPorCodigo/' . $termo);
      return $json;
  } else {
-   $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/cnaes/listaPorAnyDescricao/' . urlencode($termo));
+   $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/cnaes/listaPorAnyDescricao/' . urlencode($termo));
    return json_decode($json);
 }
 

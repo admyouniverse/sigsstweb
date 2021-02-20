@@ -31,7 +31,7 @@ class PCMSOController extends Controller
     * @return \Illuminate\Http\Response
     */
     function list() {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmsos/listaPorIdEmpresa/' . Session::get('empresa')->idEmpresa);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmsos/listaPorIdEmpresa/' . Session::get('empresa')->idEmpresa);
         
         return $json;
     }
@@ -42,7 +42,7 @@ class PCMSOController extends Controller
 
     public function listContrato($idContrato)
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmsos/listaPorIdEmpresa/' . Session::get('empresa')->idEmpresa);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmsos/listaPorIdEmpresa/' . Session::get('empresa')->idEmpresa);
         
         $array = json_decode($json, true);
         
@@ -141,7 +141,7 @@ class PCMSOController extends Controller
     */
     public function edit($id)
     {
-        $pcmso = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmsos/' . $id);
+        $pcmso = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmsos/' . $id);
         
         $pcmso = json_decode($pcmso, true);
         
@@ -160,7 +160,7 @@ class PCMSOController extends Controller
     */
     public function planoAcao($pcmso)
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmso-plano-acoes/listaPorIdPcmso/' . $pcmso);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmso-plano-acoes/listaPorIdPcmso/' . $pcmso);
         
         return $json;
     }
@@ -219,7 +219,7 @@ class PCMSOController extends Controller
         
         if ($result['status'] == 'true') {
             
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmso-plano-acoes/listaPorIdPcmso/' . $pcmso);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmso-plano-acoes/listaPorIdPcmso/' . $pcmso);
             
             return $json;
         } else {
@@ -242,7 +242,7 @@ class PCMSOController extends Controller
         $result = json_decode($result, true);
         
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmso-plano-acoes/listaPorIdPcmso/' . $pcmso);
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmso-plano-acoes/listaPorIdPcmso/' . $pcmso);
             
             return $json;
         } else {
@@ -271,7 +271,7 @@ class PCMSOController extends Controller
         $result = json_decode($result, true);
         
         if ($result['status'] == 'true') {
-            $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmsos');
+            $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmsos');
             return $json;
         } else {
             return $result;
@@ -281,7 +281,7 @@ class PCMSOController extends Controller
     public function contratos($id)
     {
         
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/empresasContratos/listaPorIdEmpresa/' . $id);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/empresasContratos/listaPorIdEmpresa/' . $id);
         
         return $json;
         
@@ -416,7 +416,7 @@ class PCMSOController extends Controller
     
     
     public function relatorio($id) {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/pcmsos/' . $id);
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmsos/' . $id);
         
         // $json = json_decode($pcmso, true);
         

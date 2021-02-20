@@ -26,7 +26,7 @@ class FuncaoController extends Controller
      */
     public function list()
     {
-        $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/funcoes');
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/funcoes');
         
         return $json;
     }
@@ -40,7 +40,7 @@ class FuncaoController extends Controller
     public function store(Request $request)
     {
 
-        // $verifica = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/funcoes/listaPorCodigo/'.$request->origem);
+        // $verifica = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/funcoes/listaPorCodigo/'.$request->origem);
 
 
         // if($verifica != '[]') {
@@ -81,7 +81,7 @@ class FuncaoController extends Controller
         $result = json_decode($result, true);
 
         if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/funcoes');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/funcoes');
            return $json;
        } else {
         return 'erro';
@@ -150,7 +150,7 @@ class FuncaoController extends Controller
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-       $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/funcoes');
+       $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/funcoes');
        return $json;
    } else {
     \Log::debug($result);
@@ -183,7 +183,7 @@ class FuncaoController extends Controller
        $result = json_decode($result, true);
 
        if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/funcoes');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/funcoes');
            return $json;
        } else {
         return 'erro';
@@ -193,10 +193,10 @@ class FuncaoController extends Controller
 public function buscar($selecionado, $termo) {
 
     if($selecionado == 'codigo') {
-       $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/funcoes/listaPorId/' . $termo);
+       $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/funcoes/listaPorId/' . $termo);
        return $json;
    } else {
-     $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/funcoes/listaPorAnyNome/' . urlencode($termo));
+     $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/funcoes/listaPorAnyNome/' . urlencode($termo));
      return $json;
  }
 

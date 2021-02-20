@@ -52,7 +52,7 @@ class GruposDeControleController extends Controller
      $result = json_decode($result, true);
 
      if ($result['status'] == 'true') {
-       $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/grupos-controle');
+       $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/grupos-controle');
        return $json;
    } else {
     \Log::debug($result);
@@ -95,7 +95,7 @@ class GruposDeControleController extends Controller
         \Log::debug($result);
 
         if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/grupos-controle');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/grupos-controle');
            return $json;
        } else {
         return 'erro';
@@ -156,7 +156,7 @@ class GruposDeControleController extends Controller
        $result = json_decode($result, true);
 
        if ($result['status'] == 'true') {
-           $json = file_get_contents('http://200.98.201.236/ServicoSIGSSO/rest/grupos-controle');
+           $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/grupos-controle');
            return $json;
        } else {
         return 'erro';
