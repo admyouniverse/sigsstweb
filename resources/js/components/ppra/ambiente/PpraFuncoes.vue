@@ -309,7 +309,7 @@ export default {
                 this.data = true;
             }
 
-            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/funcoes/buscaPorIdRH/' + funcao.idRH).then(function (response) {
+            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/funcoes/buscaPorIdRH/' + funcao.idRH).then(function (response) {
                 f.funcao = response.data;
                 that.funcaoAmbiente = f;
                 that.totalPessoas();
@@ -413,7 +413,7 @@ export default {
             that.cbos = response.data;
         });
 
-        axios.get('http://200.98.201.236/ServicoSIGSSO/rest/funcoes').then(function (response) {
+        axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/funcoes').then(function (response) {
             that.funcoes = response.data;
         });
     }

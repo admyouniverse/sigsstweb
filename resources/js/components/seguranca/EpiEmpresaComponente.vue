@@ -310,7 +310,7 @@ export default {
             this.grade = grade;
             var that = this;
 
-            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/cadastro-epi-cas/listaCadastroEpiCaPorIdCadastroEpi/' + this.epi.idCadastroEpi).then(function (response) {
+            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/cadastro-epi-cas/listaCadastroEpiCaPorIdCadastroEpi/' + this.epi.idCadastroEpi).then(function (response) {
                 that.cas = response.data;
                 that.$refs.novaGrade.show();
             });
@@ -321,7 +321,7 @@ export default {
 
             axios.get('/cadastro-epi/grade/' + grade.idGradeEmpresaEpi).then(function (response) {
                 if (response.data.status == 'true') {
-                    axios.get('http://200.98.201.236/ServicoSIGSSO/rest/grade-empresa-epis/listaPorIdCadastroEpi/' + that.epi.idCadastroEpi).then(function (response) {
+                    axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/grade-empresa-epis/listaPorIdCadastroEpi/' + that.epi.idCadastroEpi).then(function (response) {
                         that.grades = response.data;
                     });
                 }
@@ -339,7 +339,7 @@ export default {
                 tamanho: {}
             }
 
-            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/cadastro-epi-cas/listaCadastroEpiCaPorIdCadastroEpi/' + this.epi.idCadastroEpi).then(function (response) {
+            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/cadastro-epi-cas/listaCadastroEpiCaPorIdCadastroEpi/' + this.epi.idCadastroEpi).then(function (response) {
                 that.cas = response.data;
                 that.$refs.novaGrade.show();
             });
@@ -370,7 +370,7 @@ export default {
             this.editar = true;
             var that = this;
 
-            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/grade-empresa-epis/listaPorIdCadastroEpi/' + epi.idCadastroEpi).then(function (response) {
+            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/grade-empresa-epis/listaPorIdCadastroEpi/' + epi.idCadastroEpi).then(function (response) {
                 that.grades = response.data;
                 that.$refs.myModal.show();
             });
@@ -389,7 +389,7 @@ export default {
                 grade: that.grade,
                 cadastroEpi: that.epi
             }).then(function (response) {
-                axios.get('http://200.98.201.236/ServicoSIGSSO/rest/grade-empresa-epis/listaPorIdCadastroEpi/' + that.epi.idCadastroEpi).then(function (response) {
+                axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/grade-empresa-epis/listaPorIdCadastroEpi/' + that.epi.idCadastroEpi).then(function (response) {
                     that.grades = response.data;
                     that.$refs.novaGrade.hide();
                 });
@@ -401,7 +401,7 @@ export default {
             this.epi = {};
             this.atual = '';
             var that = this;
-            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/cadastro-epis').then(function (response) {
+            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/cadastro-epis').then(function (response) {
                 that.epis = response.data;
                 that.$refs.myModal.hide();
             });
@@ -489,7 +489,7 @@ export default {
 
             this.epi = dados;
 
-            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/cadastro-epi-cas/listaCadastroEpiCaPorIdCadastroEpi/' + this.epi.idCadastroEpi).then(function (response) {
+            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/cadastro-epi-cas/listaCadastroEpiCaPorIdCadastroEpi/' + this.epi.idCadastroEpi).then(function (response) {
                 that.cas = response.data;
             });
 
@@ -565,7 +565,7 @@ export default {
     mounted() {
         var that = this;
         //console.log(this.empresa);
-        axios.get('http://200.98.201.236/ServicoSIGSSO/rest/cadastro-epis').then(function (response) {
+        axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/cadastro-epis').then(function (response) {
             that.epis = response.data;
         });
 
@@ -574,11 +574,11 @@ export default {
             // //console.log(response.data);
         });
 
-        axios.get('http://200.98.201.236/ServicoSIGSSO/rest/cores').then(function (response) {
+        axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/cores').then(function (response) {
             that.cores = response.data;
         });
 
-        axios.get('http://200.98.201.236/ServicoSIGSSO/rest/tamanhos').then(function (response) {
+        axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/tamanhos').then(function (response) {
             that.tamanhos = response.data;
         })
 

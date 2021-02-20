@@ -11,7 +11,7 @@
                 <li>
                     <a href="#"><i class="fa fa-home"></i> Início</a>
                 </li>
-                <li><a href="#">Medicina</a></li>
+                <li><a href="#">Medicina </a></li>
                 <li><a href="#">Aso</a></li>
             </ol>
         </section>
@@ -352,7 +352,7 @@
                                             <th>Matrícula</th>
                                             <th>Nome</th>
                                             <th>CPF</th>
-                                            <th>Dt. Adm</th>
+                                            <th>Dt. Adm</th> 
                                             <th>Dt. Cargo</th>
                                             <th>Cargo</th>
                                             <th>Ambiente</th>
@@ -954,7 +954,7 @@ export default {
 
                                 axios
                                     .get(
-                                        "http://200.98.201.236/ServicoSIGSSO/rest/pcmso-historico-revisoes/listaPorIdPcmso/" +
+                                        process.env.MIX_APP_API + "ServicoSIGSSO/rest/pcmso-historico-revisoes/listaPorIdPcmso/" +
                                             that.aso.pcmso.idPcmso
                                     )
                                     .then(function(response) {
@@ -980,7 +980,7 @@ export default {
             this.carregar("Listando temporários...");
             axios
                 .get(
-                    "http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosTemporariosPorIdEmpresa/" +
+                    process.env.MIX_APP_API + "ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosTemporariosPorIdEmpresa/" +
                         that.empresa.idEmpresa
                 )
                 .then(function(response) {
@@ -995,7 +995,7 @@ export default {
         var that = this;
         axios
             .get(
-                "http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosAtivosPorIdEmpresa/" +
+                process.env.MIX_APP_API + "ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosAtivosPorIdEmpresa/" +
                     that.empresa.idEmpresa
             )
             .then(function(response) {
@@ -1003,11 +1003,11 @@ export default {
                 that.carregando = false;
             });
 
-        // axios.get('http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaDemitidosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
+        // axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/empresaFuncionarios/listaDemitidosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
         //     that.inativos = response.data;
         // });
 
-        // axios.get('http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosAfastadosAtivosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
+        // axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosAfastadosAtivosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
         //     that.afastados = response.data;
 
         // });

@@ -381,7 +381,7 @@ export default {
         abrir(funcionario) {
             var that = this;
 
-            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/prontuarios/listaProntuarioPorIdEmpresaFuncionario/' + funcionario.idEmpresaFuncionario).then(function (response) {
+            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/prontuarios/listaProntuarioPorIdEmpresaFuncionario/' + funcionario.idEmpresaFuncionario).then(function (response) {
                 that.prontuario = response.data;
                 console.log('prontuario!', that.prontuario);
                 if(that.prontuario) {
@@ -459,7 +459,7 @@ export default {
 
         });
 
-         axios.get('http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaDemitidosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
+         axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/empresaFuncionarios/listaDemitidosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
             that.inativos = response.data;
 
         });

@@ -210,7 +210,7 @@ export default {
                 entrada: that.entrada,
                 item: that.entradaitem
             }).then(function(response) {
-                axios.get('http://200.98.201.236/ServicoSIGSSO/rest/entrada-epis/listaPorIdEstoque/' + that.item.idEstoque).then(function(response) {
+                axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/entrada-epis/listaPorIdEstoque/' + that.item.idEstoque).then(function(response) {
                     that.entradas = response.data;
 
                     that.sucesso('Entrada salva com sucesso!');
@@ -220,7 +220,7 @@ export default {
         editar(entrada) {
             this.entrada = entrada;
             var that = this;
-            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/entrada-epi-itens/listaPorIdEntradaEpi/' + this.entrada.idEntradaEpi).then(function(response) {
+            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/entrada-epi-itens/listaPorIdEntradaEpi/' + this.entrada.idEntradaEpi).then(function(response) {
                 that.entradaitem = response.data[0];
                 that.$refs.myModal.show();
             });
@@ -233,7 +233,7 @@ export default {
     mounted() {
         var that = this;
         
-        axios.get('http://200.98.201.236/ServicoSIGSSO/rest/entrada-epis/listaPorIdEstoque/' + this.item.idEstoque).then(function(response) {
+        axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/entrada-epis/listaPorIdEstoque/' + this.item.idEstoque).then(function(response) {
             that.entradas = response.data;
         });
     }

@@ -168,7 +168,7 @@ export default {
                 that.funcionarios = response.data;
             });
 
-            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaDemitidosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
+            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/empresaFuncionarios/listaDemitidosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
                 that.inativos = response.data;
 
             });

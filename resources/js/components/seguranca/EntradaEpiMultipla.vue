@@ -198,7 +198,7 @@ export default {
 
             var that = this;
 
-            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/estoques/listaPorIdPostoEntrega/' + that.posto.idPostoEntrega).then(function (response) {
+            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/estoques/listaPorIdPostoEntrega/' + that.posto.idPostoEntrega).then(function (response) {
                 var estoques = response.data;
                 // console.log(estoques);
                 // console.log(that.selecionados);
@@ -274,7 +274,7 @@ export default {
         listaItens() {
             var that = this;
 
-            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/grade-empresa-epis/listaPorIdEmpresa/' + this.empresa.idEmpresa).then(function (response) {
+            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/grade-empresa-epis/listaPorIdEmpresa/' + this.empresa.idEmpresa).then(function (response) {
                 that.gradeEmpresaEpis = response.data;
                 // that.carregando = false;
                 $('#tabelaItens').DataTable().destroy();
@@ -312,7 +312,7 @@ export default {
                 itens: that.entradaitens
             }).then(function (response) {
 
-                axios.get('http://200.98.201.236/ServicoSIGSSO/rest/entrada-epis/listaPorIdPostoEntrega/' + that.posto.idPostoEntrega).then(function (response) {
+                axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/entrada-epis/listaPorIdPostoEntrega/' + that.posto.idPostoEntrega).then(function (response) {
                     $('#tabelaEntradas').DataTable().destroy();
                     that.entradas = response.data;
                     that.$nextTick(() => {
@@ -329,7 +329,7 @@ export default {
             this.entrada = entrada;
             var that = this;
 
-            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/entrada-epi-itens/listaPorIdEntradaEpi/' + this.entrada.idEntradaEpi).then(function (response) {
+            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/entrada-epi-itens/listaPorIdEntradaEpi/' + this.entrada.idEntradaEpi).then(function (response) {
                 that.entradaitens = response.data;
                 that.$refs.myModal.show();
             });
@@ -337,7 +337,7 @@ export default {
         atualizarEstoque(entrada) {
             var that = this;
             axios.get("/posto-entrega/" + this.posto.idPostoEntrega + "/entrada/" + entrada.idEntradaEpi + "/estoque").then(function (response) {
-                axios.get('http://200.98.201.236/ServicoSIGSSO/rest/entrada-epis/listaPorIdPostoEntrega/' + that.posto.idPostoEntrega).then(function (response) {
+                axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/entrada-epis/listaPorIdPostoEntrega/' + that.posto.idPostoEntrega).then(function (response) {
                     that.entradas = response.data;
                     that.$nextTick(() => {
                         that.ativaOrdem();
@@ -374,11 +374,11 @@ export default {
     mounted() {
         var that = this;
 
-        axios.get('http://200.98.201.236/ServicoSIGSSO/rest/entrada-epis/listaPorIdPostoEntrega/' + this.posto.idPostoEntrega).then(function (response) {
+        axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/entrada-epis/listaPorIdPostoEntrega/' + this.posto.idPostoEntrega).then(function (response) {
             that.entradas = response.data;
         });
 
-        axios.get('http://200.98.201.236/ServicoSIGSSO/rest/fornecedores/').then(function (response) {
+        axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/fornecedores/').then(function (response) {
             that.fornecedores = response.data;
 
         });

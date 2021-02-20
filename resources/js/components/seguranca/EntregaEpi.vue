@@ -637,7 +637,7 @@ export default {
             var that = this;
 
             axios.get('/posto-entrega/entrega/remover/' + this.entrega.idEntregaEpi).then((response) => {
-                axios.get('http://200.98.201.236/ServicoSIGSSO/rest/entrega-epis/').then(function (response) {
+                axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/entrega-epis/').then(function (response) {
                     that.entregas = response.data;
 
                     that.$refs.modalEntrega.hide();
@@ -756,7 +756,7 @@ export default {
             this.carregando = true;
             this.mensagem = 'Carregando dados...';
 
-            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/entrega-epi-itens/listaPorIdEntregaEpi/' + entrega.idEntregaEpi).then(function (response) {
+            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/entrega-epi-itens/listaPorIdEntregaEpi/' + entrega.idEntregaEpi).then(function (response) {
 
                 that.entrega = entrega;
 
@@ -784,7 +784,7 @@ export default {
 
 
 
-                    axios.get('http://200.98.201.236/ServicoSIGSSO/rest/entrega-epi-itens-historico/listaPorIdEntregaEpiItens/' + entregaItem.idEntregaEpiItens).then(function (response) {
+                    axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/entrega-epi-itens-historico/listaPorIdEntregaEpiItens/' + entregaItem.idEntregaEpiItens).then(function (response) {
                         if (response.data.length > 0) {
                             entregaItem.historico = response.data;
 
@@ -796,7 +796,7 @@ export default {
 
                         if (rowLen == i + 1) {
                             console.log('ENTREGA ITENS', that.entregaItens);
-                            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/ambiente-cadastro-epis/listaPorIdEmpresaFuncionario/' + entrega.empresaFuncionario.idEmpresaFuncionario).then(function (response) {
+                            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/ambiente-cadastro-epis/listaPorIdEmpresaFuncionario/' + entrega.empresaFuncionario.idEmpresaFuncionario).then(function (response) {
                                 that.liberados = response.data;
                                 that.liberados.map((item) => {
                                     item.carrinho = that.qtdCarrinho(item);
@@ -829,7 +829,7 @@ export default {
 
                     axios.get('/posto-entrega/entrega/remover-item/' + this.entregaItens[index].idEntregaEpiItens).then((response) => {
                         if (response.data.status == "true") {
-                            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/ambiente-cadastro-epis/listaPorIdEmpresaFuncionario/' + that.entrega.empresaFuncionario.idEmpresaFuncionario).then(function (response) {
+                            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/ambiente-cadastro-epis/listaPorIdEmpresaFuncionario/' + that.entrega.empresaFuncionario.idEmpresaFuncionario).then(function (response) {
                                 that.liberados = response.data;
 
                                 that.entregaItens.splice(index, 1);
@@ -903,7 +903,7 @@ export default {
             this.carregando = true;
             this.mensagem = 'Carregando dados...';
 
-            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/ambiente-cadastro-epis/listaPorIdEmpresaFuncionario/' + funcionario.idEmpresaFuncionario).then(function (response) {
+            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/ambiente-cadastro-epis/listaPorIdEmpresaFuncionario/' + funcionario.idEmpresaFuncionario).then(function (response) {
                 that.liberados = response.data;
                 that.$refs.myModal.hide();
                 $('#tabelaListagemEmpregados').DataTable().destroy();
@@ -988,7 +988,7 @@ export default {
         abrirEstoque: function (liberado) {
             var that = this;
             // this.liberado = liberado;
-            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/estoques/listaPorIdPostoEntrega/' + this.posto.idPostoEntrega).then(function (response) {
+            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/estoques/listaPorIdPostoEntrega/' + this.posto.idPostoEntrega).then(function (response) {
                 that.estoques = response.data.filter(function (item) {
                     // console.log(item.gradeEmpresaEpi.cadastroEpiCa.cadastroEpi.idCadastroEpi);
                     // console.log(liberado);
@@ -1038,7 +1038,7 @@ export default {
                 entrega: that.entrega,
                 entregaitens: that.entregaItens
             }).then(function (response) {
-                axios.get('http://200.98.201.236/ServicoSIGSSO/rest/entrega-epis/').then(function (response) {
+                axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/entrega-epis/').then(function (response) {
                     that.entregas = response.data;
                     that.mensagem = 'Entrega salva!';
                     that.$refs.modalEntrega.hide();
@@ -1052,7 +1052,7 @@ export default {
         var that = this;
         this.entrega.entregador = this.usuario;
 
-        axios.get('http://200.98.201.236/ServicoSIGSSO/rest/entrega-epis/').then(function (response) {
+        axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/entrega-epis/').then(function (response) {
             that.entregas = response.data;
             console.log(that.entregas);
         })

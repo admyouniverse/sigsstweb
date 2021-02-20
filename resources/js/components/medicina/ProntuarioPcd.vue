@@ -570,7 +570,7 @@ export default {
             var that = this;
 
             axios.get('/prontuario-medico/pcd/' + prontuario.idProntuarioNecessidade).then(function (response) {
-                axios.get('http://200.98.201.236/ServicoSIGSSO/rest/prontuario-necessidades/listaPorIdProntuario/' + that.prontuario.idProntuario).then(function (response) {
+                axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/prontuario-necessidades/listaPorIdProntuario/' + that.prontuario.idProntuario).then(function (response) {
                     that.prontuarioNecessidades = response.data;
                 });
             });
@@ -595,7 +595,7 @@ export default {
                     that.carregando = false;
                     that.$alert(response.data.msg, 'Erro!', 'error');
                 } else {
-                    axios.get('http://200.98.201.236/ServicoSIGSSO/rest/prontuario-necessidades/listaPorIdProntuario/' + that.prontuario.idProntuario).then(function (response) {
+                    axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/prontuario-necessidades/listaPorIdProntuario/' + that.prontuario.idProntuario).then(function (response) {
                         that.prontuarioNecessidades = response.data;
                         that.$refs.modalPcd.hide();
                         that.carregando = false;
@@ -641,15 +641,15 @@ export default {
     mounted() {
         var that = this;
 
-        axios.get('http://200.98.201.236/ServicoSIGSSO/rest/necessidades').then(function (response) {
+        axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/necessidades').then(function (response) {
             that.necessidades = response.data;
         });
 
-        axios.get('http://200.98.201.236/ServicoSIGSSO/rest/cids').then(function (response) {
+        axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/cids').then(function (response) {
             that.cids = response.data;
         });
 
-        axios.get('http://200.98.201.236/ServicoSIGSSO/rest/prontuario-necessidades/listaPorIdProntuario/' + this.prontuario.idProntuario).then(function (response) {
+        axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/prontuario-necessidades/listaPorIdProntuario/' + this.prontuario.idProntuario).then(function (response) {
             that.prontuarioNecessidades = response.data;
         });
     }

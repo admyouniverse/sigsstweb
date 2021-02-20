@@ -1472,7 +1472,7 @@ export default {
         carregaAfastados: function () {
             this.carregar('Carregando afastados...');
             var that = this;
-            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosAfastadosAtivosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
+            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosAfastadosAtivosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
                 that.afastados = response.data;
                 that.sucesso('Carregado com sucesso!');
             });
@@ -1480,7 +1480,7 @@ export default {
         carregaPcds: function () {
             this.carregar('Carregando PCD...');
             var that = this;
-            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosPCDPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
+            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosPCDPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
                 that.pcds = response.data;
                 that.sucesso('Carregado com sucesso!');
             });
@@ -1489,7 +1489,7 @@ export default {
         carregaTemporarios: function () {
             this.carregar('Carregando temporários...');
             var that = this;
-            axios.get('http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosTemporariosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
+            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosTemporariosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
                 that.temporarios = response.data;
                 that.sucesso('Carregado com sucesso!');
             });
@@ -1499,7 +1499,7 @@ export default {
 
         this.mensagem = 'Carregando empregados...';
         var that = this;
-        axios.get('http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosAtivosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
+        axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosAtivosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
             that.funcionarios = response.data;
             setTimeout(function () {
                 that.$root.$emit('montou', [that.idTabela]);
