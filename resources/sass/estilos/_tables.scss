@@ -1,0 +1,12 @@
+.table-striped tbody tr:nth-of-type(odd) {
+	background-color: #ccffcc;
+}
+
+.table-hover tbody tr:hover {
+	background-color: #b3ffb3;
+}
+
+.table td {
+	padding: 0.3rem 0.75rem;
+	vertical-align: middle;
+}

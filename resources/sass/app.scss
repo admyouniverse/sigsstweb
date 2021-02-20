@@ -1,0 +1,313 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,600,700,800,900');
+// Variables
+@import 'variables';
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap-vue/dist/bootstrap-vue.css";
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+@import 'estilos/header';
+@import 'estilos/boxes';
+@import 'estilos/tables';
+@import 'estilos/cards';
+#app {
+    opacity: 0;
+    transition: all .5s;
+}
+
+hr {
+    border-top: 1px solid silver;
+}
+
+.navbar-laravel {
+    background-color: #00a65a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    padding: 0px;
+    .navbar-nav {
+        .nav-link {
+            color: white;
+            font-size: 1.2rem;
+            &:hover {
+                background: rgba(0, 0, 0, 0.1);
+                color: white;
+            }
+        }
+        .show {
+            .nav-link {
+                color: white;
+            }
+        }
+    }
+    .navbar-brand {
+        color: white;
+    }
+    .dropdown {
+        a {
+            font-size: 1.2rem !important;
+            &.dropdown-item {
+                font-size: 1rem !important;
+            }
+        }
+    }
+}
+
+.dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: #00a65a;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 7px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+
+.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.120em;
+}
+
+.supbar {
+    background-color: #fff;
+    min-height: 60px;
+    padding-top: 10px;
+    span {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        font-size: 40px;
+        margin-top: -10px;
+        color: #00a65a;
+        font-weight: 600;
+    }
+    img {
+        height: 42px;
+        &.principal {
+            padding-left: 8px;
+        }
+    }
+}
+
+.sig {
+    .tabs {
+        .card-header {
+            background-color: #59AF50;
+            color: #fff;
+            font-size: 17px;
+            a {
+                // border: 0;
+                // border-top-left-radius: 0;
+                // border-top-right-radius: 0;
+                color: #fff;
+                padding: 0.5rem 0.7rem;
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.3)
+                }
+                &.active {
+                    background-color: #e8fce8;
+                    color: #59AF50;
+                }
+            }
+        }
+    }
+    .card-body {
+        background-color: #e8fce8;
+    }
+    .nav-pills .nav-link {
+        color: #59AF50;
+        &.active {
+            color: #fff;
+            background-color: #59AF50;
+        }
+    }
+}
+
+.sig-modal {
+    .tabs {
+        .card-header,
+        .nav-tabs {
+            background-color: #59AF50;
+            color: #fff;
+            font-size: 17px;
+            a {
+                // border: 0;
+                // border-top-left-radius: 0;
+                // border-top-right-radius: 0;
+                color: #fff;
+                padding: 0.5rem 0.7rem;
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.3)
+                }
+                &.active {
+                    background-color: #e8fce8;
+                    color: #59AF50;
+                }
+            }
+            padding-top: 7px;
+            padding-left: 7px;
+            padding-right: 7px;
+        }
+    }
+    .card-body {
+        background-color: #e8fce8;
+    }
+    .nav-pills .nav-link,
+    .nav-item .nav-link {
+        color: #59AF50;
+        &.active {
+            color: #fff;
+            background-color: #59AF50;
+        }
+    }
+}
+
+.imagem {
+    height: 228px;
+    padding-bottom: 20px;
+    text-align: center;
+    >img {
+        height: 100%;
+    }
+    >div {
+        position: absolute;
+        height: 208px;
+        top: 0;
+        background: rgba(25, 69, 69, 0.55);
+        width: 208px;
+        left: 50%;
+        transform: translateX(-50%);
+        cursor: pointer;
+        color: white;
+        opacity: 0;
+        transition: all .5s;
+        &:hover {
+            opacity: 1;
+        }
+        >span {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+.form-group {
+    label {
+        margin-bottom: 0.1rem;
+    }
+    input,
+    select {
+        font-weight: 700;
+    }
+}
+
+.modal-content {
+    background-color: #e8fce8;
+}
+
+.loading {
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: center;
+    width: 32em;
+    max-width: 100%;
+    padding: 1.25em;
+    border: none;
+    border-radius: .3125em;
+    background: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    .loading-label {
+        position: relative;
+        max-width: 100%;
+        margin: 0 0 .4em;
+        padding: 0;
+        color: #595959;
+        font-size: 1.2em;
+        font-weight: 600;
+        text-align: center;
+        text-transform: none;
+        word-wrap: break-word;
+    }
+    i {
+        font-size: 3rem;
+        margin-top: 14px;
+    }
+}
+
+.breadcrumb.breadcrumb-left {
+    float: none;
+    right: 0px;
+    top: 0px;
+    position: relative;
+    font-size: 16px;
+    li {
+        &.active {
+            a {
+                font-weight: 600;
+                color: #000;
+                font-size: 18px;
+                margin-top: -3px;
+            }
+        }
+    }
+}
+
+.btn-voltar {
+    font-weight: 900;
+    background-color: green;
+}
+
+.modal-backdrop {
+    background-image: url(../img/bg.png);
+}
+
+.modal-backdrop:not(.show):not(.fade) {
+    opacity: 0.7;
+}

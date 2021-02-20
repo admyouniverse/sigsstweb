@@ -1,0 +1,812 @@
+/**
+ * Created by lpillon on 23/11/2014
+ */
+
+.empppra{
+    cursor: pointer;
+}
+
+.empppra:hover{
+    border: 1px solid green;
+}
+
+textarea.areaobs{
+    width: 400px;
+    height: 80px;
+}
+ 
+input[type='text'].txtSearch{
+    height: 36px;
+}
+           
+.txtcod{
+    width: 90px;
+}
+
+.table th{
+    cursor: pointer;
+}
+
+.imgclose:hover ,.imgclose2:hover{
+    cursor: pointer;
+}
+
+.navgerl{
+    display: none;
+}
+
+body{
+    overflow: hidden;
+    margin: 0px auto;
+}
+
+.center{
+    width: 250px;
+    margin: auto;
+    margin-top: 7%;
+    text-align: center;
+}
+
+.logoLogin{
+    display: block;
+    margin: auto;
+    border-radius: 4px;
+    margin-top: 3%;
+    width: 350px;
+}
+
+.login{
+    display: block;
+    border-radius: 6px;
+    width: 400px;
+    box-shadow: 20px 19px 50px 0px;
+    height: 250px;
+    margin: auto;
+    margin-top: 50px;
+    overflow: hidden;
+}
+
+.title{
+    height: 50px;
+    background-color: #00783a;
+    text-align: center;
+    padding: 12px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.pic_login{
+    position: relative;
+    float: left;
+}
+
+.img_login{
+    margin: 1px;
+    width: 35px;
+    height: 36px;
+    border-radius: 2px;
+
+}
+
+.txt_login{
+    position: relative;
+    float: left;
+}
+
+.txt_login input[type=text] , .txt_login input[type=password]{
+    margin: 1px;
+    height: 36px;
+    margin-bottom: 2px;
+    width: 200px;
+}
+
+.btn_acesso{
+    position: relative;
+    float:right;
+    margin-right: 87px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.esq_senha{
+    position: relative;
+    clear: both;
+    font-size: 11px;
+    color: lightgrey;
+    width: 230px;
+    margin: auto;
+    padding: 4px;
+    text-align: right;
+}
+
+.esq_senha a{
+    color: black;
+}
+
+.copy{
+    position: relative;
+    width: 400px;
+    margin: auto;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.copy .logo_btm{
+    width: 130px;
+}
+
+/*************/
+
+/*********************/
+
+table tr.hoverhistMoviment:hover{
+    border-radius: 3px 3px 3px 3px;
+    border: 1px solid black;
+}
+
+div.foot{
+    display: block;
+    position: absolute;
+    width: 100%;
+	bottom: 0px;
+	left: 0px;
+    height: 18px;
+    overflow: hidden;
+    background-color: #006b30;
+	text-align: center;
+	font-size: 11px;
+	color: white;
+	padding: 2px;
+	margin-top: 2px;
+}
+
+img.imgclose{
+    width: 30px;
+    float: right;
+}
+
+img.imgclose2{
+    width: 26px;
+    float: right;
+    margin-top: -6px;
+    opacity: 0.8;
+}
+
+div.alert{
+    position: fixed;
+	z-index: 400;
+	display: none;
+	opacity: 0.9;
+    background-color: grey;
+    color: black;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+div.alert div.block{
+    z-index: 500;
+    background-color: white;
+    width: 300px;
+    padding: 10px;
+    margin: 0px auto;
+    margin-top:14%;
+    overflow: hidden;
+}
+
+div.alert div.mens{
+    text-align: left;
+    padding: 6px;
+    border-bottom: 1px solid grey;
+}
+
+div.alert div.cont{
+    text-align: left;
+    padding: 10px;
+    max-height: 400px;
+    font-size: 12px;
+    overflow: hidden;
+}
+
+
+div.loading{
+    position: absolute;
+	z-index: 300;
+	background-image: url('../img/loading.gif');
+	background-position: center;
+	background-repeat: no-repeat;
+	display: none;
+	opacity: 0.8;
+    background-color: grey;
+    color: black;
+    font-size: 14px;
+    font-weight: bolder;
+    text-align: center;    
+}
+
+div.loading div{
+    position: relative;
+    margin-top: 28%;
+}
+
+div.logos_top{
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 0px;
+    overflow: hidden;
+    border: 0px;
+}
+
+div.logos_top .lft{
+    width: 50%;
+    float: left;
+    border: 0px;
+}
+
+div.logos_top .rgt{
+    width: 50%;
+    float: right;
+    border: 0px;
+}
+
+.logo_lcs{
+    position: relative;
+    width: 110px;
+    height: 50px;
+    float: right;
+}
+
+.logo_proativa{
+    height: 50px;
+    text-align: right;
+}
+
+div.dados_usuario{
+    display: block;
+	position: relative;
+	background-color: #E6E6E6;
+	padding: 4px;
+	font-size: 11px;
+	height: 20px;
+	font-weight: bolder;
+	color: black;
+	width: 100%;
+}
+
+div.dados_usuario div{
+    float: left;
+    margin-right: 50px;
+}
+ul{
+    list-style-type: none;
+    margin: 0px;
+}
+
+a{
+    text-decoration: none !important;
+    color: white;
+}
+
+ul.a1{
+    display: block;
+    position: relative;
+    background-color: lightgrey;
+    padding: 0px;
+    height: 35px;
+    border-bottom: 2px solid yellow;
+    margin:0px;
+    z-index: 200;
+}
+
+ul.a2{
+    display:none;
+    margin:0px;
+    margin-left: 9px;
+    padding: 0px;
+    width: 220px;
+    background-color: transparent;
+}
+
+ul.a3{
+    display:none;
+    width: 300px;
+    background-color: transparent;
+}
+
+ul.a4{
+    display:none;
+    width: 330px;
+    background-color: transparent;
+}
+
+li.a0{
+    display:none;
+}
+
+ul.a1 li{
+    
+    padding: 0px;
+}
+
+li.a1 {
+    display:block;
+    float: left;
+    width: 110px;
+    margin-right: 4px;
+}
+
+li.a2 {
+    margin-left: -9px;
+    width: 230px;
+}
+li.a3 {
+    
+}
+li.a4 {
+    
+}
+
+a.a1,a.aa1 {
+    display: block;
+    margin-top: 4px;
+    padding: 6px;
+    border-radius: 10px 10px 0px 0px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bolder;
+    float: left;
+    width: 109px;
+    text-align: center;
+    background-image: url('../img/fundo-menu.png');
+}
+
+a.a2,a.a3,a.a4 {
+    display: block;
+    margin-bottom: 0px;
+    padding: 5px;
+    border-radius: 0px 7px 7px 0px;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: bolder;
+    text-align: left;
+}
+
+a.a2{
+    
+}
+
+a.a3 {
+    width: 260px;
+}
+
+a.a4 {
+    width: 280px;
+}
+
+
+a.a2, a.a3, a.a4 {
+    background-color: grey;
+}
+
+a.a2:hover, a.a3:hover, a.a4:hover {
+    color: red;
+    cursor: pointer;
+}
+
+a.a1:hover, a.aa1:hover{
+    background-color: yellow;
+    color: black;
+    cursor: pointer;
+    background-image: none;
+}
+
+ul.a2{
+    clear: both;
+}
+
+img.imgdown{
+    height: 16px;
+    float: right;
+}
+
+.search_btn{
+    float:right;
+    height: 38px;
+    margin-top: -2px;
+    cursor: pointer;
+}
+
+div.search{
+    clear: both;
+    margin-top: 12px;
+    width: 650px;
+    padding: 10px;
+    height: 80px;
+    left: 50%;
+    margin-left: -325px;
+    background-color: grey;
+    opacity: 0.9;
+    box-shadow: 6px 8px 50px 6px;
+    font-size: 14px;
+    position: fixed;
+    display:none;
+    z-index: 300;
+    border-radius: 0px 0px 8px 8px;
+}
+
+div.search div.titlesear{
+    font-style: italic;
+    text-align: left;
+    color: white;
+}
+
+.txtSearch{
+    height: 38px;
+    margin-top: 4px;
+}
+
+div.resultadosPesquisa{
+    display: none;
+    margin: auto;
+    margin-top: 30px;
+    width: 627px;
+    font-size: 14px;
+    font-weight: bolder;
+    background-color: lightgrey;
+    border-radius: 0px 0px 8px 8px;
+    padding: 10px;
+}
+
+div.content{
+    z-index: 100;
+    margin:  0px auto;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    border-radius: 8px 8px 0px 0px;
+    display: none;
+}
+
+div.content div.titleMenu1{
+    position: relative;
+    width: 100%;
+    padding: 4px;
+    font-weight: bolder;
+    color: white;
+    background-color: #0B6121;
+    text-align: center;
+    font-size: 14px;
+    
+}
+
+ul.abas1{
+    width: 100%;
+    border-bottom: 1px solid lightgrey;
+    background-color: transparent;
+    height: 28px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+ul.abas1 li{
+    display: block;
+    float: left;
+    margin-right: 5px;
+    padding: 4px;
+    text-align: center;
+    background-color: lightgrey;
+    font-size: 12px;
+    border-radius: 5px 5px 0px 0px;
+    height: 25px;
+    margin-top: 3px;
+}
+
+ul.abas1 li a, ul.abas1 li a:hover{
+    color: black;
+    font-weight: bold;
+}
+
+div.content div.content_menu1{
+    position: relative;
+    width: 100%;
+    overflow: scroll;
+}
+
+div.pesquisa_dinamica{
+        width: 500px;
+        margin: 0px auto;
+        margin-top: 2px;
+}
+ 
+div.pesquisa_dinamica .lblpesquisar{
+    margin-top: 4px;
+    float: left;
+    font-size: 16px;
+    font-weight: normal;
+} 
+
+div.pesquisa_dinamica .pesquisarGeral{
+    width: 330px;
+    height: 32px;
+}
+
+.btnincluir{
+    width: 160px;
+    padding: 4px;
+}
+
+div.paginacao{
+    width: 100%;
+    margin-top: 4px;
+    padding: 0px;
+    height: 35px;
+    overflow: hidden;
+}
+
+div.tituloTotalPaginas{
+    float:right;
+    font-size: 15px;
+    font-weight: normal;
+    margin-top: 10px;
+}
+
+div.btninclud{
+    float: left;
+    font-weight: bolder;
+    margin-right: 3px;
+}
+
+div.clear{
+    clear: both;
+}
+
+table.table tr td {
+    font-size: 13px;
+}
+
+table.table .cod{
+    width: 80px;
+    text-align: center;
+}
+
+table.table .alt{
+    width: 70px;
+    text-align: center;
+}
+
+.img_alterar,.img_excluir{
+    height: 20px;
+    cursor: pointer;
+}
+
+.result_pesquisa_dinamica{
+    position: fixed;
+    width: 600px;
+    min-height: 60px;
+    max-height: 400px;
+    left: 50%;
+    margin-left: -300px;
+    margin-top: 4px;
+    border-radius: 6px 6px 2px 2px;
+    background-color: #F2F2F2;
+    z-index: 50;
+    display: none;
+    overflow: hidden;
+    box-shadow: 10px 20px 50px 10px;
+}
+
+form.envio{
+    padding: 10px;
+    font-size: 14px;
+}
+
+
+@media screen and (max-width:390px){
+    
+    .logoLogin{
+        display: block;
+        margin: auto;
+        border-radius: 4px;
+        margin-top: 3%;
+        width: 260px;
+    }
+    
+    .login{
+        width: 290px;
+        height: 224px;
+        margin-top: 30px;
+    }
+    
+    .title{
+        height: 40px;
+        padding: 10px;
+        font-size: 13.4px;
+    }
+
+    
+    .btn_acesso{
+        margin-right: 33px;
+    }
+    
+    .copy{
+        width: 200px;
+        font-size: 12px;
+    }
+    
+    .copy .logo_btm{
+        width: 100px;
+    }
+    
+    .logo_lcs{
+        position: relative;
+        width: 60px;
+        height: 30px;
+        float: right;
+    }
+    
+    .logo_proativa{
+        width: 100px;
+        text-align: right;
+        height: 30px;
+    }
+    
+    div.dados_usuario{
+        font-size: 8.5px;
+    }
+    
+    div.dados_usuario div{
+        float: left;
+        margin-right: 20px;
+    }
+    
+    div.search{
+        left:0px;
+        width: 100%;
+        margin: 0px auto;
+        font-size: 13px;
+        margin-top: 5px;
+    }
+    
+    div.content div.content_menu1{
+    height: 510px;
+    overflow: scroll;
+}
+
+div.pesquisa_dinamica{
+        width: 300px;
+        margin: 0px auto;
+        margin-top: 2px;
+}
+ 
+div.pesquisa_dinamica .lblpesquisar{
+        margin-top: 2px;
+        float: left;
+        font-size: 13px;
+        font-style: italic;
+        font-weight: normal;
+} 
+
+div.pesquisa_dinamica .pesquisarGeral{
+    width: 150px;
+    height: 24px;
+}
+
+.result_pesquisa_dinamica{
+    position: fixed;
+    width: 290px;
+    max-height: 400px;
+    left: 50%;
+    margin-left: -145px;
+    margin-top: 4px;
+    border-radius: 6px 6px 2px 2px;
+    background-color: #F2F2F2;
+    z-index: 50;
+    display: none;
+    overflow: hidden;
+}
+
+form.envio{
+    padding: 6px;
+    font-size: 12px;
+}
+
+}
+
+/*
+@media screen and (max-width:375px){
+    
+    .logoLogin{
+        display: block;
+        margin: auto;
+        border-radius: 4px;
+        margin-top: 3%;
+        width: 260px;
+    }
+    
+    .login{
+        width: 290px;
+        height: 224px;
+        margin-top: 30px;
+    }
+    
+    .title{
+        height: 40px;
+        padding: 10px;
+        font-size: 13.4px;
+    }
+
+    
+    .btn_acesso{
+        margin-right: 33px;
+    }
+    
+    .copy{
+        width: 200px;
+        font-size: 12px;
+    }
+    
+    .copy .logo_btm{
+        width: 100px;
+    }
+}*/
+
+
+@media screen and (max-width:1168px){
+
+    li.a0{
+        display:block;
+    }
+    
+    li.a1 {
+        clear: both;
+        display:block;
+        
+    }
+
+li.a2 {
+    width: 230px;
+}
+li.a3 {
+    
+}
+li.a4 {
+    
+}
+
+a.a1{
+    background-color: grey;
+    border-radius: 20px 2px 20px 2px;
+    margin-bottom: 1px;
+    font-style: italic;
+    font-size: 10px;
+    padding: 6px;
+    margin-bottom: -3px;
+}
+
+a.a2,a.a3,a.a4 {
+    display: block;
+    margin-bottom: 1px;
+    padding: 6px;
+    border-radius: 20px 2px 20px 2px;
+    color: #ffffff;
+    font-size: 9px;
+    font-weight: bolder;
+    text-align: left;
+    background-color: grey;
+}
+
+div.search{
+        left:0px;
+        width: 100%;
+        margin: 0px auto;
+        font-size: 13px;
+        margin-top: 5px;
+    }
+}
