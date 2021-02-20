@@ -22,7 +22,7 @@ class PPRAController extends Controller
      */
     public function index()
     {
-        return view('ppra.index', compact('ppras'));
+        return view('ppra.index');
     }
 
     /**
