@@ -291,7 +291,7 @@ class PCMSOController extends Controller
     {
         \Log::debug($request->all());
         
-        \Log::debug($request->tipo == 'EMISSÃO' ? 1 : $request->tipo == 'REVISÃO_PARCIAL' ? 2 : 3);
+        \Log::debug(($request->tipo == 'EMISSÃO' ? 1 : $request->tipo == 'REVISÃO_PARCIAL') ? 2 : 3);
         $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmsos/retornaVersaoPcmso/");
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -300,7 +300,7 @@ class PCMSOController extends Controller
             'idEmpresa: ' . Session::get('empresa')->idEmpresa,
             'empresaContrato: ' . $request->contrato['idEmpresaContrato'],
             'dataPcmso: ' . $request->data,
-            'tipoPcmso: ' . ($request->tipo == 'EMISSÃO' ? 1 : $request->tipo == 'REVISÃO_PARCIAL' ? 2 : 3),
+            'tipoPcmso: ' . (($request->tipo == 'EMISSÃO' ? 1 : $request->tipo == 'REVISÃO_PARCIAL') ? 2 : 3),
         ));
         
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
