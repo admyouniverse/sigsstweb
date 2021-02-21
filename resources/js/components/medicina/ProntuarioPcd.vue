@@ -494,7 +494,7 @@ export default {
     methods: {
         pdf(prontuario) {
             if (prontuario.urlPdf) {
-                window.open('http://172.18.0.6:8080:8081/' + prontuario.urlPdf);
+                window.open('http://200.98.201.236:8080:8081/' + prontuario.urlPdf);
             } else {
                 alert('Não há PDF anexado.')
             }
@@ -550,7 +550,7 @@ export default {
 
         pdf(complementar) {
             if (complementar.urlPdf) {
-                window.open('http://172.18.0.6:8080:8081/' + complementar.urlPdf);
+                window.open('http://200.98.201.236:8080:8081/' + complementar.urlPdf);
             } else {
                 alert('Não há PDF anexado.')
             }
@@ -570,7 +570,7 @@ export default {
             var that = this;
 
             axios.get('/prontuario-medico/pcd/' + prontuario.idProntuarioNecessidade).then(function (response) {
-                axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/prontuario-necessidades/listaPorIdProntuario/' + that.prontuario.idProntuario).then(function (response) {
+                axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/prontuario-necessidades/listaPorIdProntuario/' + that.prontuario.idProntuario).then(function (response) {
                     that.prontuarioNecessidades = response.data;
                 });
             });
@@ -595,7 +595,7 @@ export default {
                     that.carregando = false;
                     that.$alert(response.data.msg, 'Erro!', 'error');
                 } else {
-                    axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/prontuario-necessidades/listaPorIdProntuario/' + that.prontuario.idProntuario).then(function (response) {
+                    axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/prontuario-necessidades/listaPorIdProntuario/' + that.prontuario.idProntuario).then(function (response) {
                         that.prontuarioNecessidades = response.data;
                         that.$refs.modalPcd.hide();
                         that.carregando = false;
@@ -623,7 +623,7 @@ export default {
               Make the request to the POST /single-file URL
             */
             var that = this;
-            axios.post('http://172.18.0.6:8080:8081/upload-file',
+            axios.post('http://200.98.201.236:8080:8081/upload-file',
                     formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
@@ -641,15 +641,15 @@ export default {
     mounted() {
         var that = this;
 
-        axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/necessidades').then(function (response) {
+        axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/necessidades').then(function (response) {
             that.necessidades = response.data;
         });
 
-        axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/cids').then(function (response) {
+        axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/cids').then(function (response) {
             that.cids = response.data;
         });
 
-        axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/prontuario-necessidades/listaPorIdProntuario/' + this.prontuario.idProntuario).then(function (response) {
+        axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/prontuario-necessidades/listaPorIdProntuario/' + this.prontuario.idProntuario).then(function (response) {
             that.prontuarioNecessidades = response.data;
         });
     }

@@ -604,7 +604,7 @@ export default {
         },
         pdf(complementar) {
             if(complementar.caminhoPdf) {
-                window.open('http://172.18.0.6:8080:8081/' + complementar.caminhoPdf);
+                window.open('http://200.98.201.236:8080:8081/' + complementar.caminhoPdf);
             } else {
                 alert('Não há PDF anexado.')
             }
@@ -631,7 +631,7 @@ export default {
               Make the request to the POST /single-file URL
             */
            var that = this;
-            axios.post('http://172.18.0.6:8080:8081/upload-file',
+            axios.post('http://200.98.201.236:8080:8081/upload-file',
                     formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
@@ -684,7 +684,7 @@ export default {
             // alert('fechoU!');
             var that = this;
 
-            axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/exames-complementares-exames/listaPorIdEmpresaFuncionario/' + this.funcionario.idEmpresaFuncionario).then(function (response) {
+            axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/exames-complementares-exames/listaPorIdEmpresaFuncionario/' + this.funcionario.idEmpresaFuncionario).then(function (response) {
                 that.complementares = response.data;
                 // console.log(that.complementares);
                 // that.$refs.modalComplementar.show();
@@ -717,7 +717,7 @@ export default {
 
             this.funcionario = funcionario;
 
-            axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/exames-complementares-exames/listaPorIdEmpresaFuncionario/' + funcionario.idEmpresaFuncionario).then(function (response) {
+            axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/exames-complementares-exames/listaPorIdEmpresaFuncionario/' + funcionario.idEmpresaFuncionario).then(function (response) {
                 that.complementares = response.data;
                 // console.log(that.complementares);
                 that.$refs.modalComplementar.show();
@@ -760,7 +760,7 @@ export default {
 
         semSolicitacao() {
             var that = this;
-            axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/exames/').then(function(response) {
+            axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/exames/').then(function(response) {
                 that.exames = response.data;
                 that.$refs.modalSemSolicitacao.show();
             });
@@ -775,11 +775,11 @@ export default {
 
             that.solicitacao = solicitacao;
 
-            axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/exames/' + this.solicitacao.idExame).then(function(response) {
+            axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/exames/' + this.solicitacao.idExame).then(function(response) {
                 that.exame = response.data;
                 that.complementar.exame = response.data;
            
-                axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/exames-complementares-exames/listaPorIdExame/' + that.solicitacao.idExame).then(function (response) {
+                axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/exames-complementares-exames/listaPorIdExame/' + that.solicitacao.idExame).then(function (response) {
                     that.historico = response.data.filter(function (hist) {
                         return hist.exameComplementar.empresaFuncionario.idEmpresaFuncionario == that.funcionario.idEmpresaFuncionario
                     });
@@ -808,7 +808,7 @@ export default {
 
             }).then(function (response) {
 
-                axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/exames-complementares-exames/listaPorIdExame/' + that.complementar.exame.idExame).then(function (response) {
+                axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/exames-complementares-exames/listaPorIdExame/' + that.complementar.exame.idExame).then(function (response) {
 
                     that.cancelarNovo();
 
@@ -821,7 +821,7 @@ export default {
 
                     that.$alert('Dados inseridos!', 'Sucesso!', 'success');
 
-                    axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/exames-complementares-exames/listaPorIdEmpresaFuncionario/' + that.funcionario.idEmpresaFuncionario).then(function (response) {
+                    axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/exames-complementares-exames/listaPorIdEmpresaFuncionario/' + that.funcionario.idEmpresaFuncionario).then(function (response) {
                         that.complementares = response.data;
                         that.$refs.modalIncluir.hide();
                         // console.log(that.complementares);
@@ -850,7 +850,7 @@ export default {
 
         });
 
-        axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosTemporariosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
+        axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosTemporariosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
             that.temporarios = response.data;
         });
 

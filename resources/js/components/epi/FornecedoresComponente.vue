@@ -402,7 +402,7 @@ export default {
             axios.post('/fornecedores', {
                 fornecedor: that.fornecedor,
             }).then(function (response) {
-                  axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/fornecedores').then(function (response) {
+                  axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/fornecedores').then(function (response) {
             		that.fornecedores = response.data;
 					that.$nextTick(() => {
 						that.fechar();
@@ -527,7 +527,7 @@ export default {
 
                     // that.fornecedores = response.data;
 
-                axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/fornecedores').then(function (response) {
+                axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/fornecedores').then(function (response) {
             		that.fornecedores = response.data;
 					that.$nextTick(() => {
 						that.fecharCerteza();
@@ -548,7 +548,7 @@ export default {
     },
     mounted() {
         var that = this;
-        axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/fornecedores').then(function (response) {
+        axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/fornecedores').then(function (response) {
             that.fornecedores = response.data;
             that.montou = true;
             setTimeout(function () {

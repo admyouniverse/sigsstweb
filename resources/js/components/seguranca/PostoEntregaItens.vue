@@ -188,7 +188,7 @@ export default {
             this.editando = false;
             var that = this;
 
-            axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/cadastro-epis/').then(function (response) {
+            axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/cadastro-epis/').then(function (response) {
                 that.epis = response.data;
             });
 
@@ -197,7 +197,7 @@ export default {
         carregaGrade() {
             var that = this;
 
-            axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/grade-empresa-epis/listaPorIdCadastroEpi/' + this.epi.idCadastroEpi).then(function (response) {
+            axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/grade-empresa-epis/listaPorIdCadastroEpi/' + this.epi.idCadastroEpi).then(function (response) {
                 that.grades = response.data;
             });
         },
@@ -210,7 +210,7 @@ export default {
                 item: that.item
             }).then(function (response) {
                 if (response.data.status == "true") {
-                    axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/estoques/listaPorIdPostoEntrega/' + that.posto.idPostoEntrega).then(function (response) {
+                    axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/estoques/listaPorIdPostoEntrega/' + that.posto.idPostoEntrega).then(function (response) {
                         that.itens = response.data;
                         that.carregando = false;
                     });
@@ -225,9 +225,9 @@ export default {
             this.editando = true;
             var that = this;
 
-            axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/grade-empresa-epis/listaPorIdCadastroEpi/' + this.epi.idCadastroEpi).then(function (response) {
+            axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/grade-empresa-epis/listaPorIdCadastroEpi/' + this.epi.idCadastroEpi).then(function (response) {
                 that.grades = response.data;
-                axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/cadastro-epis/').then(function (response) {
+                axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/cadastro-epis/').then(function (response) {
                     that.epis = response.data;
                     that.$refs.myModal.show();
                 });
@@ -239,7 +239,7 @@ export default {
 
             axios.get('/posto-entrega/excluir-item/' + item.idEstoque).then(function (response) {
                 if (response.data.status == "true") {
-                    axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/estoques/listaPorIdPostoEntrega/' + that.posto.idPostoEntrega).then(function (response) {
+                    axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/estoques/listaPorIdPostoEntrega/' + that.posto.idPostoEntrega).then(function (response) {
                         that.itens = response.data;
                         that.carregando = false;
                     });
@@ -250,7 +250,7 @@ export default {
         atualiza() {
             var that = this;
 
-            axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/estoques/listaPorIdPostoEntrega/' + this.posto.idPostoEntrega).then(function (response) {
+            axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/estoques/listaPorIdPostoEntrega/' + this.posto.idPostoEntrega).then(function (response) {
             that.itens = response.data;
 
                 that.$nextTick(() => {
@@ -298,7 +298,7 @@ export default {
     mounted() {
         var that = this;
 
-        axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/estoques/listaPorIdPostoEntrega/' + this.posto.idPostoEntrega).then(function (response) {
+        axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/estoques/listaPorIdPostoEntrega/' + this.posto.idPostoEntrega).then(function (response) {
             that.itens = response.data;
 
             that.$nextTick(() => {

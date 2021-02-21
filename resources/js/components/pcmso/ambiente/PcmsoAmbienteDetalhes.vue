@@ -494,7 +494,7 @@ export default {
                 this.data = true;
             }
 
-            axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/funcoes/buscaPorIdRH/' + funcao.idRH).then(function (response) {
+            axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/funcoes/buscaPorIdRH/' + funcao.idRH).then(function (response) {
                 f.funcao = response.data;
                 that.funcaoAmbiente = f;
                 that.totalPessoas();

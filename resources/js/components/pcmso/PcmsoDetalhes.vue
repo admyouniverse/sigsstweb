@@ -253,7 +253,7 @@ export default {
               Make the request to the POST /single-file URL
             */
            var that = this;
-            axios.post('http://172.18.0.6:8080:8081/upload-file',
+            axios.post('http://200.98.201.236:8080:8081/upload-file',
                     formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data'

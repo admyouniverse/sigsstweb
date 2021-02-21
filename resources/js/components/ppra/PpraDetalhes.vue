@@ -106,7 +106,7 @@
                             <div class="col-md-12">
                                 <button class="btn pull-right btn-success" v-if="ppra.idPpra && !ppra.caminhoPdf" @click="abrirUpload"><i class="fa fa-upload"></i> Inserir PDF</button>
                                 <button class="btn pull-right btn-success ml-3" v-if="ppra.idPpra && ppra.caminhoPdf" @click="abrirUpload"><i class="fa fa-upload"></i> Atualizar PDF</button>
-                                <a class="btn pull-right btn-success" target="_blank" v-if="ppra.idPpra && ppra.caminhoPdf" :href="'http://172.18.0.6:8080:8081/' + ppra.caminhoPdf"><i class="fas fa-eye"></i> Visualizar PDF</a>
+                                <a class="btn pull-right btn-success" target="_blank" v-if="ppra.idPpra && ppra.caminhoPdf" :href="'http://200.98.201.236:8080:8081/' + ppra.caminhoPdf"><i class="fas fa-eye"></i> Visualizar PDF</a>
                                 <input type="file" v-on:change="handleFileUpload()" id="file" ref="file" style="display:none">
 
                                 <button class="btn btn-success" @click="salvar()"><i class="fas fa-save"></i>
@@ -286,7 +286,7 @@ export default {
               Make the request to the POST /single-file URL
             */
             var that = this;
-            axios.post('http://172.18.0.6:8080:8081/upload-file',
+            axios.post('http://200.98.201.236:8080:8081/upload-file',
                     formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data'

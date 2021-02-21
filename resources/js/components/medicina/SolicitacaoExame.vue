@@ -725,14 +725,14 @@ export default {
             var that = this;
 
             if (tipo == 'RETORNO_TRABALHO') {
-                axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosAfastadosAtivosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
+                axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosAfastadosAtivosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
                     that.funcionarios = response.data;
                     that.$refs.modalPeriodico.show();
                     that.carregando = false;
                     // that.sucesso('Carregado com sucesso!');
                 });
             } else {
-                axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/empresaFuncionarios/listaPorIdEmpresa/' + this.empresa.idEmpresa).then(function (response) {
+                axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/empresaFuncionarios/listaPorIdEmpresa/' + this.empresa.idEmpresa).then(function (response) {
                     that.funcionarios = response.data;
                     that.$refs.modalPeriodico.show();
                     that.carregando = false;
@@ -743,7 +743,7 @@ export default {
 
         buscarPessoasContratos: function (callback) {
             var that = this;
-            axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/pessoas/semVinculoEmpregaticioPorIdEmpresa/' + this.empresa.idEmpresa).then(function (response) {
+            axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/pessoas/semVinculoEmpregaticioPorIdEmpresa/' + this.empresa.idEmpresa).then(function (response) {
                 that.pessoas = response.data;
 
                 axios.get('/empresas/contratos/' + that.empresa.idEmpresa).then(function (response) {
@@ -831,7 +831,7 @@ export default {
 
                 if (filtrada.length == 0) {
 
-                    axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/pessoas/semVinculoEmpregaticioPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
+                    axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/pessoas/semVinculoEmpregaticioPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
                         var empregados = response.data;
 
                         var filtrada = empregados.filter(function (empregado) {
@@ -897,7 +897,7 @@ export default {
 
                     if (this.solicitacao.tipoAtestado == 'ADMISSIONAL') {
 
-                        axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/pessoas/comVinculoEmpregaticioPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
+                        axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/pessoas/comVinculoEmpregaticioPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
                             var empregados = response.data;
 
                             var filtrada = empregados.filter(function (empregado) {
@@ -916,7 +916,7 @@ export default {
 
                     } else {
 
-                        axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/pessoas/semVinculoEmpregaticioPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
+                        axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/pessoas/semVinculoEmpregaticioPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
                             var empregados = response.data;
 
                             var filtrada = empregados.filter(function (empregado) {
@@ -1062,7 +1062,7 @@ export default {
     mounted() {
         var that = this;
 
-        axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/solicitacoes').then(function (response) {
+        axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/solicitacoes').then(function (response) {
             that.solicitacoes = response.data;
 
             console.log(that.solicitacoes);

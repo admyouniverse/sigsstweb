@@ -372,7 +372,7 @@ export default {
 				prontuario: that.prontuario,
 				afastamento: that.afastamento
 			}).then(function(response) {
-				axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/prontuario-afastamentos/listaPorIdProntuario/' + that.prontuario.idProntuario).then(function (response) {
+				axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/prontuario-afastamentos/listaPorIdProntuario/' + that.prontuario.idProntuario).then(function (response) {
 					that.afastamentos = response.data;
         		});
 			});
@@ -385,7 +385,7 @@ export default {
     },
     mounted() {
         var that = this;
-        axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/prontuario-afastamentos/listaPorIdProntuario/' + this.prontuario.idProntuario).then(function (response) {
+        axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/prontuario-afastamentos/listaPorIdProntuario/' + this.prontuario.idProntuario).then(function (response) {
 			that.afastamentos = response.data;
         });
 

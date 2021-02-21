@@ -257,7 +257,7 @@ export default {
     },
     mounted() {
         var that = this;
-        axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/grupos-controle').then(function (response) {
+        axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/grupos-controle').then(function (response) {
             that.grupos = response.data;
             that.montou = true;
             setTimeout(function () {

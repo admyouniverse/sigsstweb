@@ -289,7 +289,7 @@
                 Anexar o Resultado da Medição
                 <button class="btn pull-right btn-block btn-success" v-if="medidas.idPpraAmbienteRiscoMedida && !fator.caminhoPdf" @click="abrirUpload"><i class="fa fa-upload"></i> Inserir PDF</button>
                 <button class="btn  btn-success btn-50" v-if="medidas.idPpraAmbienteRiscoMedida && fator.caminhoPdf" @click="abrirUpload"><i class="fa fa-upload"></i> Atualizar PDF</button>
-                <a class="btn  btn-secondary  btn-50" target="_blank" v-if="medidas.idPpraAmbienteRiscoMedida && fator.caminhoPdf" :href="'http://172.18.0.6:8080:8081/' + fator.caminhoPdf"><i class="fas fa-eye"></i> Visualizar PDF</a>
+                <a class="btn  btn-secondary  btn-50" target="_blank" v-if="medidas.idPpraAmbienteRiscoMedida && fator.caminhoPdf" :href="'http://200.98.201.236:8080:8081/' + fator.caminhoPdf"><i class="fas fa-eye"></i> Visualizar PDF</a>
                 <input type="file" v-on:change="handleFileUpload()" id="file" ref="file" style="display:none">
             </div>
         </div>
@@ -396,7 +396,7 @@
                             </td>
                             <td class="text-center">
                             
-                                    <a class="btn  btn- secondary btn-sm" target="_blank" v-if="historico.ppraAmbienteRisco.caminhoPdf" :href="'http://172.18.0.6:8080:8081/' + historico.ppraAmbienteRisco.caminhoPdf"><i class="fas fa-eye"></i> Visualizar PDF</a>
+                                    <a class="btn  btn- secondary btn-sm" target="_blank" v-if="historico.ppraAmbienteRisco.caminhoPdf" :href="'http://200.98.201.236:8080:8081/' + historico.ppraAmbienteRisco.caminhoPdf"><i class="fas fa-eye"></i> Visualizar PDF</a>
                             </td>
                         </tr>
                     </tbody>
@@ -494,7 +494,7 @@ export default {
               Make the request to the POST /single-file URL
             */
             var that = this;
-            axios.post('http://172.18.0.6:8080:8081/upload-file',
+            axios.post('http://200.98.201.236:8080:8081/upload-file',
                     formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data'

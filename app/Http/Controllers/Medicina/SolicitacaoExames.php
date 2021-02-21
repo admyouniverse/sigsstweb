@@ -278,7 +278,7 @@ class SolicitacaoExames extends Controller
     {
         $solicitacao = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/solicitacoes/reportPorIdSolicitacao/' . $id);
 
-        $ch = curl_init("http://172.18.0.6:8080:8082/report-generate");
+        $ch = curl_init("http://200.98.201.236:8080:8082/report-generate");
 
         $array = ['nome_template' => "solicitacao", "formato_saida" => "pdf", 'dados_report' => json_decode($solicitacao, true)];
 

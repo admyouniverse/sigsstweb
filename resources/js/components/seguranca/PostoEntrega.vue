@@ -90,7 +90,7 @@ export default {
                 posto: that.posto
             }).then(function (response) {
                 if (response.data.status == "true") {
-                    axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/posto-entrega/listaPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
+                    axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/posto-entrega/listaPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
                         that.postos = response.data;
                         that.carregando = false;
                     });
@@ -107,7 +107,7 @@ export default {
             var that = this;
             axios.get('/posto-entrega/excluir/' + posto.idPostoEntrega).then(function (response) {
                 if (response.data.status == "true") {
-                    axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/posto-entrega/listaPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
+                    axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/posto-entrega/listaPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
                         that.postos = response.data;
                         that.carregando = false;
                     });
@@ -117,7 +117,7 @@ export default {
     },
     mounted() {
         var that = this;
-        axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/posto-entrega/listaPorIdEmpresa/' + this.empresa.idEmpresa).then(function (response) {
+        axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/posto-entrega/listaPorIdEmpresa/' + this.empresa.idEmpresa).then(function (response) {
             that.postos = response.data;
             that.carregando = false;
         });

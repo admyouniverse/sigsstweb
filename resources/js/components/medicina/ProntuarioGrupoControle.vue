@@ -194,7 +194,7 @@ export default {
 				prontuario: that.prontuario,
 				grupo: that.grupoControle
 			}).then(function(response) {
-				axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/prontuario-grupos-controle/listaPorIdProntuario/' + that.prontuario.idProntuario).then(function (response) {
+				axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/prontuario-grupos-controle/listaPorIdProntuario/' + that.prontuario.idProntuario).then(function (response) {
 					that.gruposControle = response.data;
         		});
 			});
@@ -207,12 +207,12 @@ export default {
     },
     mounted() {
         var that = this;
-        axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/prontuario-grupos-controle/listaPorIdProntuario/' + this.prontuario.idProntuario).then(function (response) {
+        axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/prontuario-grupos-controle/listaPorIdProntuario/' + this.prontuario.idProntuario).then(function (response) {
             that.gruposControle = response.data;
             console.log('grupos', that.gruposControle);
         });
 
-        axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/grupos-controle').then(function (response) {
+        axios.get('http://200.98.201.236:8080/ServicoSIGSSO/rest/grupos-controle').then(function (response) {
 			that.grupos = response.data;
 			console.log(that.grupos);
         });
