@@ -10,7 +10,6 @@ services:
       - MARIADB_PASSWORD=my_password
 
   myapp:
-    tty: true
     image: docker.io/bitnami/laravel:7-debian-10
     environment:
       - DB_HOST=mariadb
