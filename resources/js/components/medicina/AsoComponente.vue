@@ -954,7 +954,7 @@ export default {
 
                                 axios
                                     .get(
-                                        "http://200.98.201.236/ServicoSIGSSO/rest/pcmso-historico-revisoes/listaPorIdPcmso/" +
+                                        "http://172.18.0.6:8080/ServicoSIGSSO/rest/pcmso-historico-revisoes/listaPorIdPcmso/" +
                                             that.aso.pcmso.idPcmso
                                     )
                                     .then(function(response) {
@@ -980,7 +980,7 @@ export default {
             this.carregar("Listando temporários...");
             axios
                 .get(
-                    "http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosTemporariosPorIdEmpresa/" +
+                    "http://172.18.0.6:8080/ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosTemporariosPorIdEmpresa/" +
                         that.empresa.idEmpresa
                 )
                 .then(function(response) {
@@ -995,7 +995,7 @@ export default {
         var that = this;
         axios
             .get(
-                "http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosAtivosPorIdEmpresa/" +
+                "http://172.18.0.6:8080/ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosAtivosPorIdEmpresa/" +
                     that.empresa.idEmpresa
             )
             .then(function(response) {
@@ -1003,11 +1003,11 @@ export default {
                 that.carregando = false;
             });
 
-        // axios.get('http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaDemitidosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
+        // axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/empresaFuncionarios/listaDemitidosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
         //     that.inativos = response.data;
         // });
 
-        // axios.get('http://200.98.201.236/ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosAfastadosAtivosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
+        // axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosAfastadosAtivosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
         //     that.afastados = response.data;
 
         // });

@@ -272,7 +272,7 @@ export default {
     },
     mounted() {
         var that = this;
-        axios.get('http://200.98.201.236/ServicoSIGSSO/rest/cores').then(function (response) {
+        axios.get('http://172.18.0.6:8080/ServicoSIGSSO/rest/cores').then(function (response) {
             that.cores = response.data;
             that.montou = true;
             setTimeout(function () {

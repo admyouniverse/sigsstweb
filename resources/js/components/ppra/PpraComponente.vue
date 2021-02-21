@@ -68,7 +68,7 @@ export default {
     methods: {
         pdf(ppra) {
             if(ppra.caminhoPdf) {
-                window.open('http://200.98.201.236:8081/' + ppra.caminhoPdf);
+                window.open('http://172.18.0.6:8080:8081/' + ppra.caminhoPdf);
             } else {
                 alert('Não há PDF anexado.')
             }

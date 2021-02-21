@@ -74,7 +74,7 @@ export default {
         carregarEmpresa() {
             var that = this;
             axios
-                .get("http://200.98.201.236/ServicoSIGSSO/rest/empresas/")
+                .get("http://172.18.0.6:8080/ServicoSIGSSO/rest/empresas/")
                 .then(function(response) {
                     that.empresas = response.data;
                     that.$refs.modalEmpresa.show();
