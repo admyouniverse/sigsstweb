@@ -85,7 +85,7 @@ class PCMSOController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
         
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmsos");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pcmsos");
         
         \Log::debug($json);
         
@@ -191,7 +191,7 @@ class PCMSOController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
         
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmso-plano-acoes");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pcmso-plano-acoes");
         
         \Log::debug($json);
         
@@ -229,7 +229,7 @@ class PCMSOController extends Controller
     
     public function destroyPlanoAcao($pcmso, $id)
     {
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmso-plano-acoes/" . $id);
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pcmso-plano-acoes/" . $id);
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
@@ -258,7 +258,7 @@ class PCMSOController extends Controller
     */
     public function destroy($id)
     {
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmsos/" . $id);
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pcmsos/" . $id);
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
@@ -292,7 +292,7 @@ class PCMSOController extends Controller
         \Log::debug($request->all());
         
         \Log::debug(($request->tipo == 'EMISSÃO' ? 1 : $request->tipo == 'REVISÃO_PARCIAL') ? 2 : 3);
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmsos/retornaVersaoPcmso/");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pcmsos/retornaVersaoPcmso/");
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
@@ -311,7 +311,7 @@ class PCMSOController extends Controller
     
     
     public function ultimo(Request $request) {
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmsos/pegaUltimoPcmsoPorEmpresaEmpresaContrato/");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pcmsos/pegaUltimoPcmsoPorEmpresaEmpresaContrato/");
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
@@ -328,19 +328,19 @@ class PCMSOController extends Controller
     }
     
     public function capa($pcmso){
-        $json = file_get_contents("http://200.98.201.236/ServicoSIGSSO/rest/pcmso-capas/buscaPcmsoCapaPorIdPcmso/" . $pcmso);
+        $json = file_get_contents(env('APP_API') . "/ServicoSIGSSO/rest/pcmso-capas/buscaPcmsoCapaPorIdPcmso/" . $pcmso);
         
         return $json;
     }
     
     public function exames($pcmso){
-        $json = file_get_contents("http://200.98.201.236/ServicoSIGSSO/rest/exames/listaPorIdPcmso/" . $pcmso);
+        $json = file_get_contents(env('APP_API') . "/ServicoSIGSSO/rest/exames/listaPorIdPcmso/" . $pcmso);
         
         return $json;
     }
     
     public function listHistoricoExames($pcmso) {
-        $json = file_get_contents("http://200.98.201.236/ServicoSIGSSO/rest/pcmso-exames-historico/listaPorIdPcmso/" . $pcmso);
+        $json = file_get_contents(env('APP_API') . "/ServicoSIGSSO/rest/pcmso-exames-historico/listaPorIdPcmso/" . $pcmso);
         
         return $json;
     }
@@ -358,7 +358,7 @@ class PCMSOController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
         
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmso-exames-historico/");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pcmso-exames-historico/");
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
@@ -391,7 +391,7 @@ class PCMSOController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
         
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmso-capas/");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pcmso-capas/");
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         

@@ -57,7 +57,7 @@ class EntradaEpiController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/entrada-epis/");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/entrada-epis/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -93,7 +93,7 @@ class EntradaEpiController extends Controller
             $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
             $json .= '}';
     
-            $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/entrada-epi-itens/");
+            $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/entrada-epi-itens/");
     
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     
@@ -128,7 +128,7 @@ class EntradaEpiController extends Controller
     public function estoque($posto, $entrada)
     {
         \Log::debug($entrada);
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/entrada-epis/atualizarEstoque");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/entrada-epis/atualizarEstoque");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 

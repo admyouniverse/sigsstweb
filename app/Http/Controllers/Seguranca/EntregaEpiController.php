@@ -67,7 +67,7 @@ class EntregaEpiController extends Controller
 
         \Log::debug($json);
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/entrega-epis/");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/entrega-epis/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -112,7 +112,7 @@ class EntregaEpiController extends Controller
                 $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
                 $json .= '}';
 
-                $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/entrega-epi-itens/");
+                $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/entrega-epi-itens/");
 
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -149,7 +149,7 @@ class EntregaEpiController extends Controller
     {
         \Log::debug(Carbon::now()->format('Y-m-d'));
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/entrega-epis/assinarEntrega");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/entrega-epis/assinarEntrega");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -176,7 +176,7 @@ class EntregaEpiController extends Controller
     public function removerItem($id)
     {
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/entrega-epi-itens/" . $id);
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/entrega-epi-itens/" . $id);
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -197,7 +197,7 @@ class EntregaEpiController extends Controller
     public function remover($id)
     {
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/entrega-epis/" . $id);
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/entrega-epis/" . $id);
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -219,7 +219,7 @@ class EntregaEpiController extends Controller
 
 
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/ambiente-cadastro-epis/buscaAmbienteCadastroEpi");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ambiente-cadastro-epis/buscaAmbienteCadastroEpi");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -258,7 +258,7 @@ class EntregaEpiController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/entrega-epi-itens-historico/");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/entrega-epi-itens-historico/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 

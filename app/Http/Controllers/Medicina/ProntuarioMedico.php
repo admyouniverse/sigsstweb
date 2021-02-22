@@ -46,7 +46,7 @@ class ProntuarioMedico extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/prontuario-necessidades/");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/prontuario-necessidades/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -94,7 +94,7 @@ class ProntuarioMedico extends Controller
 
         \Log::debug($array);
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/prontuario-afastamentos/");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/prontuario-afastamentos/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -131,7 +131,7 @@ class ProntuarioMedico extends Controller
 
         \Log::debug($array);
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/prontuario-grupos-controle/");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/prontuario-grupos-controle/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -211,7 +211,7 @@ class ProntuarioMedico extends Controller
         
         
         \Log::debug($json);
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pessoas");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pessoas");
         
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -248,7 +248,7 @@ class ProntuarioMedico extends Controller
         
         
         \Log::debug($json);
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/prontuarios");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/prontuarios");
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
@@ -275,7 +275,7 @@ class ProntuarioMedico extends Controller
     */
     public function destroyPCD($id)
     {
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/prontuario-necessidades/" . $id);
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/prontuario-necessidades/" . $id);
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

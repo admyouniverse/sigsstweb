@@ -10,7 +10,7 @@ class RevisaoHistoricoController extends Controller
 {
     public function medicos(Request $request) {
         
-        $json = file_get_contents("http://200.98.201.236/ServicoSIGSSO/rest/empresa-profissionais/listaPorIdEmpresa/" . Session::get('empresa')->idEmpresa);
+        $json = file_get_contents(env('APP_API') . "/ServicoSIGSSO/rest/empresa-profissionais/listaPorIdEmpresa/" . Session::get('empresa')->idEmpresa);
 
         return $json;
     }
@@ -43,7 +43,7 @@ class RevisaoHistoricoController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/ppra-historico-revisoes/");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ppra-historico-revisoes/");
 
         \Log::debug($json);
 

@@ -35,7 +35,7 @@ class EixosController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/eixos-x");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/eixos-x");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -68,7 +68,7 @@ class EixosController extends Controller
     public function destroyEixoX($eixo)
     {
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/eixos-x/" . $eixo);
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/eixos-x/" . $eixo);
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -115,7 +115,7 @@ class EixosController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/eixos-y");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/eixos-y");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -148,7 +148,7 @@ class EixosController extends Controller
     public function destroyEixoY($eixo)
     {
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/eixos-y/" . $eixo);
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/eixos-y/" . $eixo);
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 

@@ -55,7 +55,7 @@ class ProfissionaisController extends Controller
 
         \Log::debug($json);
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/empresa-profissionais");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/empresa-profissionais");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 

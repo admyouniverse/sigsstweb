@@ -60,7 +60,7 @@ class EpiController extends Controller
         $json .= '}';
 
    //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/epis");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/epis");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -113,7 +113,7 @@ class EpiController extends Controller
         $json .= '}';
 
    //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/categorias-epi");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/categorias-epi");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -155,7 +155,7 @@ public function categoriasUpdate(Request $request, $id)
         \Log::debug($json);
 
    //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/categorias-epi");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/categorias-epi");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -182,7 +182,7 @@ public function categoriasUpdate(Request $request, $id)
 public function categoriasDestroy($id)
     {
 
-       $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/categorias-epi/" . $id);
+       $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/categorias-epi/" . $id);
 
 
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -242,7 +242,7 @@ public function categoriasDestroy($id)
         $json .= '}';
 
    //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/grupos-epi");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/grupos-epi");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -283,7 +283,7 @@ public function gruposUpdate(Request $request, $id)
         \Log::debug($json);
 
    //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/grupos-epi");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/grupos-epi");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -310,7 +310,7 @@ public function gruposUpdate(Request $request, $id)
 public function gruposDestroy($id)
     {
 
-       $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/grupos-epi/" . $id);
+       $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/grupos-epi/" . $id);
 
 
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -359,7 +359,7 @@ public function gruposDestroy($id)
      $json .= '}';
 
    //   return $json;
-     $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/epis");
+     $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/epis");
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -394,7 +394,7 @@ public function gruposDestroy($id)
     public function destroy($id)
     {
 
-       $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/epis/" . $id);
+       $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/epis/" . $id);
 
 
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

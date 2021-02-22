@@ -112,7 +112,7 @@ class AmbienteController extends Controller
 
         \Log::debug($array);
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/");
 
         \Log::debug($json);
 
@@ -172,7 +172,7 @@ class AmbienteController extends Controller
     public function destroy($id, $ambiente)
     {
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/" . $ambiente);
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/" . $ambiente);
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -197,7 +197,7 @@ class AmbienteController extends Controller
     public function funcoes( $ambiente, $ppra)
     {
 
-        $json = file_get_contents("http://200.98.201.236/ServicoSIGSSO/rest/ppra-ambiente-trabalhos/listaPorIdOrigem/" . $ambiente);
+        $json = file_get_contents(env('APP_API') . "/ServicoSIGSSO/rest/ppra-ambiente-trabalhos/listaPorIdOrigem/" . $ambiente);
 
         $ambientes = json_decode($json, true);
         
@@ -229,7 +229,7 @@ class AmbienteController extends Controller
     {
         \Log::debug($request->all());
 
-        $json = file_get_contents("http://200.98.201.236/ServicoSIGSSO/rest/pcmso-ambientes-exames/listaPorIdPcmsoAmbienteTrabalho/" . $request->ambiente);
+        $json = file_get_contents(env('APP_API') . "/ServicoSIGSSO/rest/pcmso-ambientes-exames/listaPorIdPcmsoAmbienteTrabalho/" . $request->ambiente);
         
         return $json;
         
@@ -255,7 +255,7 @@ class AmbienteController extends Controller
             $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
             $json .= '}';
 
-            $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmso-ambientes-exames/");
+            $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pcmso-ambientes-exames/");
 
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -269,7 +269,7 @@ class AmbienteController extends Controller
             $result = curl_exec($ch);
         }
 
-            $json = file_get_contents("http://200.98.201.236/ServicoSIGSSO/rest/pcmso-ambientes-exames/listaPorIdPcmsoAmbienteTrabalho/" . $ambiente);
+            $json = file_get_contents(env('APP_API') . "/ServicoSIGSSO/rest/pcmso-ambientes-exames/listaPorIdPcmsoAmbienteTrabalho/" . $ambiente);
 
             return $json;
 
@@ -289,7 +289,7 @@ class AmbienteController extends Controller
         $json .= '}';
 
         //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmso-ambientes-exames/");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pcmso-ambientes-exames/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -309,7 +309,7 @@ class AmbienteController extends Controller
     }
 
     public function destroyExame($ambiente, $exame) {
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmso-ambientes-exames/" . $exame);
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pcmso-ambientes-exames/" . $exame);
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -323,7 +323,7 @@ class AmbienteController extends Controller
     }
 
     public function aso($ambiente){
-        $json = file_get_contents("http://200.98.201.236/ServicoSIGSSO/rest/pcmso-asos/listaPorIdPcmsoAmbienteTrabalho/" . $ambiente);
+        $json = file_get_contents(env('APP_API') . "/ServicoSIGSSO/rest/pcmso-asos/listaPorIdPcmsoAmbienteTrabalho/" . $ambiente);
         
         return $json;
     }
@@ -339,7 +339,7 @@ class AmbienteController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pcmso-asos/");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pcmso-asos/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -363,7 +363,7 @@ class AmbienteController extends Controller
     }
 
     public function listRiscos($idAmbiente, $idPpra) {
-        $json = file_get_contents("http://200.98.201.236/ServicoSIGSSO/rest/ppra-ambiente-trabalhos/listaPorIdOrigem/" . $idAmbiente);
+        $json = file_get_contents(env('APP_API') . "/ServicoSIGSSO/rest/ppra-ambiente-trabalhos/listaPorIdOrigem/" . $idAmbiente);
 
         $ambientes = json_decode($json, true);
         

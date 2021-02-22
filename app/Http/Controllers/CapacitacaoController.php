@@ -66,7 +66,7 @@ class CapacitacaoController extends Controller
         $json .= '}';
 
    //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/capacitacoes");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/capacitacoes");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -147,7 +147,7 @@ class CapacitacaoController extends Controller
      $json .= '}';
 
    //   return $json;
-     $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/capacitacoes");
+     $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/capacitacoes");
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -183,7 +183,7 @@ class CapacitacaoController extends Controller
     {   
         \Log::debug($id);
 
-           $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/capacitacoes/" . $id);
+           $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/capacitacoes/" . $id);
 
 
            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

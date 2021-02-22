@@ -34,7 +34,7 @@ class TamanhoController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/tamanhos/");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/tamanhos/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -110,7 +110,7 @@ class TamanhoController extends Controller
      */
     public function destroy($id)
     {
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/tamanhos/" . $id);
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/tamanhos/" . $id);
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

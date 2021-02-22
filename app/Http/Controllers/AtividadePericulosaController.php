@@ -58,7 +58,7 @@ class AtividadePericulosaController extends Controller
                 
                 \Log::debug($json);
                 //   return $json;
-                $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/atividades-periculosas");
+                $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/atividades-periculosas");
                 
                 
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -126,7 +126,7 @@ class AtividadePericulosaController extends Controller
                 $json .= '}';
                 
                 //   return $json;
-                $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/atividades-periculosas");
+                $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/atividades-periculosas");
                 
                 
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -163,7 +163,7 @@ class AtividadePericulosaController extends Controller
             public function destroy($id)
             {
                 
-                $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/atividades-periculosas/" . $id);
+                $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/atividades-periculosas/" . $id);
                 
                 
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

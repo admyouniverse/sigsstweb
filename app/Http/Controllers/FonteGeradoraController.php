@@ -54,7 +54,7 @@ class FonteGeradoraController extends Controller
         $json .= '}';
 
    //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/fontesGeradoras");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/fontesGeradoras");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -122,7 +122,7 @@ class FonteGeradoraController extends Controller
      $json .= '}';
 
    //   return $json;
-     $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/fontesGeradoras");
+     $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/fontesGeradoras");
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -158,7 +158,7 @@ class FonteGeradoraController extends Controller
     {   
         \Log::debug($id);
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/fontesGeradoras/" . $id);
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/fontesGeradoras/" . $id);
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

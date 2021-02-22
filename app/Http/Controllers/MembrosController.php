@@ -57,7 +57,7 @@ class MembrosController extends Controller
         $json .= '}';
 
    //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/membros");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/membros");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -126,7 +126,7 @@ class MembrosController extends Controller
      $json .= '}';
 
    //   return $json;
-     $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/membros");
+     $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/membros");
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -163,7 +163,7 @@ class MembrosController extends Controller
     public function destroy($id)
     {
 
-       $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/membros/" . $id);
+       $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/membros/" . $id);
 
 
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

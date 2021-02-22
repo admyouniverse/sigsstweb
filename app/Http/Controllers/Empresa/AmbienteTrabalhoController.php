@@ -67,7 +67,7 @@ class AmbienteTrabalhoController extends Controller
 
         \Log::debug($json);
         //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/ambientesTrabalho");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ambientesTrabalho");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -139,7 +139,7 @@ class AmbienteTrabalhoController extends Controller
         $json .= '}';
 
         //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/ambientesTrabalho");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ambientesTrabalho");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -174,7 +174,7 @@ class AmbienteTrabalhoController extends Controller
     public function destroy($id)
     {
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/ambientesTrabalho/" . $id);
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ambientesTrabalho/" . $id);
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -197,7 +197,7 @@ class AmbienteTrabalhoController extends Controller
     public function destroyEpi($id)
     {
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/ambiente-cadastro-epis/" . $id);
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ambiente-cadastro-epis/" . $id);
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -245,7 +245,7 @@ class AmbienteTrabalhoController extends Controller
 
         if(Session::has('empresa')) {
             foreach($ambientes as $ambiente) {
-                $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/funcoes/listaPorIdAmbienteIdEmpresa/");
+                $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/funcoes/listaPorIdAmbienteIdEmpresa/");
 
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
@@ -296,7 +296,7 @@ class AmbienteTrabalhoController extends Controller
         $json .= '}';
 
 //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/ambiente-cadastro-epis");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ambiente-cadastro-epis");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -336,7 +336,7 @@ class AmbienteTrabalhoController extends Controller
         $json .= '}';
 
 //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/ambiente-empresa-capacitacoes");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ambiente-empresa-capacitacoes");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 

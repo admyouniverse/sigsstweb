@@ -40,7 +40,7 @@ class EmpresasEpiController extends Controller
         
         \Log::debug($json);
         
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/cadastro-epis");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/cadastro-epis");
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
@@ -117,7 +117,7 @@ class EmpresasEpiController extends Controller
         
         \Log::debug($json);
         
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/cadastro-epis");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/cadastro-epis");
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
@@ -151,7 +151,7 @@ class EmpresasEpiController extends Controller
     public function destroy($id, $epi)
     {   
         \Log::debug($epi);
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/cadastro-epis/" . $epi);
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/cadastro-epis/" . $epi);
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
@@ -191,7 +191,7 @@ class EmpresasEpiController extends Controller
         
         \Log::debug($json);
         
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/cadastro-epi-cas");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/cadastro-epi-cas");
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
@@ -228,7 +228,7 @@ class EmpresasEpiController extends Controller
         
         \Log::debug($json);
         
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/cadastro-epi-cas");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/cadastro-epi-cas");
         
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -258,7 +258,7 @@ class EmpresasEpiController extends Controller
     public function removerCa($id, $ca)
     {   
         \Log::debug($ca);
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/cadastro-epi-cas/" . $ca);
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/cadastro-epi-cas/" . $ca);
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         

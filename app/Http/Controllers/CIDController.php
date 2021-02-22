@@ -54,7 +54,7 @@ class CIDController extends Controller
         $json .= '}';
 
    //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/cids");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/cids");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -121,7 +121,7 @@ class CIDController extends Controller
      $json .= '}';
 
    //   return $json;
-     $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/cids");
+     $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/cids");
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -156,7 +156,7 @@ class CIDController extends Controller
     public function destroy($id)
     {
 
-           $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/cids/" . $id);
+           $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/cids/" . $id);
 
 
            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

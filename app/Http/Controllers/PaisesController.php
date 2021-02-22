@@ -55,7 +55,7 @@ class PaisesController extends Controller
         $json .= '}';
 
    //   return $json;
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/paises");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/paises");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -123,7 +123,7 @@ class PaisesController extends Controller
      $json .= '}';
 
    //   return $json;
-     $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/paises");
+     $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/paises");
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -160,7 +160,7 @@ class PaisesController extends Controller
     public function destroy($id)
     {
 
-     $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/paises/" . $id);
+     $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/paises/" . $id);
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

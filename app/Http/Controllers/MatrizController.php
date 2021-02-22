@@ -47,7 +47,7 @@ class MatrizController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/matriz-risco");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/matriz-risco");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -110,7 +110,7 @@ class MatrizController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
         \Log::debug($json);
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/matriz-risco-nivel");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/matriz-risco-nivel");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -171,7 +171,7 @@ class MatrizController extends Controller
     public function removerNivel($matriz)
     {
 
-       $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/matriz-risco-nivel/" . $matriz);
+       $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/matriz-risco-nivel/" . $matriz);
 
 
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

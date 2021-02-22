@@ -71,7 +71,7 @@ class EventosController extends Controller
                 
                 \Log::debug($json);
                 //   return $json;
-                $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/eventos");
+                $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/eventos");
                 
                 
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -112,7 +112,7 @@ class EventosController extends Controller
                 
                 \Log::debug($json);
                 //   return $json;
-                $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/empresasEventos");
+                $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/empresasEventos");
                 
                 
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -181,7 +181,7 @@ class EventosController extends Controller
                 $json .= '}';
                 
                 //   return $json;
-                $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/eventos");
+                $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/eventos");
                 
                 
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -218,7 +218,7 @@ class EventosController extends Controller
             public function destroy($id)
             {
                 
-                $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/eventos/" . $id);
+                $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/eventos/" . $id);
                 
                 
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -242,7 +242,7 @@ class EventosController extends Controller
             public function destroyEmpresa($id)
             {
                 
-                $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/empresasEventos/" . $id);
+                $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/empresasEventos/" . $id);
                 
                 
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

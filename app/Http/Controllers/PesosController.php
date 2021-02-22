@@ -42,7 +42,7 @@ class PesosController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pesos-x");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pesos-x");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -70,7 +70,7 @@ class PesosController extends Controller
     public function destroyPesoX($peso)
     {
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pesos-x/" . $peso);
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pesos-x/" . $peso);
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -123,7 +123,7 @@ class PesosController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pesos-y");
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pesos-y");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -151,7 +151,7 @@ class PesosController extends Controller
     public function destroyPesoY($peso)
     {
 
-        $ch = curl_init("http://200.98.201.236/ServicoSIGSSO/rest/pesos-y/" . $peso);
+        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pesos-y/" . $peso);
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
