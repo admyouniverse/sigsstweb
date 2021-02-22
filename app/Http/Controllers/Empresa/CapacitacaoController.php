@@ -45,7 +45,7 @@ class CapacitacaoController extends Controller
         
         \Log::debug($json);
         
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/empresa-capacitacoes");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/empresa-capacitacoes");
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
@@ -73,7 +73,7 @@ class CapacitacaoController extends Controller
 
     public function destroy($empresa, $id) {
 
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/empresa-capacitacoes/" . $id);
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/empresa-capacitacoes/" . $id);
                 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         

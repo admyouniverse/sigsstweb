@@ -62,7 +62,7 @@ class FuncaoController extends Controller
 
         \Log::debug($json);
    //   return $json;
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/funcoes");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/funcoes");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -132,7 +132,7 @@ class FuncaoController extends Controller
      $json .= '}';
 
    //   return $json;
-     $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/funcoes");
+     $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/funcoes");
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -169,7 +169,7 @@ class FuncaoController extends Controller
     public function destroy($id)
     {
 
-       $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/funcoes/" . $id);
+       $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/funcoes/" . $id);
 
 
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -204,7 +204,7 @@ public function buscar($selecionado, $termo) {
 
 
 public function funcaoAmbiente($ambiente) {
-         $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/funcoes/listaPorIdAmbienteIdEmpresa/");
+         $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/funcoes/listaPorIdAmbienteIdEmpresa/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 

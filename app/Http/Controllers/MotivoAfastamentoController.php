@@ -55,7 +55,7 @@ class MotivoAfastamentoController extends Controller
         $json .= '}';
 
    //   return $json;
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/motivosAfastamento");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/motivosAfastamento");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -125,7 +125,7 @@ class MotivoAfastamentoController extends Controller
      $json .= '}';
 
    //   return $json;
-     $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/motivosAfastamento");
+     $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/motivosAfastamento");
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -162,7 +162,7 @@ class MotivoAfastamentoController extends Controller
     public function destroy($id)
     {
 
-     $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/motivosAfastamento/" . $id);
+     $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/motivosAfastamento/" . $id);
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

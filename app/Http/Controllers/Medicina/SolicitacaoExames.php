@@ -74,7 +74,7 @@ class SolicitacaoExames extends Controller
 
         \Log::debug($array);
 
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/solicitacoes/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/solicitacoes/");
 
         \Log::debug($json);
 
@@ -139,7 +139,7 @@ class SolicitacaoExames extends Controller
 
         $sexo = $solicitacao['empresaFuncionario']['pessoa']['sexo'];
 
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/solicitacoes-exames/listaPcmsoAmbienteExame/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/solicitacoes-exames/listaPcmsoAmbienteExame/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -201,7 +201,7 @@ class SolicitacaoExames extends Controller
 
         $solicitacao = \json_decode($solicitacao, true);
 
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pcmsos/pegaUltimoPcmsoPorEmpresaEmpresaContrato/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/pcmsos/pegaUltimoPcmsoPorEmpresaEmpresaContrato/");
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
@@ -218,7 +218,7 @@ class SolicitacaoExames extends Controller
         $solicitacao['pcmso'] = json_decode($pcmso, true);
 
 
-        $ah = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/buscaPorIdOrigem/");
+        $ah = curl_init(env('APP_API') . "ServicoSIGSSO/rest/pcmso-ambiente-trabalhos/buscaPorIdOrigem/");
         
         curl_setopt($ah, CURLOPT_RETURNTRANSFER, true);
         
@@ -366,7 +366,7 @@ class SolicitacaoExames extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/solicitacoes/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/solicitacoes/");
 
         \Log::debug($json);
 

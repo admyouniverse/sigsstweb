@@ -57,7 +57,7 @@ class UnidadeDeMedidaController extends Controller
 
         \Log::debug($json);
    //   return $json;
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/unidades-medida");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/unidades-medida");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -128,7 +128,7 @@ class UnidadeDeMedidaController extends Controller
      $json .= '}';
      \Log::debug($json);
    //   return $json;
-     $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/unidades-medida");
+     $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/unidades-medida");
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -165,7 +165,7 @@ class UnidadeDeMedidaController extends Controller
     {   
         \Log::debug($id);
 
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/unidades-medida/" . $id);
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/unidades-medida/" . $id);
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

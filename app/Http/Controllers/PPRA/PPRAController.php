@@ -77,7 +77,7 @@ class PPRAController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ppras");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/ppras");
 
         \Log::debug($json);
 
@@ -194,7 +194,7 @@ class PPRAController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ppra-plano-acoes");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/ppra-plano-acoes");
 
         \Log::debug($json);
 
@@ -232,7 +232,7 @@ class PPRAController extends Controller
 
     public function destroyPlanoAcao($ppra, $id)
     {
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ppra-plano-acoes/" . $id);
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/ppra-plano-acoes/" . $id);
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -261,7 +261,7 @@ class PPRAController extends Controller
      */
     public function destroy($id)
     {
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ppras/" . $id);
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/ppras/" . $id);
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -295,7 +295,7 @@ class PPRAController extends Controller
         \Log::debug($request->contrato['idEmpresaContrato']);
 
         \Log::debug(($request->tipo == 'EMISSÃO' ? 1 : $request->tipo == 'REVISÃO_PARCIAL') ? 2 : 3);
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ppras/retornaVersaoPpra/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/ppras/retornaVersaoPpra/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -314,7 +314,7 @@ class PPRAController extends Controller
 
 
     public function ultimo(Request $request) {
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ppras/pegaUltimoPpraPorEmpresaEmpresaContrato/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/ppras/pegaUltimoPpraPorEmpresaEmpresaContrato/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -331,19 +331,19 @@ class PPRAController extends Controller
     }
 
     public function capa($ppra){
-        $json = file_get_contents(env('APP_API') . "/ServicoSIGSSO/rest/ppra-capas/buscaPpraCapaPorIdPpra/" . $ppra);
+        $json = file_get_contents(env('APP_API') . "ServicoSIGSSO/rest/ppra-capas/buscaPpraCapaPorIdPpra/" . $ppra);
         
         return $json;
     }
 
     public function exames($ppra){
-        $json = file_get_contents(env('APP_API') . "/ServicoSIGSSO/rest/exames/listaPorIdPpra/" . $ppra);
+        $json = file_get_contents(env('APP_API') . "ServicoSIGSSO/rest/exames/listaPorIdPpra/" . $ppra);
         
         return $json;
     }
 
     public function listHistoricoExames($ppra) {
-        $json = file_get_contents(env('APP_API') . "/ServicoSIGSSO/rest/ppra-exames-historico/listaPorIdPpra/" . $ppra);
+        $json = file_get_contents(env('APP_API') . "ServicoSIGSSO/rest/ppra-exames-historico/listaPorIdPpra/" . $ppra);
     
         return $json;
     }
@@ -361,7 +361,7 @@ class PPRAController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ppra-exames-historico/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/ppra-exames-historico/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -394,7 +394,7 @@ class PPRAController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ppra-capas/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/ppra-capas/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -423,7 +423,7 @@ class PPRAController extends Controller
             \Log::debug('vazio');
             return null;
         }
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ppras/listaPpraPorEmpresaEmpresaContratoPeriodoCongelado/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/ppras/listaPpraPorEmpresaEmpresaContratoPeriodoCongelado/");
         
         \Log::debug($request->all());
 

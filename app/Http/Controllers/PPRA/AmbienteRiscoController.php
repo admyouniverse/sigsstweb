@@ -83,7 +83,7 @@ class AmbienteRiscoController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ppra-ambiente-riscos/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/ppra-ambiente-riscos/");
 
         \Log::debug($json);
 
@@ -127,7 +127,7 @@ class AmbienteRiscoController extends Controller
 
             \Log::debug($json);
 
-            $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ppra-ambiente-risco-medidas/");
+            $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/ppra-ambiente-risco-medidas/");
 
             // \Log::debug($json);
 
@@ -167,7 +167,7 @@ class AmbienteRiscoController extends Controller
     {
         \Log::debug($request->all());
 
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ppra-ambiente-risco-medidas/" . $request->idAmbienteRiscoMedida);
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/ppra-ambiente-risco-medidas/" . $request->idAmbienteRiscoMedida);
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -181,7 +181,7 @@ class AmbienteRiscoController extends Controller
 
         \Log::debug($result);
 
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ppra-ambiente-riscos/" . $request->idAmbienteRisco);
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/ppra-ambiente-riscos/" . $request->idAmbienteRisco);
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -208,7 +208,7 @@ class AmbienteRiscoController extends Controller
 
         \Log::debug($request->all());
         
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/ppra-ambiente-risco-medidas/listaPorEmpresaContratoRisco/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/ppra-ambiente-risco-medidas/listaPorEmpresaContratoRisco/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 

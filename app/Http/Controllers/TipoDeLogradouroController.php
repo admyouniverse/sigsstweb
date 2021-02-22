@@ -54,7 +54,7 @@ class TipoDeLogradouroController extends Controller
         $json .= '}';
 
    //   return $json;
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/tiposLogradouro");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/tiposLogradouro");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -122,7 +122,7 @@ class TipoDeLogradouroController extends Controller
      $json .= '}';
 
    //   return $json;
-     $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/tiposLogradouro");
+     $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/tiposLogradouro");
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -159,7 +159,7 @@ class TipoDeLogradouroController extends Controller
     public function destroy($id)
     {
 
-     $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/tiposLogradouro/" . $id);
+     $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/tiposLogradouro/" . $id);
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

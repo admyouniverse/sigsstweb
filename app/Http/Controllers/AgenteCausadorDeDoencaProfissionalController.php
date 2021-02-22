@@ -55,7 +55,7 @@ class AgenteCausadorDeDoencaProfissionalController extends Controller
         $json .= '}';
 
    //   return $json;
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/agentesCausadoresDoencaProf");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/agentesCausadoresDoencaProf");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -124,7 +124,7 @@ class AgenteCausadorDeDoencaProfissionalController extends Controller
      $json .= '}';
 
    //   return $json;
-     $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/agentesCausadoresDoencaProf");
+     $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/agentesCausadoresDoencaProf");
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -161,7 +161,7 @@ class AgenteCausadorDeDoencaProfissionalController extends Controller
     public function destroy($id)
     {
 
-     $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/agentesCausadoresDoencaProf/" . $id);
+     $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/agentesCausadoresDoencaProf/" . $id);
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

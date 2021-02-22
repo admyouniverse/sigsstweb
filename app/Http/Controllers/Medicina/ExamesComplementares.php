@@ -26,7 +26,7 @@ class ExamesComplementares extends Controller
 
     public function ultimo ($funcionario) {
         
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/solicitacoes-exames/listaUltimaSolicitacaoPorEmpresaFuncionario/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/solicitacoes-exames/listaUltimaSolicitacaoPorEmpresaFuncionario/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -50,7 +50,7 @@ class ExamesComplementares extends Controller
     {
         \Log::debug($request->all());
 
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/exames-complementares-exames/listaPorIdEmpresaIdEmpresaFuncionarioDataExameIniFim/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/exames-complementares-exames/listaPorIdEmpresaIdEmpresaFuncionarioDataExameIniFim/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -103,7 +103,7 @@ class ExamesComplementares extends Controller
             
             \Log::debug($array);
             
-            $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/exames-complementares/");
+            $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/exames-complementares/");
             
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             
@@ -205,7 +205,7 @@ class ExamesComplementares extends Controller
     */
     public function destroy($id)
     {
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/exames-complementares-exames/" . $id);
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/exames-complementares-exames/" . $id);
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 

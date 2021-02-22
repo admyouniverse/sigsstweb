@@ -53,7 +53,7 @@ class ClinicaController extends Controller
         $json .= '}';
 
    //   return $json;
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/clinicas");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/clinicas");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -123,7 +123,7 @@ class ClinicaController extends Controller
      $json .= '}';
 
    //   return $json;
-     $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/clinicas");
+     $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/clinicas");
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -162,7 +162,7 @@ class ClinicaController extends Controller
     public function destroy($id)
     {
 
-     $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/clinicas/" . $id);
+     $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/clinicas/" . $id);
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

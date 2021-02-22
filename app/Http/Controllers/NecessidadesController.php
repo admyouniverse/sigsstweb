@@ -58,7 +58,7 @@ class NecessidadesController extends Controller
 
         \Log::debug($json);
    //   return $json;
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/necessidades");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/necessidades");
 
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
@@ -131,7 +131,7 @@ class NecessidadesController extends Controller
      $json .= '}';
 
    //   return $json;
-     $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/necessidades");
+     $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/necessidades");
 
 
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -168,7 +168,7 @@ class NecessidadesController extends Controller
     public function destroy($id)
     {
 
-       $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/necessidades/" . $id);
+       $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/necessidades/" . $id);
 
 
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

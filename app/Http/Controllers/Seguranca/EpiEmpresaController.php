@@ -61,7 +61,7 @@ class EpiEmpresaController extends Controller
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
         $json .= '}';
 
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/grade-empresa-epis/");
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/grade-empresa-epis/");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -96,7 +96,7 @@ class EpiEmpresaController extends Controller
      */
     public function destroyGrade($id)
     {
-        $ch = curl_init(env('APP_API') . "/ServicoSIGSSO/rest/grade-empresa-epis/" . $id);
+        $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/grade-empresa-epis/" . $id);
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
