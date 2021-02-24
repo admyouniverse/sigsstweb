@@ -11,5 +11,27 @@ const mix = require('laravel-mix');
  |
  */
 
+
+
+// mix.webpackConfig(webpack => { return {
+//     resolve      : { symlinks: false },
+//     watchOptions : { ignored: /node_modules/ },
+//     output       : { publicPath: '/', chunkFilename: '[name].js' },
+//     plugins      : [new webpack.DefinePlugin({ '__VUE_OPTIONS_API__': 'true', '__VUE_PROD_DEVTOOLS__': 'false' })],
+// }});
+
+mix.webpackConfig({
+    output: {
+        chunkFilename: 'js/[name].[contenthash].js',
+    }
+});
+
+
+// mix.extract(['vue', 'jquery']);
+
+
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
+
+
+    

@@ -14,10 +14,11 @@ class AutenticacaoController extends Controller
      */
     public function entrar(Request $request)
     {
-        \Log::debug($request->all());
+        \Log::debug(env('APP_API'));
         
 
         $ch = curl_init(env('APP_API') . "ServicoSIGSSO/rest/usuarios/autenticarLogin/");
+        
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -28,9 +29,11 @@ class AutenticacaoController extends Controller
         ));
 
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+
         $result = curl_exec($ch);
         $result = json_decode($result, true);
 
+        \Log::debug($result);
         if($result['msg'] == 'true') {
             $usuario = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/usuarios/login/' . $request->usuario);
             Session::put('usuario', $usuario);
