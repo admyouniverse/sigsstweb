@@ -279,7 +279,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
     <script src="{{ asset('js/datatables.js') }}"></script>
     <script src="//cdn.datatables.net/plug-ins/1.10.10/sorting/datetime-moment.js"></script>
-    <script src="{{ asset('fonts/fontawesome/js/all.min.js') }}"></script>
+    {{-- <script src="{{ asset('fonts/fontawesome/js/all.min.js') }}"></script> --}}
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script>
         if (window.name == "reloader") {

@@ -20,14 +20,20 @@ const mix = require('laravel-mix');
 //     plugins      : [new webpack.DefinePlugin({ '__VUE_OPTIONS_API__': 'true', '__VUE_PROD_DEVTOOLS__': 'false' })],
 // }});
 
+// // mix.webpackConfig({
+// //     entry: {
+// //         main: ['./resources/sass/app.scss']
+// //     }
+// });
 
 
+mix.extract(['vue', 'jquery']);
 
-// mix.extract(['vue', 'jquery']);
 
+mix.js('resources/js/app.js', 'public/js');
+    
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+// mix.sass('resources/sass/app.scss', 'public/css');
 
 
     
