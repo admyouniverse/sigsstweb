@@ -131,6 +131,11 @@ hr {
         }
     }
 }
+.card {
+    &.sig {
+        width: 100%;
+    }
+}
 
 .sig {
     .tabs {
