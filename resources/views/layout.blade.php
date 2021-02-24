@@ -15,7 +15,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('fonts/fontawesome/css/all.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ asset('css/datatable.min.css') }}">
     @yield('css')
 </head>
 
@@ -275,12 +275,12 @@
     <script src="{{ asset('js/vendor.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 
-    <script src="{{ asset('js/scroll.js') }}"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+    {{-- <script src="{{ asset('js/scroll.js') }}"></script> --}}
+    <script src="{{asset('js/moment.min.js')}}"></script>
     <script src="{{ asset('js/datatables.js') }}"></script>
-    <script src="//cdn.datatables.net/plug-ins/1.10.10/sorting/datetime-moment.js"></script>
+    <script src="{{asset('js/datetime-moment.js')}}"></script>
     {{-- <script src="{{ asset('fonts/fontawesome/js/all.min.js') }}"></script> --}}
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{asset('js/dataTables.bootstrap4.min.js')}}"></script>
     <script>
         if (window.name == "reloader") {
             window.name = "";
@@ -293,8 +293,6 @@
             window.name = "reloader";
         }
     </script>
-
-
 
     @yield('script')
 </body>

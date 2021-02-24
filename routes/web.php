@@ -711,7 +711,7 @@ Route::prefix('posto-entrega')->group(function() {
     Route::post('/', 'Seguranca\PostoEntregaController@store');
     Route::get('/excluir/{id}', 'Seguranca\PostoEntregaController@destroy');
     Route::get('/entrega', 'Seguranca\EntregaEpiController@index')->name('entrega-epi');
-    Route::post('/entrega', 'Seguranca\EntregaEpiController@store')->name('entrega-epi');
+    Route::post('/entrega', 'Seguranca\EntregaEpiController@store');
     Route::post('/entrega/assinar', 'Seguranca\EntregaEpiController@assinar');
     Route::get('/entrega/remover-item/{id}', 'Seguranca\EntregaEpiController@removerItem');
     Route::post('/entrega/historico/', 'Seguranca\EntregaEpiController@historico');
