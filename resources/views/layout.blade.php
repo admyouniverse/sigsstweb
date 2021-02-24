@@ -282,16 +282,16 @@
     {{-- <script src="{{ asset('fonts/fontawesome/js/all.min.js') }}"></script> --}}
     <script src="{{asset('js/dataTables.bootstrap4.min.js')}}"></script>
     <script>
-        if (window.name == "reloader") {
-            window.name = "";
-            location.reload();
-        } else {
+        // if (window.name == "reloader") {
+        //     window.name = "";
+        //     location.reload();
+        // } else {
             $('#app').css({opacity: 1});
-        }
+        // }
 
-        window.onbeforeunload = function () {
-            window.name = "reloader";
-        }
+        // window.onbeforeunload = function () {
+        //     window.name = "reloader";
+        // }
     </script>
 
     @yield('script')
