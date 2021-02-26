@@ -31,7 +31,7 @@ class AsoController extends Controller
 
         do {
             try {
-                \Log::debug('INICIOU PCMSO');
+                // \Log::debug('INICIOU PCMSO');
 
                 $pcmso = Http::withHeaders([
                     'idEmpresa' => $request->empresa,
@@ -41,7 +41,7 @@ class AsoController extends Controller
 
                 $pcmso = json_decode($pcmso, true);
 
-                \Log::debug('INICIOU AMBIENTE');
+                // \Log::debug('INICIOU AMBIENTE');
 
                 $ambiente = Http::withHeaders([
                     'idPcmso' => $pcmso['idPcmso'],
@@ -52,20 +52,32 @@ class AsoController extends Controller
 
                 $ambiente = json_decode($ambiente, true);
 
-                \Log::debug('INICIOU ASO');
+                // \Log::debug('INICIOU ASO');
 
-                $aso = Http::get(env('APP_API') . 'ServicoSIGSSO/rest/pcmso-asos/listaPorIdPcmsoAmbienteTrabalho/' . $ambiente['idPcmsoAmbienteTrabalho']);
-                \Log::debug('INICIOU EXAMINADORES');
+                $aso = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/pcmso-asos/listaPorIdPcmsoAmbienteTrabalho/' . $ambiente['idPcmsoAmbienteTrabalho']);
+                // \Log::debug('INICIOU EXAMINADORES');
 
+                
                 $examinadores = Http::withHeaders([
                     'idEmpresa' => $request->empresa,
                     'dataPrograma' => $request->data,
                 ])->get(env('APP_API') . 'ServicoSIGSSO/rest/empresa-profissionais/listaMedicoExaminador');
+                
 
-                // \Log::debug($examinadores);
+                // $clinicas = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/clinicas/');
 
-                \Log::debug('RETORNANDO!');
+        
+                // \Log::debug('RETORNANDO!');
                 $retorno['pcmso'] = $pcmso;
+                
+                \Log::debug($retorno);
+
+                $retorno['asoPcmso'] = json_decode($aso, true);
+
+                $retorno['examinadores'] = json_decode($examinadores, true);
+                
+                // $retorno['clinicas'] = json_decode($clinicas, true);
+
                 return $retorno;
 
             } catch (\Exception $e) {

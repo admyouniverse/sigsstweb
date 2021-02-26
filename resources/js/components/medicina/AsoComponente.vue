@@ -752,13 +752,14 @@
                                 <input type="text" class="form-control" />
                             </div>
                             <div class="col-md-3" style="margin-top: 1.8rem">
-                                <button class="btn btn-block btn-success">
+                                       
+                                <button @click="abrirRecomendacao" class="btn btn-block btn-success">
                                     <i class="fas fa-eye"></i> Recomendação do
                                     PCMSO
                                 </button>
                             </div>
                             <div class="col-md-3" style="margin-top: 1.8rem">
-                                <button class="btn btn-success btn-block">
+                                <button @click="abrirProntuario" class="btn btn-success btn-block">
                                     <i class="fas fa-eye"></i> Anotações no
                                     Prontuário
                                 </button>
@@ -786,6 +787,27 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="">Local</label>
+                                <select v-model="aso.cidade" class="form-control">
+                                    <option :value="cidade" v-for="cidade in cidades">{{ cidade.nomeCidade}} - {{cidade.uf}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="">Data de Emissão</label>
+                                <input type="date" class="form-control" v-model="aso.dataEmissao">
+                            </div>
+                            <div class="col-md-2">
+                                <label for="">Resultado</label>
+                                <select v-model="aso.resultadoExame" class="form-control">
+                                    <option value="APTO">Apto</option>
+                                    <option value="INAPTO">Inapto</option>
+                                    <option value="APTO_COM_RESTRIÇÃO">Apto com restrição</option>
+                                </select>
+                            </div>
+                        </div>
                     </b-tab>
                     <b-tab
                         title="Fatores de Risco"
@@ -809,7 +831,6 @@
             </div>
             <template v-slot:modal-footer="{ ok, cancel, hide }">
                 <!-- Emulate built in modal footer ok and cancel button actions -->
-
                 <b-button variant="success" @click="ok()">
                     Próximo
                 </b-button>
@@ -817,6 +838,23 @@
                     Fechar
                 </b-button>
             </template>
+        </b-modal>
+
+        <b-modal ok-only ok-title="Fechar" size="lg" title="Recomendação PCMSO" id="modalRecomendacao" ref="modalRecomendacao">
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Demissional</label>
+                    <input type="text" class="form-control" disabled v-model="asoPcmso.demissional">
+                </div>
+                <div class="col-md-3">
+                    <label>Periodo</label>
+                    <input type="text" class="form-control" disabled v-model="asoPcmso.periodo">
+                </div>
+                <div class="col-md-6">
+                    <label>Recomendação</label>
+                    <input type="text" class="form-control" disabled v-model="asoPcmso.recomendacao">
+                </div>
+            </div>
         </b-modal>
     </section>
 </template>
@@ -832,7 +870,9 @@ export default {
             afastados: [],
             carregando: false,
             clinicas: [],
+            cidades: [],
             examinadores: [],
+            asoPcmso: {},
             mensagem: "Carregando...",
             html: '<i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>',
             aso: {
@@ -871,6 +911,13 @@ export default {
         }
     },
     methods: {
+        abrirProntuario() {
+           var win = window.open("/prontuario-medico?funcionario=" + this.aso.empresaFuncionario.idEmpresaFuncionario, '_blank');
+           win.focus();
+        },
+        abrirRecomendacao() {
+            this.$refs.modalRecomendacao.show();
+        },
         idade: function(nascimentoPessoa) {
             var nascimento = new Date(nascimentoPessoa);
             var hoje = new Date();
@@ -931,6 +978,7 @@ export default {
                 this.aso.tipoAtestado = "ADMISSIONAL";
 
                 this.aso.data = this.hoje;
+                
                 var that = this;
 
                 this.carregar("Carregando dados...");
@@ -952,6 +1000,10 @@ export default {
 
                                 that.examinadores = response.data.examinadores;
 
+                                that.asoPcmso = response.data.asoPcmso[0];
+
+                                that.aso.cidade = that.aso.pcmso.empresasContrato[0].empresa.cidade;
+                                // that.clinicas = response.data.clinicas;
                                 axios
                                     .get(
                                         process.env.MIX_APP_API + "ServicoSIGSSO/rest/pcmso-historico-revisoes/listaPorIdPcmso/" +
@@ -997,10 +1049,10 @@ export default {
             .get(
                 process.env.MIX_APP_API + "ServicoSIGSSO/rest/empresaFuncionarios/listaFuncionariosAtivosPorIdEmpresa/" +
                     that.empresa.idEmpresa
-            )
+            ) 
             .then(function(response) {
                 that.funcionarios = response.data;
-                that.carregando = false;
+                // that.carregando = false;
             });
 
         // axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/empresaFuncionarios/listaDemitidosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
@@ -1012,9 +1064,18 @@ export default {
 
         // });
 
-        // axios.get('/tabelas/clinica/list').then(function (response) {
-        //     that.clinicas = response.data;
-        // });
+        axios.get('/tabelas/clinica/list').then(function (response) {
+            that.clinicas = response.data;
+        });
+
+         axios
+            .get(
+                process.env.MIX_APP_API + "ServicoSIGSSO/rest/cidades"
+            ) 
+            .then(function(response) {
+                that.cidades = response.data;
+                that.carregando = false;
+            });
     }
 };
 </script>

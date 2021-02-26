@@ -36,7 +36,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr style="cursor: pointer" @click="abrir(funcionario)" v-for="funcionario in funcionarios">
+                                    <tr style="cursor: pointer" @click="abrir(funcionario.idEmpresaFuncionario)" v-for="funcionario in funcionarios">
                                         <td>{{ funcionario.pessoa.idPessoa }}</td>
                                         <td>{{ funcionario.matricula }}</td>
                                         <td>{{ funcionario.pessoa.nomePessoa }}</td>
@@ -82,7 +82,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr style="cursor: pointer" @click="abrir(inativo)" v-for="inativo in inativos">
+                                    <tr style="cursor: pointer" @click="abrir(inativo.idEmpresaFuncionario)" v-for="inativo in inativos">
                                         <td>{{ inativo.pessoa.idPessoa }}</td>
                                         <td>{{ inativo.matricula }}</td>
                                         <td>{{ inativo.pessoa.nomePessoa }}</td>
@@ -378,16 +378,16 @@ export default {
             }
             document.getElementById("anotacao").dispatchEvent(new Event('input'));
         },
-        abrir(funcionario) {
+        abrir(idEmpresaFuncionario) {
             var that = this;
 
-            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/prontuarios/listaProntuarioPorIdEmpresaFuncionario/' + funcionario.idEmpresaFuncionario).then(function (response) {
+            axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/prontuarios/listaProntuarioPorIdEmpresaFuncionario/' + idEmpresaFuncionario).then(function (response) {
                 that.prontuario = response.data;
                 console.log('prontuario!', that.prontuario);
                 if(that.prontuario) {
                     that.$refs.modalProntuario.show();
                 } else {
-                    alert('Não há prontuário.')
+                    alert('Não há prontuário.');
                 }
                 
             });
@@ -452,17 +452,28 @@ export default {
     },
     mounted() {
 
+         var uri = window.location.search.substring(1);
+            var params = new URLSearchParams(uri);
+
+     
+            
         this.mensagem = 'Carregando empregados...';
         var that = this;
         axios.get('/empresas/funcionarios/' + that.empresa.idEmpresa).then(function (response) {
             that.funcionarios = response.data;
 
+            if(params.get("funcionario")) {
+                that.abrir(params.get("funcionario"));
+             }      
         });
 
          axios.get(process.env.MIX_APP_API + 'ServicoSIGSSO/rest/empresaFuncionarios/listaDemitidosPorIdEmpresa/' + that.empresa.idEmpresa).then(function (response) {
             that.inativos = response.data;
 
         });
+
+
+    
 
     }
 }
