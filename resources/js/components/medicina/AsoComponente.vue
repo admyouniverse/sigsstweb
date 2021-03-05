@@ -811,9 +811,152 @@
                     </b-tab>
                     <b-tab
                         title="Fatores de Risco"
-                        :disabled="aso.idAsoSolicitacao == 0"
+                        :disabled="aso.idAsoSolicitacao != 0"
                     >
-                        <!-- <p>I'm the second tab</p> -->
+                        
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Risco</th>
+                                        <th>Fonte Geradora</th>
+                                        <th>Exp.</th>
+                                        <th>Valor</th>
+                                        <th>L. Tol.</th>
+                                        <th>N. Ação</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td colspan="6" class="text-left grupo-title" style="background-color:rgb(0, 128, 0)">Grupo Físico</td>
+                                    </tr>
+                                    <tr v-for="fator in fatores" v-if="fator.risco.grupoRisco == 'FÍSICO'">
+                                        <td>{{fator.risco.nomeRisco}}</td>
+                                        <td>{{fator.fonteGeradora.descricao}}</td>
+                                        <td>{{fator.exposicao}}</td>
+                                        <td v-if="fator.risco.enquadramento == 'QUANTITATIVO'">
+                                            <span :class="{'text-success': fator.medida.medida < fator.unidade.nivelAcao, 'text-warning': fator.medida.medida >= fator.unidade.nivelAcao && fator.medida.medida < fator.unidade.limiteTolerancia, 'text-danger': fator.medida.medida >= fator.unidade.limiteTolerancia}">
+                                                <strong>{{fator.medida.medida}} {{fator.unidade.unidadeMedida.unidade}}</strong>
+                                            </span>
+                                        </td>
+                                        <td v-if="fator.risco.enquadramento == 'QUALITATIVO'">Qualitativo</td>
+                                        
+
+                                        <td v-if="fator.risco.enquadramento == 'QUANTITATIVO'">{{fator.unidade.limiteTolerancia}}{{fator.unidade.unidadeMedida.unidade}}</td>
+                                        <td v-if="fator.risco.enquadramento == 'QUALITATIVO'">-</td>
+
+                                        <td v-if="fator.risco.enquadramento == 'QUANTITATIVO'">{{fator.unidade.nivelAcao}}{{fator.unidade.unidadeMedida.unidade}}</td>
+                                        <td v-if="fator.risco.enquadramento == 'QUALITATIVO'">-</td>
+                                    </tr>
+                                    <tr v-if="fatores.filter(e => e.risco.grupoRisco === 'FÍSICO').length == 0">
+                                        <td colspan="6"> Sem contato </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6" class="text-left grupo-title" style="background-color:rgb(255, 0, 0)">Grupo Químico</td>
+                                    </tr>
+                                    <tr v-for="fator in fatores" v-if="fator.risco.grupoRisco == 'QUÍMICO'">
+                                        <td>{{fator.risco.nomeRisco}}</td>
+                                        <td>{{fator.fonteGeradora.descricao}}</td>
+                                        <td>{{fator.exposicao}}</td>
+                                        <td v-if="fator.risco.enquadramento == 'QUANTITATIVO'">
+                                            <span :class="{'text-success': fator.medida.medida < fator.unidade.nivelAcao, 'text-warning': fator.medida.medida >= fator.unidade.nivelAcao && fator.medida.medida < fator.unidade.limiteTolerancia, 'text-danger': fator.medida.medida >= fator.unidade.limiteTolerancia}">
+                                                <strong>{{fator.medida.medida}} {{fator.unidade.unidadeMedida.unidade}}</strong>
+                                            </span>
+                                        </td>
+                                        <td v-if="fator.risco.enquadramento == 'QUALITATIVO'">Qualitativo</td>
+                                        
+
+                                        <td v-if="fator.risco.enquadramento == 'QUANTITATIVO'">{{fator.unidade.limiteTolerancia}}{{fator.unidade.unidadeMedida.unidade}}</td>
+                                        <td v-if="fator.risco.enquadramento == 'QUALITATIVO'">-</td>
+
+                                        <td v-if="fator.risco.enquadramento == 'QUANTITATIVO'">{{fator.unidade.nivelAcao}}{{fator.unidade.unidadeMedida.unidade}}</td>
+                                        <td v-if="fator.risco.enquadramento == 'QUALITATIVO'">-</td>
+                                    </tr>
+                                    <tr v-if="fatores.filter(e => e.risco.grupoRisco === 'QUÍMICO').length == 0">
+                                        <td colspan="6"> Sem contato </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6" class="text-left grupo-title" style="background-color:rgb(148, 90, 30)">Grupo Biológico</td>
+                                    </tr>
+                                    <tr v-for="fator in fatores" v-if="fator.risco.grupoRisco == 'BIOLÓGICO'">
+                                        <td>{{fator.risco.nomeRisco}}</td>
+                                        <td>{{fator.fonteGeradora.descricao}}</td>
+                                        <td>{{fator.exposicao}}</td>
+                                        <td v-if="fator.risco.enquadramento == 'QUANTITATIVO'">
+                                            <span :class="{'text-success': fator.medida.medida < fator.unidade.nivelAcao, 'text-warning': fator.medida.medida >= fator.unidade.nivelAcao && fator.medida.medida < fator.unidade.limiteTolerancia, 'text-danger': fator.medida.medida >= fator.unidade.limiteTolerancia}">
+                                                <strong>{{fator.medida.medida}} {{fator.unidade.unidadeMedida.unidade}}</strong>
+                                            </span>
+                                        </td>
+                                        <td v-if="fator.risco.enquadramento == 'QUALITATIVO'">Qualitativo</td>
+                                        
+
+                                        <td v-if="fator.risco.enquadramento == 'QUANTITATIVO'">{{fator.unidade.limiteTolerancia}}{{fator.unidade.unidadeMedida.unidade}}</td>
+                                        <td v-if="fator.risco.enquadramento == 'QUALITATIVO'">-</td>
+
+                                        <td v-if="fator.risco.enquadramento == 'QUANTITATIVO'">{{fator.unidade.nivelAcao}}{{fator.unidade.unidadeMedida.unidade}}</td>
+                                        <td v-if="fator.risco.enquadramento == 'QUALITATIVO'">-</td>
+                                    </tr>
+                                    <tr v-if="fatores.filter(e => e.risco.grupoRisco === 'BIOLÓGICO').length == 0">
+                                        <td colspan="6"> Sem contato </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6" class="text-left grupo-title" style="background-color:rgb(255, 255, 0); color: black">Grupo Ergonômico</td>
+                                    </tr>
+                                    <tr v-for="fator in fatores" v-if="fator.risco.grupoRisco == 'ERGONÔMICO'">
+                                        <td>{{fator.risco.nomeRisco}}</td>
+                                        <td>{{fator.fonteGeradora.descricao}}</td>
+                                        <td>{{fator.exposicao}}</td>
+                                        <td v-if="fator.risco.enquadramento == 'QUANTITATIVO'">
+                                            <span :class="{'text-success': fator.medida.medida < fator.unidade.nivelAcao, 'text-warning': fator.medida.medida >= fator.unidade.nivelAcao && fator.medida.medida < fator.unidade.limiteTolerancia, 'text-danger': fator.medida.medida >= fator.unidade.limiteTolerancia}">
+                                                <strong>{{fator.medida.medida}} {{fator.unidade.unidadeMedida.unidade}}</strong>
+                                            </span>
+                                        </td>
+                                        <td v-if="fator.risco.enquadramento == 'QUALITATIVO'">Qualitativo</td>
+                                        
+
+                                        <td v-if="fator.risco.enquadramento == 'QUANTITATIVO'">{{fator.unidade.limiteTolerancia}}{{fator.unidade.unidadeMedida.unidade}}</td>
+                                        <td v-if="fator.risco.enquadramento == 'QUALITATIVO'">-</td>
+
+                                        <td v-if="fator.risco.enquadramento == 'QUANTITATIVO'">{{fator.unidade.nivelAcao}}{{fator.unidade.unidadeMedida.unidade}}</td>
+                                        <td v-if="fator.risco.enquadramento == 'QUALITATIVO'">-</td>
+                                    </tr>
+                                    <tr v-if="fatores.filter(e => e.risco.grupoRisco === 'ERGONÔMICO').length == 0">
+                                        <td colspan="6"> Sem contato </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6" class="text-left grupo-title" style="background-color:rgb(0, 0, 255)">Grupo Acidente</td>
+                                    </tr>
+                                    <tr v-for="fator in fatores" v-if="fator.risco.grupoRisco == 'ACIDENTE'">
+                                        <td>{{fator.risco.nomeRisco}}</td>
+                                        <td>{{fator.fonteGeradora.descricao}}</td>
+                                        <td>{{fator.exposicao}}</td>
+                                        <td v-if="fator.risco.enquadramento == 'QUANTITATIVO'">
+                                            <span :class="{'text-success': fator.medida.medida < fator.unidade.nivelAcao, 'text-warning': fator.medida.medida >= fator.unidade.nivelAcao && fator.medida.medida < fator.unidade.limiteTolerancia, 'text-danger': fator.medida.medida >= fator.unidade.limiteTolerancia}">
+                                                <strong>{{fator.medida.medida}} {{fator.unidade.unidadeMedida.unidade}}</strong>
+                                            </span>
+                                        </td>
+                                        <td v-if="fator.risco.enquadramento == 'QUALITATIVO'">Qualitativo</td>
+                                        
+
+                                        <td v-if="fator.risco.enquadramento == 'QUANTITATIVO'">{{fator.unidade.limiteTolerancia}}{{fator.unidade.unidadeMedida.unidade}}</td>
+                                        <td v-if="fator.risco.enquadramento == 'QUALITATIVO'">-</td>
+
+                                        <td v-if="fator.risco.enquadramento == 'QUANTITATIVO'">{{fator.unidade.nivelAcao}}{{fator.unidade.unidadeMedida.unidade}}</td>
+                                        <td v-if="fator.risco.enquadramento == 'QUALITATIVO'">-</td>
+                                    </tr>
+                                    <tr v-if="fatores.filter(e => e.risco.grupoRisco === 'ACIDENTE').length == 0">
+                                        <td colspan="6"> Sem contato </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+
                     </b-tab>
                     <b-tab
                         title="Exames Complementares"
@@ -829,15 +972,6 @@
                     </b-tab>
                 </b-tabs>
             </div>
-            <template v-slot:modal-footer="{ ok, cancel, hide }">
-                <!-- Emulate built in modal footer ok and cancel button actions -->
-                <b-button variant="success" @click="ok()">
-                    Próximo
-                </b-button>
-                <b-button variant="danger" @click="cancel()">
-                    Fechar
-                </b-button>
-            </template>
         </b-modal>
 
         <b-modal ok-only ok-title="Fechar" size="lg" title="Recomendação PCMSO" id="modalRecomendacao" ref="modalRecomendacao">
@@ -890,6 +1024,7 @@ export default {
                 clinica: {},
                 medicoExaminador: {}
             },
+            fatores: [],
             tipo: ""
         };
     },
@@ -964,7 +1099,19 @@ export default {
                 return "F";
             }
         },
-        salvar: function() {},
+        salvar: function(evt) {
+            evt.preventDefault();
+            
+            console.log(this.aso);
+
+            var that = this;
+            
+            axios.post('/atestado-saude-ocupacional/', {
+                solicitacao: that.aso
+            }).then(function(response) {
+                console.log(response);
+            });
+        },
         carregar: function(msg) {
             this.mensagem = msg;
             this.html = '<i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>';
@@ -976,6 +1123,7 @@ export default {
                 this.aso.idAsoSolicitacao = 0;
                 this.aso.empresaFuncionario = funcionario;
                 this.aso.tipoAtestado = "ADMISSIONAL";
+                this.aso.tipo = 'PRÉ_ASO';
 
                 this.aso.data = this.hoje;
                 
@@ -1001,6 +1149,8 @@ export default {
                                 that.examinadores = response.data.examinadores;
 
                                 that.asoPcmso = response.data.asoPcmso[0];
+
+                                that.fatores = response.data.riscos;
 
                                 that.aso.cidade = that.aso.pcmso.empresasContrato[0].empresa.cidade;
                                 // that.clinicas = response.data.clinicas;
@@ -1105,5 +1255,10 @@ export default {
 
 .nowrap {
     white-space: nowrap;
+}
+
+.grupo-title {
+    font-weight: bold; 
+    color: white;
 }
 </style>

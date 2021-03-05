@@ -25,12 +25,11 @@ class AsoController extends Controller
 
     public function ultimo(Request $request)
     {
-        $tentativas = 0;
+        
 
-        // \Log::debug('INICIOU PCMSO');
+        \Log::debug('INICIOU PCMSO');
 
-        do {
-            try {
+       
                 // \Log::debug('INICIOU PCMSO');
 
                 $pcmso = Http::withHeaders([
@@ -40,6 +39,7 @@ class AsoController extends Controller
                 ])->get(env('APP_API') . 'ServicoSIGSSO/rest/pcmsos/pegaUltimoPcmsoPorEmpresaEmpresaContrato/');
 
                 $pcmso = json_decode($pcmso, true);
+
 
                 // \Log::debug('INICIOU AMBIENTE');
 
@@ -78,21 +78,12 @@ class AsoController extends Controller
                 
                 // $retorno['clinicas'] = json_decode($clinicas, true);
 
+                $riscos = $this->listRiscos($request->idOrigem, $pcmso['ppra']['idPpra']);
+
+                $retorno['riscos'] = json_decode($riscos, true);
+
                 return $retorno;
-
-            } catch (\Exception $e) {
-                $tentativas++;
-
-                \Log::debug('Erro');
-
-                \Log::debug($tentativas);
-
-                \Log::debug($e->getMessage());
-
-                continue;
-            }
-
-        } while ($tentativas < 5);
+        
 
         // $teste = Http::get('https://pokeapi.co/api/v2/pokemon/ditto');
 
@@ -188,6 +179,62 @@ class AsoController extends Controller
         return null;
     }
 
+
+    public function listRiscos($idAmbiente, $idPpra) {
+        $json = file_get_contents(env('APP_API') . "ServicoSIGSSO/rest/ppra-ambiente-trabalhos/listaPorIdOrigem/" . $idAmbiente);
+
+        $ambientes = json_decode($json, true);
+        
+        foreach($ambientes as $amb) {
+            if($amb['ppra']['idPpra'] == $idPpra) {
+                $ambiente = $amb;
+            }   
+        }
+
+        $json = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppra-ambiente-riscos/buscaPpraAmbienteRiscoPorIdAmbienteTrabalho/' . $ambiente['idPpraAmbienteTrabalho']);
+
+        $decode = json_decode($json, true);
+        $riscos = [];
+
+        foreach ($decode as $risco) {
+
+            $medida = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/ppra-ambiente-risco-medidas/PpraAmbienteRisco/' . $risco['idPpraAmbienteRisco']);
+
+            $medida = json_decode($medida, true);
+
+            if (!empty($medida)) {
+                $medida[0]['ppraAmbienteRisco'] = [];
+                $risco['medida'] = $medida[0];
+
+            } else {
+                $risco['medida'] = [];
+            }
+
+            if ($risco['risco']['enquadramento'] == 'QUANTITATIVO') {
+                $unidades = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/riscos-unidades-medida/listaPorIdRisco/' . $risco['risco']['idRisco']);
+                $unidades = json_decode($unidades, true);
+                $risco['unidade'] = $unidades[0];
+            } else {
+                $risco['unidade'] = [];
+            }
+
+
+            if(isset($risco['pesoX']['peso']) && isset($risco['pesoY']['peso'])) {
+                $nivel = file_get_contents(env('APP_API') . 'ServicoSIGSSO/rest/matriz-risco-nivel/buscaPorValor/' . $risco['pesoX']['peso'] * $risco['pesoY']['peso'] . '?idMatrizRisco=' . $risco['ppraAmbienteTrabalho']['ppra']['matrizRisco']['idMatrizRisco']);
+
+                $risco['nivel'] = json_decode($nivel, true);
+            }
+
+
+        
+
+            array_push($riscos, $risco);
+
+        }
+
+        return json_encode($riscos);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -207,30 +254,22 @@ class AsoController extends Controller
     public function store(Request $request)
     {
         \Log::debug($request->solicitacao);
+        
         $array = $request->solicitacao;
 
         $array['medicoCoordenador'] = $request->solicitacao['medicoCoordenador']['idEmpresaProfissional'];
+        $array['medicoExaminador'] = $request->solicitacao['medicoExaminador']['idEmpresaProfissional'];
+        $array['clinica'] = $request->solicitacao['clinica']['idClinica'];
+        $array['cidade'] = $request->solicitacao['cidade']['idCidade'];
+        $array['proximoExame']  = 'teste';
+        $array['tipo'] = 'PRÉ_ASO';
+
         $array['pcmso'] = $request->solicitacao['pcmso']['idPcmso'];
         $array['usuario'] = 1;
 
-        if ($request->solicitacao['tipoAtestado'] == 'ADMISSIONAL') {
-
-            unset($array['empresaFuncionario']);
-            $array['matricula'] = substr(hexdec(uniqid()) . 'T', 6);
-
-            $array['pessoa'] = $request->solicitacao['empresaFuncionario']['pessoa']['idPessoa'];
-            $array['funcao'] = $request->solicitacao['empresaFuncionario']['funcao']['idFuncao'];
-
-            $array['ambienteTrabalho'] = $request->solicitacao['empresaFuncionario']['ambienteTrabalho']['idAmbienteTrabalho'];
-
-            $array['empresaContrato'] = $request->solicitacao['empresaFuncionario']['empresaContrato']['idEmpresaContrato'];
-
-            $array['jornadaTrabalho'] = 1;
-
-        } else {
             // $array['tipoAtestado'] = 'MONITORAÇÃO_PONTUAL';
-            $array['empresaFuncionario'] = $request->solicitacao['empresaFuncionario']['idEmpresaFuncionario'];
-        }
+        $array['empresaFuncionario'] = $request->solicitacao['empresaFuncionario']['idEmpresaFuncionario'];
+        
 
         $json = json_encode($array);
         $json = substr($json, 0, -1); // Substring -1 character from the end of the json variable, this will be the trailing comma.
@@ -259,7 +298,6 @@ class AsoController extends Controller
 
         if ($result['status'] == 'true') {
             $solicitacao = $this->solicitacao($result['msg']);
-            $solicitacao['asoSolicitacaoExames'] = $this->buscarExamesPcmso($result['msg']);
             return $solicitacao;
         } else {
             \Log::debug($result);
