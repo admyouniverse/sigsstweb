@@ -831,7 +831,7 @@
 
                                 <tbody>
                                     <tr>
-                                        <td colspan="6" class="text-left grupo-title" style="background-color:rgb(0, 128, 0)">Grupo Físico</td>
+                                        <td colspan="6" class="text-left grupo-title" style="border-top-color:rgb(0, 128, 0)"> <div class="square" style="background-color: rgb(0, 128, 0)"></div> Grupo Físico</td>
                                     </tr>
                                     <tr v-for="fator in fatores" v-if="fator.risco.grupoRisco == 'FÍSICO'">
                                         <td>{{fator.risco.nomeRisco}}</td>
@@ -855,7 +855,7 @@
                                         <td colspan="6"> Sem contato </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="6" class="text-left grupo-title" style="background-color:rgb(255, 0, 0)">Grupo Químico</td>
+                                        <td colspan="6" class="text-left grupo-title" style="border-top-color:rgb(255, 0, 0)"> <div class="square" style="background-color: rgb(255, 0, 0)"></div> Grupo Químico</td>
                                     </tr>
                                     <tr v-for="fator in fatores" v-if="fator.risco.grupoRisco == 'QUÍMICO'">
                                         <td>{{fator.risco.nomeRisco}}</td>
@@ -879,7 +879,7 @@
                                         <td colspan="6"> Sem contato </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="6" class="text-left grupo-title" style="background-color:rgb(148, 90, 30)">Grupo Biológico</td>
+                                        <td colspan="6" class="text-left grupo-title" style="border-top-color:rgb(148, 90, 30)"> <div class="square" style="background-color: rgb(148, 90, 30)"></div>  Grupo Biológico</td>
                                     </tr>
                                     <tr v-for="fator in fatores" v-if="fator.risco.grupoRisco == 'BIOLÓGICO'">
                                         <td>{{fator.risco.nomeRisco}}</td>
@@ -903,7 +903,7 @@
                                         <td colspan="6"> Sem contato </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="6" class="text-left grupo-title" style="background-color:rgb(255, 255, 0); color: black">Grupo Ergonômico</td>
+                                        <td colspan="6" class="text-left grupo-title" style="border-top-color:rgb(255, 255, 0); color: black"> <div class="square" style="background-color: rgb(255, 255, 0)"></div> Grupo Ergonômico</td>
                                     </tr>
                                     <tr v-for="fator in fatores" v-if="fator.risco.grupoRisco == 'ERGONÔMICO'">
                                         <td>{{fator.risco.nomeRisco}}</td>
@@ -927,7 +927,7 @@
                                         <td colspan="6"> Sem contato </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="6" class="text-left grupo-title" style="background-color:rgb(0, 0, 255)">Grupo Acidente</td>
+                                        <td colspan="6" class="text-left grupo-title" style="border-top-color:rgb(0, 0, 255)"> <div class="square" style="background-color: rgb(0, 0, 255)"></div>  Grupo Acidente</td>
                                     </tr>
                                     <tr v-for="fator in fatores" v-if="fator.risco.grupoRisco == 'ACIDENTE'">
                                         <td>{{fator.risco.nomeRisco}}</td>
@@ -1259,6 +1259,17 @@ export default {
 
 .grupo-title {
     font-weight: bold; 
-    color: white;
+    border-top-style: solid;
+    border-top-width: 3px;
+    padding-left: 38px;
+
+    div.square {
+        height: 32px;
+        width: 32px;
+        display: inline-block;
+        margin-left: -38px;
+        margin-top: -4px;
+        position: absolute;
+    }
 }
 </style>
