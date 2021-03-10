@@ -627,7 +627,7 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="">Válido Até</label>
-                                    <input type="date" class="form-control" />
+                                    <input type="date" class="form-control" v-model="aso.proximoExame" disabled/>
                                 </div>
                             </div>
                             <div class="col-md-2">
@@ -791,21 +791,26 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="">Local</label>
-                                <select v-model="aso.cidade" class="form-control">
+                                <select v-model="aso.cidade" disabled class="form-control">
                                     <option :value="cidade" v-for="cidade in cidades">{{ cidade.nomeCidade}} - {{cidade.uf}}</option>
                                 </select>
                             </div>
                             <div class="col-md-2">
                                 <label for="">Data de Emissão</label>
-                                <input type="date" class="form-control" v-model="aso.dataEmissao">
+                                <input type="date" class="form-control" disabled v-model="aso.dataEmissao">
                             </div>
                             <div class="col-md-2">
                                 <label for="">Resultado</label>
-                                <select v-model="aso.resultadoExame" class="form-control">
+                                <select v-model="aso.resultadoExame" disabled class="form-control">
                                     <option value="APTO">Apto</option>
                                     <option value="INAPTO">Inapto</option>
                                     <option value="APTO_COM_RESTRIÇÃO">Apto com restrição</option>
                                 </select>
+                            </div>
+
+                            <div class="col-md-2" v-for="fator in fatores" v-if="fator.risco.atividadeEspecial == 'SIM'">
+                                <label>{{fator.risco.nomeRisco}}</label>
+                                <select name="" id="" disabled class="form-control"></select>
                             </div>
                         </div>
                     </b-tab>
@@ -1006,11 +1011,14 @@ export default {
             clinicas: [],
             cidades: [],
             examinadores: [],
-            asoPcmso: {},
+            asoPcmso: {
+                periodo: 0,
+            },
             mensagem: "Carregando...",
             html: '<i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>',
             aso: {
                 idAsoSolicitacao: 0,
+                data: '',
                 empresaFuncionario: {
                     pessoa: {
                         cidadeNatal: {}
@@ -1028,11 +1036,45 @@ export default {
             tipo: ""
         };
     },
+    watch: {
+        'aso.data': function(n, o) {
+            var data = new Date(n);
+            console.log(data);
+            console.log('data 1', data.setMonth(data.getMonth() + this.asoPcmso.periodo));
+
+            var y = data.getFullYear();
+            var m = data.getMonth() + 1;
+            var d = data.getDate();
+
+            if (m < 10) m = "0" + m;
+
+            if (d < 10) d = "0" + d;
+
+            this.aso.proximoExame = y + "-" + m + "-" + d;
+        },
+        'asoPcmso.periodo': function(n, o) {
+            var data = new Date(this.aso.data);
+            console.log(data);
+            console.log('data 2', data.setMonth(data.getMonth() + n));
+
+            var y = data.getFullYear();
+            var m = data.getMonth() + 1;
+            var d = data.getDate();
+
+            if (m < 10) m = "0" + m;
+
+            if (d < 10) d = "0" + d;
+
+            this.aso.proximoExame = y + "-" + m + "-" + d;
+
+        }
+    },
+
     computed: {
         hoje() {
             var currentDate = new Date();
 
-            console.log(currentDate);
+            // console.log(currentDate);
 
             var y = currentDate.getFullYear();
             var m = currentDate.getMonth() + 1;
@@ -1043,7 +1085,8 @@ export default {
             if (d < 10) d = "0" + d;
 
             return y + "-" + m + "-" + d;
-        }
+        }, 
+        
     },
     methods: {
         abrirProntuario() {
@@ -1119,6 +1162,10 @@ export default {
         },
         abrir: function(funcionario, tipo) {
             this.tipo = tipo;
+
+            // axios.get(process.env.MIX_APP_API + "ServicoSIGSSO/rest/asos/listaPorIdEmpresaFuncionario/" + funcionario.idEmpresaFuncionario).then(function(response) {
+            //     console.log(response.data);
+            // });
             if (tipo == "temporario") {
                 this.aso.idAsoSolicitacao = 0;
                 this.aso.empresaFuncionario = funcionario;
@@ -1150,6 +1197,8 @@ export default {
 
                                 that.asoPcmso = response.data.asoPcmso[0];
 
+                                console.log('aso pcmso', that.asoPcmso);
+
                                 that.fatores = response.data.riscos;
 
                                 that.aso.cidade = that.aso.pcmso.empresasContrato[0].empresa.cidade;
@@ -1163,6 +1212,7 @@ export default {
                                         that.aso.medicoCoordenador =
                                             response.data[0].empresaProfissional;
                                         that.carregando = false;
+                                        
                                         that.$refs.modalAdmissional.show();
                                     });
                             } else {

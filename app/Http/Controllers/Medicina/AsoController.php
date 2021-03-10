@@ -292,17 +292,17 @@ class AsoController extends Controller
 
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 
-        $result = curl_exec($ch);
+        // $result = curl_exec($ch);
 
-        $result = json_decode($result, true);
+        // $result = json_decode($result, true);
 
-        if ($result['status'] == 'true') {
-            $solicitacao = $this->solicitacao($result['msg']);
-            return $solicitacao;
-        } else {
-            \Log::debug($result);
-            return $result;
-        }
+        // if ($result['status'] == 'true') {
+        //     $solicitacao = $this->solicitacao($result['msg']);
+        //     return $solicitacao;
+        // } else {
+        //     \Log::debug($result);
+        //     return $result;
+        // }
 
     }
 
